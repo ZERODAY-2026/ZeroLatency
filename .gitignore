@@ -29,9 +29,7 @@ triage_*/
 private/
 samples/private/
 
-# Large datasets and model weights
-eval/data/
-**/eval/data/
+# Model weights and archives
 *.zip
 *.tar.gz
 *.bin
