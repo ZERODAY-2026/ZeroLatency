@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}@keyframes pulse-subtle{0%,100%{opacity:1;}50%{opacity:0.35;}}.animate-breathing{animation:pulse-subtle 2.5s cubic-bezier(0.4,0,0.6,1) infinite;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#92ccff", "surface-tint": "#e4c537", "line": "#2C2923", "on-tertiary-fixed": "#25005a", "secondary-container": "#00699e", "tertiary-fixed-dim": "#d2bbff", "bg-inset": "#0A0908", "bg-app": "#0D0C0A", "on-tertiary": "#3a1e6f", "on-error": "#690005", "bg-surface": "#181612", "surface-container-low": "#1d1b17", "on-secondary": "#003351", "outline-variant": "#4c4734", "primary": "#fff4d6", "primary-fixed": "#ffe165", "tertiary-fixed": "#eaddff", "on-secondary-container": "#c8e3ff", "on-secondary-fixed-variant": "#004b73", "on-surface-variant": "#cfc6ae", "primary-fixed-dim": "#e4c537", "on-primary-fixed": "#221b00", "on-background": "#e8e1da", "on-tertiary-fixed-variant": "#513787", "secondary-fixed": "#cce5ff", "bg-rail": "#12110E", "on-secondary-fixed": "#001d31", "outline": "#98907a", "surface-bright": "#3c3934", "jurisdiction": "#A9B7C2", "on-primary": "#3a3000", "surface": "#15130f", "on-tertiary-container": "#6a4fa1", "surface-container": "#221f1b", "tertiary-container": "#e2d1ff", "primary-container": "#f7d748", "ember": "#FF9566", "error-container": "#93000a", "inverse-primary": "#6f5d00", "line-strong": "#433E34", "marker-dark": "#1A1608", "on-error-container": "#ffdad6", "inverse-surface": "#e8e1da", "bg-raised": "#211E19", "on-surface": "#e8e1da", "surface-container-highest": "#373430", "on-primary-fixed-variant": "#544600", "background": "#15130f", "error-red": "#FF7A8A", "paper-secondary": "#CFC7B6", "surface-container-high": "#2c2a25", "surface-variant": "#373430", "tertiary": "#faf2ff", "surface-container-lowest": "#100e0a", "inverse-on-surface": "#33302b", "error": "#ffb4ab", "on-primary-container": "#6e5d00", "paper-muted": "#968D7B", "surface-dim": "#15130f", "local-teal": "#4FE3C8", "secondary": "#92ccff", "paper-primary": "#F3EDE0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "margin-desktop": "2rem", "margin": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "stat-numeral": [ "Fraunces" ], "body-default": [ "Inter" ], "caption-default": [ "Inter" ], "headline-h1": [ "Fraunces" ], "code-quote": [ "JetBrains Mono" ], "headline-h2": [ "Fraunces" ], "badge-label": [ "Inter" ], "display-hero-mobile": [ "Fraunces" ], "headline-h3": [ "Inter Tight" ], "headline-h1-mobile": [ "Fraunces" ], "display-hero": [ "Fraunces" ] }, "fontSize": { "stat-numeral": [ "40px", { "lineHeight": "44px", "fontWeight": "600" } ], "body-default": [ "15px", { "lineHeight": "25px", "fontWeight": "400" } ], "caption-default": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-h1": [ "36px", { "lineHeight": "42px", "fontWeight": "600" } ], "code-quote": [ "13px", { "lineHeight": "22px", "fontWeight": "400" } ], "headline-h2": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ], "badge-label": [ "12px", { "lineHeight": "16px", "fontWeight": "550" } ], "display-hero-mobile": [ "32px", { "lineHeight": "38px", "fontWeight": "600" } ], "headline-h3": [ "17px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-h1-mobile": [ "26px", { "lineHeight": "32px", "fontWeight": "600" } ], "display-hero": [ "56px", { "lineHeight": "60px", "fontWeight": "600" } ] } } } };</script></head><body class="bg-bg-app font-body-default text-body-default text-paper-primary antialiased selection:bg-primary-container selection:text-marker-dark"><aside class="group fixed left-0 top-0 h-screen w-[72px] hover:w-[264px] transition-all duration-300 ease-in-out bg-bg-rail border-r border-line z-50 flex flex-col justify-between overflow-hidden shadow-[4px_0_24px_rgba(0,0,0,0.5)]"><div class="flex flex-col"><div class="h-14 border-b border-line flex items-center px-[18px] gap-3 shrink-0 overflow-hidden"><img alt="Redline Logo" class="h-8 w-8 object-contain shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WE4RtI4ZABgMOeNUHv0x3EgyOZf3xWje2moel5qvpkJD7Ej-0lpNs3fR_TRiGeAUv_LJtT3bYQaCAwFY5ux4qG9kbIpbQltnG3dAZkz0j72y0VZVXPKaF8Ru31ywtkJrCpEJIiMYjOMosB5168gBeS3n_Eb5JKdW94bD7qkBYY2TQQ0jKe0sKXUHuZs5PqJJqKkMvIBo0f_jm-MprDkUWZ3bCWsVqvtL1kx_EVbXavhHgA_GZK7WLSkkA"/><div class="flex flex-col whitespace-nowrap overflow-hidden transition-opacity duration-200 group-hover:opacity-100 opacity-0"><span class="font-headline-h3 text-headline-h3 text-paper-primary tracking-tight leading-none">Redline</span><span class="font-caption-default text-caption-default text-paper-muted text-[11px] leading-tight mt-0.5 tracking-wide uppercase">Private legal triage</span></div></div><nav class="flex flex-col py-3 gap-1 px-2" data-active-classes="bg-bg-raised text-paper-primary border-l-2 border-primary-container font-medium"><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="desk" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">folder</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Desk</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">dashboard</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Overview</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="findings" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">manage_search</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Findings</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="ask" href="#"><span class="material-symbols-outlined text-[20px] shrink-0 text-primary-container">chat_bubble_outline</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-headline-h3 text-headline-h3 text-[14px]">Ask</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="key-facts" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">table_rows</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Key facts</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="checklist" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">check_box</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Checklist</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="export" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">download</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Export</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="privacy-and-model" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">shield_person</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Privacy &amp; model</span></a></nav></div><div class="flex flex-col p-2 gap-2 border-t border-line"><div class="bg-bg-inset border border-local-teal/30 rounded p-2 flex items-center gap-2.5 overflow-hidden"><div class="relative flex items-center justify-center shrink-0 w-6 h-6"><span class="material-symbols-outlined text-local-teal text-[18px]">shield_lock</span><span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-local-teal animate-breathing"></span></div><div class="flex flex-col whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden"><div class="flex items-center gap-1.5"><span class="font-badge-label text-badge-label text-local-teal font-medium">Local only</span></div><span class="font-caption-default text-[10px] text-paper-muted leading-tight">Nothing leaves this computer</span></div></div><div class="flex items-center justify-between px-2 py-1 text-paper-muted hover:text-paper-primary cursor-pointer rounded hover:bg-bg-raised/60 transition-colors"><div class="flex items-center gap-3 shrink-0"><span class="material-symbols-outlined text-[18px]">dark_mode</span><span class="font-caption-default text-caption-default whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">Ink Room theme</span></div><span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">expand_more</span></div><button class="flex items-center w-full px-2 py-1.5 text-error-red/80 hover:text-error-red hover:bg-error-red/10 rounded transition-colors text-left group/btn" type="button"><span class="material-symbols-outlined text-[18px] shrink-0">delete_sweep</span><span class="ml-3 font-caption-default text-caption-default whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">Clear and start over</span></button></div></aside><div class="pl-[72px] min-h-screen flex flex-col"><header class="fixed top-0 left-[72px] right-0 h-14 bg-bg-app border-b border-line z-40 flex items-center justify-between px-6"><div class="flex items-center gap-3"><div class="flex items-center text-paper-muted font-caption-default text-caption-default"><span class="hover:text-paper-primary transition-colors cursor-pointer">Desk</span><span class="mx-2 text-line-strong">/</span><span class="text-paper-primary font-medium">Ask</span></div><div class="h-4 w-px bg-line-strong mx-1"></div><div class="flex items-center gap-2 bg-bg-inset border border-line px-2.5 py-1 rounded"><span class="material-symbols-outlined text-[16px] text-paper-secondary">description</span><span class="font-code-quote text-code-quote text-paper-secondary">rental_agreement.pdf</span><span class="font-badge-label text-[10px] px-1.5 py-0.2 bg-bg-raised text-paper-muted border border-line-strong rounded">12 pages</span></div></div><div class="flex items-center gap-4"><div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container-low border border-line rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-ember"></span><span class="font-badge-label text-badge-label text-paper-muted">Informational only. Not legal advice.</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><div class="pt-14 w-full"><div class="w-full bg-bg-app border-b border-line px-6 py-3.5"><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><div class="bg-bg-surface border border-line rounded p-3 flex flex-col"><span class="font-caption-default text-caption-default text-paper-muted uppercase tracking-wider text-[11px]">Findings</span><span class="font-stat-numeral text-stat-numeral text-primary-container leading-none mt-1">14</span></div><div class="bg-bg-surface border border-line rounded p-3 flex flex-col"><span class="font-caption-default text-caption-default text-paper-muted uppercase tracking-wider text-[11px]">Quote found</span><span class="font-stat-numeral text-stat-numeral text-paper-primary leading-none mt-1">11</span></div><div class="bg-bg-surface border border-line rounded p-3 flex flex-col"><span class="font-caption-default text-caption-default text-paper-muted uppercase tracking-wider text-[11px]">Need review</span><span class="font-stat-numeral text-stat-numeral text-ember leading-none mt-1">4</span></div><div class="bg-bg-surface border border-line rounded p-3 flex flex-col"><span class="font-caption-default text-caption-default text-paper-muted uppercase tracking-wider text-[11px]">Elapsed</span><span class="font-code-quote text-[28px] font-semibold text-paper-secondary leading-none mt-2">02:41</span></div></div></div><main class="w-full p-6"><div class="flex flex-col w-full pb-16">
+<!-- Top Headline & View Switcher -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+<div class="flex flex-col max-w-3xl">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-caption-default text-caption-default uppercase tracking-wider text-paper-muted text-[11px]">Triage Artifacts • Lease Agreement Extraction</span>
+</div>
+<h1 class="font-headline-h1 text-headline-h1 text-paper-primary tracking-tight">Key facts &amp; Clause checklist</h1>
+<p class="font-body-default text-body-default text-paper-secondary mt-1.5">
+        Extracted dates, financial figures, durations, and standard tenancy clause presence verified against <span class="font-code-quote text-paper-primary">rental_agreement.pdf</span>.
+      </p>
+</div>
+<!-- Segmented Filter Mode Controller -->
+<div class="flex items-center bg-bg-raised p-1 rounded-lg border border-line self-start lg:self-auto shrink-0 shadow-inner">
+<button class="flex items-center gap-2 px-3.5 py-1.5 rounded font-caption-default text-caption-default font-medium transition-all text-marker-dark bg-primary-container shadow-sm" id="view-mode-all" onclick="setViewMode('all')">
+<span class="material-symbols-outlined text-[16px]">view_agenda</span>
+<span>Unified overview</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-1.5 rounded font-caption-default text-caption-default font-medium text-paper-secondary hover:text-paper-primary transition-all" id="view-mode-facts" onclick="setViewMode('facts')">
+<span class="material-symbols-outlined text-[16px]">data_table</span>
+<span>Facts only (18)</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-1.5 rounded font-caption-default text-caption-default font-medium text-paper-secondary hover:text-paper-primary transition-all" id="view-mode-checklist" onclick="setViewMode('checklist')">
+<span class="material-symbols-outlined text-[16px]">checklist_rtl</span>
+<span>Checklist only (14)</span>
+</button>
+</div>
+</div>
+<!-- SECTION 1: KEY FACTS -->
+<section class="flex flex-col mb-12 transition-all duration-200" id="section-facts">
+<!-- Header strip with count & action tools -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-line">
+<div class="flex items-center gap-3">
+<span class="w-2 h-4 rounded-sm bg-primary-container"></span>
+<h2 class="font-headline-h2 text-headline-h2 text-paper-primary">Extracted Key Facts</h2>
+<span class="px-2 py-0.5 rounded-full bg-bg-raised text-paper-secondary font-code-quote text-[11px] border border-line">18 extracted</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-paper-muted">search</span>
+<input class="w-full h-9 pl-9 pr-3 bg-bg-raised text-paper-primary placeholder-paper-muted font-body-default text-caption-default rounded border border-line-strong focus:outline-none focus:border-primary-container transition-colors" id="fact-search-input" oninput="filterFactsByQuery(this.value)" placeholder="Search extracted facts..." type="text"/>
+</div>
+<button class="h-9 px-3 flex items-center gap-1.5 bg-bg-surface hover:bg-bg-raised text-paper-secondary hover:text-paper-primary rounded border border-line transition-colors text-caption-default font-caption-default" onclick="resetFactFilters()">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Reset</span>
+</button>
+</div>
+</div>
+<!-- Quick Filter Category Chips -->
+<div class="flex items-center gap-2 py-3.5 overflow-x-auto no-scrollbar">
+<button class="category-chip h-[26px] rounded-full px-3 text-[12px] font-badge-label font-medium flex items-center gap-1.5 transition-colors bg-primary-container text-marker-dark border border-primary-container" onclick="filterFactCategory('all', this)">
+<span>All categories</span>
+<span class="font-code-quote text-[10px] opacity-75">(18)</span>
+</button>
+<button class="category-chip h-[26px] rounded-full px-3 text-[12px] font-badge-label font-medium flex items-center gap-1.5 transition-colors bg-bg-surface hover:bg-bg-raised text-paper-secondary border border-line" onclick="filterFactCategory('financial', this)">
+<span class="material-symbols-outlined text-[14px] text-secondary">payments</span>
+<span>Financials &amp; Currency ($)</span>
+<span class="font-code-quote text-[10px] text-paper-muted">(6)</span>
+</button>
+<button class="category-chip h-[26px] rounded-full px-3 text-[12px] font-badge-label font-medium flex items-center gap-1.5 transition-colors bg-bg-surface hover:bg-bg-raised text-paper-secondary border border-line" onclick="filterFactCategory('calendar', this)">
+<span class="material-symbols-outlined text-[14px] text-primary-container">calendar_today</span>
+<span>Dates &amp; Deadlines</span>
+<span class="font-code-quote text-[10px] text-paper-muted">(5)</span>
+</button>
+<button class="category-chip h-[26px] rounded-full px-3 text-[12px] font-badge-label font-medium flex items-center gap-1.5 transition-colors bg-bg-surface hover:bg-bg-raised text-paper-secondary border border-line" onclick="filterFactCategory('duration', this)">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">schedule</span>
+<span>Durations &amp; Terms</span>
+<span class="font-code-quote text-[10px] text-paper-muted">(4)</span>
+</button>
+<button class="category-chip h-[26px] rounded-full px-3 text-[12px] font-badge-label font-medium flex items-center gap-1.5 transition-colors bg-bg-surface hover:bg-bg-raised text-paper-secondary border border-line" onclick="filterFactCategory('ratio', this)">
+<span class="material-symbols-outlined text-[14px] text-ember">percent</span>
+<span>Percentages &amp; Ratios</span>
+<span class="font-code-quote text-[10px] text-paper-muted">(3)</span>
+</button>
+</div>
+<!-- Data Table Container -->
+<div class="w-full bg-bg-surface border border-line rounded-lg overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="facts-table">
+<thead>
+<tr class="bg-bg-inset border-b border-line text-paper-muted font-caption-default text-[11px] tracking-wider uppercase select-none">
+<th class="py-2.5 px-4 font-medium w-[22%]">Fact / Parameter</th>
+<th class="py-2.5 px-4 font-medium w-[24%]">Extracted Value</th>
+<th class="py-2.5 px-4 font-medium w-[13%]">Category</th>
+<th class="py-2.5 px-4 font-medium w-[8%] text-center">Page</th>
+<th class="py-2.5 px-4 font-medium w-[25%]">Exact Snippet</th>
+<th class="py-2.5 px-4 font-medium w-[8%] text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-line font-body-default text-caption-default" id="facts-tbody">
+<!-- Row 1: Base Rent -->
+<tr class="fact-row hover:bg-bg-raised/70 transition-colors group" data-category="financial" data-keywords="monthly base rent payment usd 3850 currency first day">
+<td class="py-3 px-4 font-medium text-paper-primary">Monthly Base Rent</td>
+<td class="py-3 px-4">
+<span class="font-code-quote font-semibold text-paper-primary bg-bg-inset px-2 py-0.5 rounded border border-line">$3,850.00 USD</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-badge-label bg-secondary/10 text-secondary border border-secondary/20">
+<span class="material-symbols-outlined text-[13px]">payments</span> Currency
+                </span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="font-code-quote text-paper-secondary bg-bg-inset px-1.5 py-0.5 rounded text-[11px] border border-line">p. 1</span>
+</td>
+<td class="py-3 px-4 font-code-quote text-[12px] text-paper-secondary truncate max-w-[280px]">
+                "...Tenant shall pay monthly base rent of <mark class="bg-primary-container/25 text-primary-fixed px-0.5 rounded font-medium">$3,850.00</mark> on the first day..."
+              </td>
+<td class="py-3 px-4 text-right">
+<button class="opacity-80 group-hover:opacity-100 px-2 py-1 bg-bg-inset hover:bg-primary-container hover:text-marker-dark text-paper-secondary rounded border border-line transition-all inline-flex items-center gap-1 text-[11px] font-caption-default font-medium" onclick="previewPassage('Base Rent', 'p. 1', 'Tenant shall pay monthly base rent of $3,850.00 on the first day of each calendar month during the Term without deduction or setoff.', '§2.1 Rent Schedule')">
+<span>View</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Security Deposit -->
+<tr class="fact-row hover:bg-bg-raised/70 transition-colors group" data-category="financial" data-keywords="security deposit escrow 7700 2x monthly rent">
+<td class="py-3 px-4 font-medium text-paper-primary">Security Deposit</td>
+<td class="py-3 px-4">
+<span class="font-code-quote font-semibold text-paper-primary bg-bg-inset px-2 py-0.5 rounded border border-line">$7,700.00 USD (2x Monthly)</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-badge-label bg-secondary/10 text-secondary border border-secondary/20">
+<span class="material-symbols-outlined text-[13px]">lock</span> Escrow
+                </span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="font-code-quote text-paper-secondary bg-bg-inset px-1.5 py-0.5 rounded text-[11px] border border-line">p. 2</span>
+</td>
+<td class="py-3 px-4 font-code-quote text-[12px] text-paper-secondary truncate max-w-[280px]">
+                "...deposit equal to <mark class="bg-primary-container/25 text-primary-fixed px-0.5 rounded font-medium">two (2) months' rent ($7,700.00)</mark> held in escrow..."
+              </td>
+<td class="py-3 px-4 text-right">
+<button class="opacity-80 group-hover:opacity-100 px-2 py-1 bg-bg-inset hover:bg-primary-container hover:text-marker-dark text-paper-secondary rounded border border-line transition-all inline-flex items-center gap-1 text-[11px] font-caption-default font-medium" onclick="previewPassage('Security Deposit Escrow', 'p. 2', 'Upon signing, Tenant deposits $7,700.00 with Landlord as security for the full and faithful performance of Tenant covenants under this Agreement.', '§4.1 Escrow Deposit')">
+<span>View</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Lease Commencement Date -->
+<tr class="fact-row hover:bg-bg-raised/70 transition-colors group" data-category="calendar" data-keywords="lease commencement date term start october 1 2024">
+<td class="py-3 px-4 font-medium text-paper-primary">Lease Commencement Date</td>
+<td class="py-3 px-4">
+<span class="font-code-quote font-semibold text-paper-primary bg-bg-inset px-2 py-0.5 rounded border border-line">October 1, 2024</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-badge-label bg-primary-container/10 text-primary-fixed border border-primary-container/25">
+<span class="material-symbols-outlined text-[13px]">calendar_month</span> Calendar
+                </span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="font-code-quote text-paper-secondary bg-bg-inset px-1.5 py-0.5 rounded text-[11px] border border-line">p. 1</span>
+</td>
+<td class="py-3 px-4 font-code-quote text-[12px] text-paper-secondary truncate max-w-[280px]">
+                "Term commences on <mark class="bg-primary-container/25 text-primary-fixed px-0.5 rounded font-medium">October 1, 2024</mark> and terminates September 30, 2025."
+              </td>
+<td class="py-3 px-4 text-right">
+<button class="opacity-80 group-hover:opacity-100 px-2 py-1 bg-bg-inset hover:bg-primary-container hover:text-marker-dark text-paper-secondary rounded border border-line transition-all inline-flex items-center gap-1 text-[11px] font-caption-default font-medium" onclick="previewPassage('Term Commencement', 'p. 1', 'The term of this Lease shall commence at 12:01 AM on October 1, 2024 and end at 11:59 PM on September 30, 2025 unless terminated earlier under the express terms herein.', '§1.3 Lease Term')">
+<span>View</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Non-Renewal Notice Window -->
+<tr class="fact-row hover:bg-bg-raised/70 transition-colors group" data-category="duration" data-keywords="non renewal notice window written notice expiration 60 days">
+<td class="py-3 px-4 font-medium text-paper-primary">Non-Renewal Notice Window</td>
+<td class="py-3 px-4">
+<span class="font-code-quote font-semibold text-paper-primary bg-bg-inset px-2 py-0.5 rounded border border-line">60 Days prior</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-badge-label bg-tertiary-fixed-dim/10 text-tertiary-fixed-dim border border-tertiary-fixed-dim/20">
+<span class="material-symbols-outlined text-[13px]">timer</span> Duration
+                </span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="font-code-quote text-paper-secondary bg-bg-inset px-1.5 py-0.5 rounded text-[11px] border border-line">p. 1</span>
+</td>
+<td class="py-3 px-4 font-code-quote text-[12px] text-paper-secondary truncate max-w-[280px]">
+                "...written notice at least <mark class="bg-primary-container/25 text-primary-fixed px-0.5 rounded font-medium">sixty (60) days</mark> prior to natural expiration..."
+              </td>
+<td class="py-3 px-4 text-right">
+<button class="opacity-80 group-hover:opacity-100 px-2 py-1 bg-bg-inset hover:bg-primary-container hover:text-marker-dark text-paper-secondary rounded border border-line transition-all inline-flex items-center gap-1 text-[11px] font-caption-default font-medium" onclick="previewPassage('Non-Renewal Window', 'p. 1', 'Either party may elect not to renew by serving formal written notice at least sixty (60) days prior to the expiration of the Initial Term.', '§3.2 Renewal and Non-Renewal')">
+<span>View</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Late Payment Fee -->
+<tr class="fact-row hover:bg-bg-raised/70 transition-colors group" data-category="financial" data-keywords="late payment fee 150 25 daily late rent penalty">
+<td class="py-3 px-4 font-medium text-paper-primary">Late Payment Fee</td>
+<td class="py-3 px-4">
+<span class="font-code-quote font-semibold text-paper-primary bg-bg-inset px-2 py-0.5 rounded border border-line">$150.00 + $25.00/day</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-badge-label bg-secondary/10 text-secondary border border-secondary/20">
+<span class="material-symbols-outlined text-[13px]">price_change</span> Surcharge
+                </span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="font-code-quote text-paper-secondary bg-bg-inset px-1.5 py-0.5 rounded text-[11px] border border-line">p. 3</span>
+</td>
+<td class="py-3 px-4 font-code-quote text-[12px] text-paper-secondary truncate max-w-[280px]">
+                "If rent received after 11:59 PM on 5th day, late fee of <mark class="bg-primary-container/25 text-primary-fixed px-0.5 rounded font-medium">$150.00 applies</mark>..."
+              </td>
+<td class="py-3 px-4 text-right">
+<button class="opacity-80 group-hover:opacity-100 px-2 py-1 bg-bg-inset hover:bg-primary-container hover:text-marker-dark text-paper-secondary rounded border border-line transition-all inline-flex items-center gap-1 text-[11px] font-caption-default font-medium" onclick="previewPassage('Late Rent Penalties', 'p. 3', 'Late payments received after the fifth calendar day are subject to an immediate administrative fee of $150.00 plus $25.00 for each additional day rent remains delinquent.', '§5.1 Late Assessment')">
+<span>View</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 6: Early Termination Penalty -->
+<tr class="fact-row hover:bg-bg-raised/70 transition-colors group" data-category="ratio" data-keywords="early termination penalty liquidated damages 2 months 7700">
+<td class="py-3 px-4 font-medium text-paper-primary">Early Termination Penalty</td>
+<td class="py-3 px-4">
+<span class="font-code-quote font-semibold text-ember bg-bg-inset px-2 py-0.5 rounded border border-line">2 Months' rent ($7,700)</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-badge-label bg-ember/10 text-ember border border-ember/25">
+<span class="material-symbols-outlined text-[13px]">warning</span> Penalty
+                </span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="font-code-quote text-paper-secondary bg-bg-inset px-1.5 py-0.5 rounded text-[11px] border border-line">p. 7</span>
+</td>
+<td class="py-3 px-4 font-code-quote text-[12px] text-paper-secondary truncate max-w-[280px]">
+                "...fixed liquidated damages fee equal to <mark class="bg-primary-container/25 text-primary-fixed px-0.5 rounded font-medium">two (2) months' rent</mark> plus deposit forfeiture..."
+              </td>
+<td class="py-3 px-4 text-right">
+<button class="opacity-80 group-hover:opacity-100 px-2 py-1 bg-bg-inset hover:bg-primary-container hover:text-marker-dark text-paper-secondary rounded border border-line transition-all inline-flex items-center gap-1 text-[11px] font-caption-default font-medium" onclick="previewPassage('Early Termination Liquidation', 'p. 7', 'In the event Tenant terminates occupancy prior to natural expiration, Tenant covenants to remit liquidated damages equal to two full months rent without offset.', '§8.4 Early Surrender')">
+<span>View</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 7: Landlord Access Notice -->
+<tr class="fact-row hover:bg-bg-raised/70 transition-colors group" data-category="duration" data-keywords="landlord access notice entry 24 hours verbal written inspection">
+<td class="py-3 px-4 font-medium text-paper-primary">Landlord Access Notice</td>
+<td class="py-3 px-4">
+<span class="font-code-quote font-semibold text-paper-primary bg-bg-inset px-2 py-0.5 rounded border border-line">24 Hours (Oral / Written)</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-badge-label bg-tertiary-fixed-dim/10 text-tertiary-fixed-dim border border-tertiary-fixed-dim/20">
+<span class="material-symbols-outlined text-[13px]">schedule</span> Duration
+                </span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="font-code-quote text-paper-secondary bg-bg-inset px-1.5 py-0.5 rounded text-[11px] border border-line">p. 4</span>
+</td>
+<td class="py-3 px-4 font-code-quote text-[12px] text-paper-secondary truncate max-w-[280px]">
+                "Lessor shall give at least <mark class="bg-primary-container/25 text-primary-fixed px-0.5 rounded font-medium">24 hours prior verbal</mark> or written notice before entry..."
+              </td>
+<td class="py-3 px-4 text-right">
+<button class="opacity-80 group-hover:opacity-100 px-2 py-1 bg-bg-inset hover:bg-primary-container hover:text-marker-dark text-paper-secondary rounded border border-line transition-all inline-flex items-center gap-1 text-[11px] font-caption-default font-medium" onclick="previewPassage('Landlord Right of Entry', 'p. 4', 'Lessor or designated contractors may enter premises during customary business hours upon giving twenty-four (24) hours advance oral or written notification.', '§5.2 Entry &amp; Inspection')">
+<span>View</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Telemetry Bar -->
+<div class="px-4 py-2.5 bg-bg-inset border-t border-line flex flex-wrap items-center justify-between text-paper-muted font-caption-default text-[11px] gap-2">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1 text-local-teal font-code-quote text-[11px]">
+<span class="material-symbols-outlined text-[13px]">verified_user</span> Air-gap extracted via regex + local AST engine
+          </span>
+<span class="text-line-strong">•</span>
+<span>7 of 18 critical fields rendered above</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-code-quote text-paper-secondary">Confidence rating: 0.94</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: CLAUSE CHECKLIST -->
+<section class="flex flex-col transition-all duration-200" id="section-checklist">
+<!-- Header strip with status & disclaimer -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-line">
+<div class="flex items-center gap-3">
+<span class="w-2 h-4 rounded-sm bg-secondary"></span>
+<h2 class="font-headline-h2 text-headline-h2 text-paper-primary">Standard Clause Checklist</h2>
+<span class="px-2 py-0.5 rounded-full bg-bg-raised text-paper-secondary font-code-quote text-[11px] border border-line">14 total clauses queried</span>
+</div>
+<!-- Air-gapped Search trigger -->
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 bg-bg-raised hover:bg-line-strong/30 text-paper-primary text-caption-default font-caption-default font-medium rounded border border-line transition-colors flex items-center gap-1.5" onclick="openCustomSearchModal()">
+<span class="material-symbols-outlined text-[16px] text-primary-container">manage_search</span>
+<span>Search custom keywords in document</span>
+</button>
+</div>
+</div>
+<!-- Mandatory Scope / Triage Warning Callout (DESIGN2.0 S6.10 requirement) -->
+<div class="mt-4 p-3 bg-bg-inset border-l-2 border-paper-muted rounded-r-md flex items-start gap-3">
+<span class="material-symbols-outlined text-paper-muted text-[18px] shrink-0 mt-0.5">info</span>
+<p class="font-caption-default text-caption-default text-paper-secondary leading-snug">
+<strong class="text-paper-primary font-medium">Scope note:</strong> "Not found" means the extracted text has no matching wording or canonical synonyms in this document. It is an algorithmic text observation, not a legal conclusion or warranty of omission.
+      </p>
+</div>
+<!-- Dual Column Comparison Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 items-start">
+<!-- COLUMN A: MATCHING WORDING FOUND -->
+<div class="flex flex-col bg-bg-surface border border-line rounded-lg p-5 shadow-sm">
+<div class="flex items-center justify-between pb-3.5 border-b border-line mb-4">
+<div class="flex items-center gap-2.5">
+<span class="w-5 h-5 rounded-full bg-secondary/15 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</span>
+<span class="font-headline-h3 text-headline-h3 text-paper-primary">Matching wording found</span>
+</div>
+<span class="font-code-quote text-[11px] text-secondary font-medium px-2 py-0.5 bg-secondary/10 rounded-full border border-secondary/25">
+            9 clauses
+          </span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Clause Item 1 -->
+<div class="p-3 bg-bg-inset border border-line rounded hover:border-line-strong transition-all flex items-start justify-between gap-3 group">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-caption-default text-body-default font-medium text-paper-primary truncate">1. Term &amp; Automatic Renewal</span>
+<span class="font-code-quote text-[10px] px-1.5 py-0.2 rounded bg-bg-raised text-paper-secondary border border-line">p. 1, §3.1</span>
+</div>
+<p class="font-caption-default text-[12px] text-paper-muted mt-0.5 truncate">Identified phrase: "converts to month-to-month upon non-election"</p>
+</div>
+<button class="shrink-0 px-2 py-1 text-[11px] text-paper-secondary hover:text-paper-primary bg-bg-raised rounded border border-line transition-colors flex items-center gap-1" onclick="previewPassage('Term &amp; Renewal', 'p. 1', 'If neither party issues written cancellation, the tenancy automatically rolls into a month-to-month arrangement subject to prevailing terms.', '§3.1 Continuation')">
+<span>View</span>
+<span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+<!-- Clause Item 2 -->
+<div class="p-3 bg-bg-inset border border-line rounded hover:border-line-strong transition-all flex items-start justify-between gap-3 group">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-caption-default text-body-default font-medium text-paper-primary truncate">2. Security Deposit Escrow</span>
+<span class="font-code-quote text-[10px] px-1.5 py-0.2 rounded bg-bg-raised text-paper-secondary border border-line">p. 2, §4.2</span>
+</div>
+<p class="font-caption-default text-[12px] text-paper-muted mt-0.5 truncate">Identified phrase: "escrow account at federally insured depository"</p>
+</div>
+<button class="shrink-0 px-2 py-1 text-[11px] text-paper-secondary hover:text-paper-primary bg-bg-raised rounded border border-line transition-colors flex items-center gap-1" onclick="previewPassage('Deposit Escrow', 'p. 2', 'Landlord shall hold all deposits in a segregated interest-bearing account at JPMorgan Chase Bank.', '§4.2 Escrow Details')">
+<span>View</span>
+<span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+<!-- Clause Item 3 -->
+<div class="p-3 bg-bg-inset border border-line rounded hover:border-line-strong transition-all flex items-start justify-between gap-3 group">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-caption-default text-body-default font-medium text-paper-primary truncate">3. Late Rent Penalties &amp; Grace Period</span>
+<span class="font-code-quote text-[10px] px-1.5 py-0.2 rounded bg-bg-raised text-paper-secondary border border-line">p. 3, §5.1</span>
+</div>
+<p class="font-caption-default text-[12px] text-paper-muted mt-0.5 truncate">Identified phrase: "five calendar days grace period before assessment"</p>
+</div>
+<button class="shrink-0 px-2 py-1 text-[11px] text-paper-secondary hover:text-paper-primary bg-bg-raised rounded border border-line transition-colors flex items-center gap-1" onclick="previewPassage('Late Penalties', 'p. 3', 'Late fee applies at 12:00 AM on the 6th calendar day after rental due date.', '§5.1 Grace Window')">
+<span>View</span>
+<span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+<!-- Clause Item 4 -->
+<div class="p-3 bg-bg-inset border border-line rounded hover:border-line-strong transition-all flex items-start justify-between gap-3 group">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-caption-default text-body-default font-medium text-paper-primary truncate">4. Landlord Right of Entry &amp; Inspection</span>
+<span class="font-code-quote text-[10px] px-1.5 py-0.2 rounded bg-bg-raised text-paper-secondary border border-line">p. 4, §5.2</span>
+</div>
+<p class="font-caption-default text-[12px] text-paper-muted mt-0.5 truncate">Identified phrase: "twenty-four hour advance notice for customary repairs"</p>
+</div>
+<button class="shrink-0 px-2 py-1 text-[11px] text-paper-secondary hover:text-paper-primary bg-bg-raised rounded border border-line transition-colors flex items-center gap-1" onclick="previewPassage('Right of Entry', 'p. 4', 'Landlord may inspect upon giving 24h prior oral or written notice during business hours.', '§5.2 Entry')">
+<span>View</span>
+<span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+<!-- Clause Item 5 -->
+<div class="p-3 bg-bg-inset border border-line rounded hover:border-line-strong transition-all flex items-start justify-between gap-3 group">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-caption-default text-body-default font-medium text-paper-primary truncate">5. Maintenance &amp; Minor Repairs Obligation</span>
+<span class="font-code-quote text-[10px] px-1.5 py-0.2 rounded bg-bg-raised text-paper-secondary border border-line">p. 5, §6.3</span>
+</div>
+<p class="font-caption-default text-[12px] text-paper-muted mt-0.5 truncate">Identified phrase: "repairs under $100 billed to tenant account"</p>
+</div>
+<button class="shrink-0 px-2 py-1 text-[11px] text-paper-secondary hover:text-paper-primary bg-bg-raised rounded border border-line transition-colors flex items-center gap-1" onclick="previewPassage('Maintenance Clause', 'p. 5', 'Tenant assumes fiscal responsibility for unclogging fixtures and minor repairs under $100 value.', '§6.3 Tenant Repairs')">
+<span>View</span>
+<span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+<!-- Clause Item 6 -->
+<div class="p-3 bg-bg-inset border border-line rounded hover:border-line-strong transition-all flex items-start justify-between gap-3 group">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-caption-default text-body-default font-medium text-paper-primary truncate">6. Alterations &amp; Painting Restrictions</span>
+<span class="font-code-quote text-[10px] px-1.5 py-0.2 rounded bg-bg-raised text-paper-secondary border border-line">p. 5, §7.1</span>
+</div>
+<p class="font-caption-default text-[12px] text-paper-muted mt-0.5 truncate">Identified phrase: "strictly prohibiting paint alterations without consent"</p>
+</div>
+<button class="shrink-0 px-2 py-1 text-[11px] text-paper-secondary hover:text-paper-primary bg-bg-raised rounded border border-line transition-colors flex items-center gap-1" onclick="previewPassage('Alterations Clause', 'p. 5', 'No painting, wallpaper, nail hooks or structural changes permitted without written authorization.', '§7.1 Fixtures')">
+<span>View</span>
+<span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+<!-- Clause Item 7 -->
+<div class="p-3 bg-bg-inset border border-line rounded hover:border-line-strong transition-all flex items-start justify-between gap-3 group">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-caption-default text-body-default font-medium text-paper-primary truncate">7. Default &amp; Early Termination Liquidation</span>
+<span class="font-code-quote text-[10px] px-1.5 py-0.2 rounded bg-bg-raised text-paper-secondary border border-line">p. 7, §8.4</span>
+</div>
+<p class="font-caption-default text-[12px] text-paper-muted mt-0.5 truncate">Identified phrase: "liquidated damages assessment equal to 2 months rent"</p>
+</div>
+<button class="shrink-0 px-2 py-1 text-[11px] text-paper-secondary hover:text-paper-primary bg-bg-raised rounded border border-line transition-colors flex items-center gap-1" onclick="previewPassage('Termination Clause', 'p. 7', 'Breach or unauthorized vacating triggers immediate 2 months liquidated damages charge.', '§8.4 Breach')">
+<span>View</span>
+<span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+<!-- Clause Item 8 -->
+<div class="p-3 bg-bg-inset border border-line rounded hover:border-line-strong transition-all flex items-start justify-between gap-3 group">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-caption-default text-body-default font-medium text-paper-primary truncate">8. Governing Law &amp; Jurisdiction Clause</span>
+<span class="font-code-quote text-[10px] px-1.5 py-0.2 rounded bg-bg-raised text-paper-secondary border border-line">p. 11, §14.2</span>
+</div>
+<p class="font-caption-default text-[12px] text-paper-muted mt-0.5 truncate">Identified phrase: "State of California, County of Alameda venue"</p>
+</div>
+<button class="shrink-0 px-2 py-1 text-[11px] text-paper-secondary hover:text-paper-primary bg-bg-raised rounded border border-line transition-colors flex items-center gap-1" onclick="previewPassage('Governing Law', 'p. 11', 'This agreement shall be strictly governed under California Civil Code with exclusive jurisdiction in Alameda County.', '§14.2 Jurisdiction')">
+<span>View</span>
+<span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+<!-- Clause Item 9 -->
+<div class="p-3 bg-bg-inset border border-line rounded hover:border-line-strong transition-all flex items-start justify-between gap-3 group">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-caption-default text-body-default font-medium text-paper-primary truncate">9. Severability Provision</span>
+<span class="font-code-quote text-[10px] px-1.5 py-0.2 rounded bg-bg-raised text-paper-secondary border border-line">p. 12, §15.1</span>
+</div>
+<p class="font-caption-default text-[12px] text-paper-muted mt-0.5 truncate">Identified phrase: "unlawful clauses severed without invalidating balance"</p>
+</div>
+<button class="shrink-0 px-2 py-1 text-[11px] text-paper-secondary hover:text-paper-primary bg-bg-raised rounded border border-line transition-colors flex items-center gap-1" onclick="previewPassage('Severability', 'p. 12', 'Invalidation of any single covenant by judicial decree shall not invalidate any other provision.', '§15.1 Severance')">
+<span>View</span>
+<span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- COLUMN B: NO MATCHING WORDING FOUND (Muted paper-3 dashed style, NEVER red) -->
+<div class="flex flex-col bg-bg-surface border border-line rounded-lg p-5 shadow-sm">
+<div class="flex items-center justify-between pb-3.5 border-b border-line mb-4">
+<div class="flex items-center gap-2.5">
+<span class="w-5 h-5 rounded-full border border-dashed border-paper-muted flex items-center justify-center text-paper-muted">
+<span class="material-symbols-outlined text-[13px]">radio_button_unchecked</span>
+</span>
+<span class="font-headline-h3 text-headline-h3 text-paper-primary">No matching wording found</span>
+</div>
+<span class="font-code-quote text-[11px] text-paper-muted font-medium px-2 py-0.5 bg-bg-raised rounded-full border border-line">
+            5 clauses
+          </span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Missing Item 1 -->
+<div class="p-3.5 bg-bg-inset border border-dashed border-line rounded flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-caption-default text-body-default font-medium text-paper-primary">1. Subletting &amp; Assignment Provisions</span>
+<span class="font-badge-label text-[10px] text-paper-muted px-2 py-0.5 bg-bg-raised rounded border border-line">Not found</span>
+</div>
+<p class="font-caption-default text-caption-default text-paper-secondary">
+              Zero matches for standard assignment, sublet covenants, or licensee guest clauses. Document is silent on whether assignment is allowed or prohibited.
+            </p>
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="font-caption-default text-[10px] text-paper-muted uppercase tracking-wider">Searched:</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"sublease"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"assignee"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"roommate"</span>
+</div>
+</div>
+<!-- Missing Item 2 -->
+<div class="p-3.5 bg-bg-inset border border-dashed border-line rounded flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-caption-default text-body-default font-medium text-paper-primary">2. Designated Parking / Stall Allocation</span>
+<span class="font-badge-label text-[10px] text-paper-muted px-2 py-0.5 bg-bg-raised rounded border border-line">Not found</span>
+</div>
+<p class="font-caption-default text-caption-default text-paper-secondary">
+              No specific parking rights, tandem stalls, assigned garage numbers, or guest vehicle regulations detected across all 12 pages.
+            </p>
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="font-caption-default text-[10px] text-paper-muted uppercase tracking-wider">Searched:</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"parking"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"garage"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"stall"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"towing"</span>
+</div>
+</div>
+<!-- Missing Item 3 -->
+<div class="p-3.5 bg-bg-inset border border-dashed border-line rounded flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-caption-default text-body-default font-medium text-paper-primary">3. Pet Policy &amp; Animal Addendum</span>
+<span class="font-badge-label text-[10px] text-paper-muted px-2 py-0.5 bg-bg-raised rounded border border-line">Not found</span>
+</div>
+<p class="font-caption-default text-caption-default text-paper-secondary">
+              Neither permission nor explicit prohibition regarding domestic animals, support animals, or companion deposits is referenced in the text.
+            </p>
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="font-caption-default text-[10px] text-paper-muted uppercase tracking-wider">Searched:</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"pet deposit"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"animal"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"canine"</span>
+</div>
+</div>
+<!-- Missing Item 4 -->
+<div class="p-3.5 bg-bg-inset border border-dashed border-line rounded flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-caption-default text-body-default font-medium text-paper-primary">4. Force Majeure &amp; Casualty Abatement</span>
+<span class="font-badge-label text-[10px] text-paper-muted px-2 py-0.5 bg-bg-raised rounded border border-line">Not found</span>
+</div>
+<p class="font-caption-default text-caption-default text-paper-secondary">
+              No rent suspension, abatement, or catastrophic destruction clauses located for fire, flood, structural failure, or civil emergency.
+            </p>
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="font-caption-default text-[10px] text-paper-muted uppercase tracking-wider">Searched:</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"force majeure"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"casualty"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"abatement"</span>
+</div>
+</div>
+<!-- Missing Item 5 -->
+<div class="p-3.5 bg-bg-inset border border-dashed border-line rounded flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-caption-default text-body-default font-medium text-paper-primary">5. Mandatory Arbitration / Jury Trial Waiver</span>
+<span class="font-badge-label text-[10px] text-paper-muted px-2 py-0.5 bg-bg-raised rounded border border-line">Not found</span>
+</div>
+<p class="font-caption-default text-caption-default text-paper-secondary">
+              No private dispute arbitration stipulations, American Arbitration Association rules, or constitutional jury trial waiver agreements detected.
+            </p>
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="font-caption-default text-[10px] text-paper-muted uppercase tracking-wider">Searched:</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"arbitration"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"jury waiver"</span>
+<span class="font-code-quote text-[11px] text-paper-secondary bg-bg-raised px-1.5 py-0.5 rounded border border-line">"mediator"</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MODAL: Passage Inspection Drawer / Modal -->
+<div class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4" id="passage-drawer">
+<div class="bg-bg-surface border border-line rounded-xl max-w-xl w-full overflow-hidden shadow-2xl animate-in fade-in duration-200">
+<div class="p-4 bg-bg-raised border-b border-line flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary-container">article</span>
+<span class="font-headline-h3 text-headline-h3 text-paper-primary" id="drawer-title">Passage Details</span>
+<span class="font-code-quote text-[11px] bg-bg-inset px-2 py-0.5 rounded border border-line text-paper-secondary" id="drawer-page">p. 1</span>
+</div>
+<button class="text-paper-muted hover:text-paper-primary p-1 rounded hover:bg-bg-surface transition-colors" onclick="closePassageDrawer()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-code-quote text-[12px] text-paper-muted" id="drawer-section-label">§2.1 Primary Covenant</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-badge-label text-local-teal bg-local-teal/10 px-2 py-0.5 rounded border border-local-teal/20">
+<span class="material-symbols-outlined text-[12px]">verified</span> Air-gap verified
+          </span>
+</div>
+<div class="bg-bg-inset p-4 rounded-r-md border-l-4 border-primary-container font-code-quote text-[13px] leading-relaxed text-paper-primary shadow-inner">
+<p id="drawer-text">Passage excerpt goes here.</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-line text-paper-muted text-[11px] font-caption-default">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield</span> Hash verified in local memory
+          </span>
+<button class="px-3 py-1.5 bg-primary-container hover:bg-primary-fixed text-marker-dark font-medium rounded text-caption-default transition-colors" onclick="closePassageDrawer()">
+            Close passage
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL: Custom Keyword Search -->
+<div class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4" id="search-modal">
+<div class="bg-bg-surface border border-line rounded-xl max-w-lg w-full overflow-hidden shadow-2xl">
+<div class="p-4 bg-bg-raised border-b border-line flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">search</span>
+<span class="font-headline-h3 text-headline-h3 text-paper-primary">Search Document Text</span>
+</div>
+<button class="text-paper-muted hover:text-paper-primary p-1 rounded hover:bg-bg-surface transition-colors" onclick="closeCustomSearchModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<p class="font-caption-default text-caption-default text-paper-secondary">
+          Execute an air-gapped literal or regex match across all 12 pages of <span class="font-code-quote text-paper-primary">rental_agreement.pdf</span>. No cloud transfer occurs.
+        </p>
+<div class="relative">
+<input class="w-full h-11 px-3.5 bg-bg-inset text-paper-primary placeholder-paper-muted font-body-default text-body-default rounded border border-line-strong focus:outline-none focus:border-primary-container transition-colors" id="custom-keyword-input" placeholder="e.g. 'sublease', 'guarantor', 'utilities'..." type="text"/>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-caption-default text-[11px] text-paper-muted">Case-insensitive whole word lookup</span>
+<button class="px-4 py-2 bg-primary-container hover:bg-primary-fixed text-marker-dark font-medium rounded text-caption-default transition-colors flex items-center gap-1.5" onclick="simulateCustomSearch()">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+<span>Execute scan</span>
+</button>
+</div>
+<div class="hidden p-3 bg-bg-inset border border-line rounded text-[12px] font-code-quote text-paper-muted" id="search-results-feedback">
+          Found 0 exact occurrences for queried tokens.
+        </div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Filter by category
+  function filterFactCategory(category, buttonElement) {
+    const rows = document.querySelectorAll('.fact-row');
+    const buttons = document.querySelectorAll('.category-chip');
+
+    // Update active button state
+    buttons.forEach(btn => {
+      btn.classList.remove('bg-primary-container', 'text-marker-dark', 'border-primary-container');
+      btn.classList.add('bg-bg-surface', 'text-paper-secondary', 'border-line');
+    });
+
+    if (buttonElement) {
+      buttonElement.classList.remove('bg-bg-surface', 'text-paper-secondary', 'border-line');
+      buttonElement.classList.add('bg-primary-container', 'text-marker-dark', 'border-primary-container');
+    }
+
+    // Filter rows
+    rows.forEach(row => {
+      if (category === 'all' || row.dataset.category === category) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  // Filter facts by search query
+  function filterFactsByQuery(query) {
+    const q = query.toLowerCase().trim();
+    const rows = document.querySelectorAll('.fact-row');
+
+    rows.forEach(row => {
+      const keywords = (row.dataset.keywords || '').toLowerCase();
+      const text = row.innerText.toLowerCase();
+      if (!q || keywords.includes(q) || text.includes(q)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  function resetFactFilters() {
+    const searchInput = document.getElementById('fact-search-input');
+    if (searchInput) searchInput.value = '';
+    const allBtn = document.querySelector('.category-chip');
+    filterFactCategory('all', allBtn);
+    filterFactsByQuery('');
+  }
+
+  // Segmented view switcher (All / Facts / Checklist)
+  function setViewMode(mode) {
+    const sectionFacts = document.getElementById('section-facts');
+    const sectionChecklist = document.getElementById('section-checklist');
+    const btnAll = document.getElementById('view-mode-all');
+    const btnFacts = document.getElementById('view-mode-facts');
+    const btnChecklist = document.getElementById('view-mode-checklist');
+
+    // Reset button states
+    [btnAll, btnFacts, btnChecklist].forEach(btn => {
+      btn.className = "flex items-center gap-2 px-3.5 py-1.5 rounded font-caption-default text-caption-default font-medium text-paper-secondary hover:text-paper-primary transition-all";
+    });
+
+    if (mode === 'all') {
+      sectionFacts.style.display = 'flex';
+      sectionChecklist.style.display = 'flex';
+      btnAll.className = "flex items-center gap-2 px-3.5 py-1.5 rounded font-caption-default text-caption-default font-medium transition-all text-marker-dark bg-primary-container shadow-sm";
+    } else if (mode === 'facts') {
+      sectionFacts.style.display = 'flex';
+      sectionChecklist.style.display = 'none';
+      btnFacts.className = "flex items-center gap-2 px-3.5 py-1.5 rounded font-caption-default text-caption-default font-medium transition-all text-marker-dark bg-primary-container shadow-sm";
+    } else if (mode === 'checklist') {
+      sectionFacts.style.display = 'none';
+      sectionChecklist.style.display = 'flex';
+      btnChecklist.className = "flex items-center gap-2 px-3.5 py-1.5 rounded font-caption-default text-caption-default font-medium transition-all text-marker-dark bg-primary-container shadow-sm";
+    }
+  }
+
+  // Passage Preview Modal logic
+  function previewPassage(title, page, text, sectionCode) {
+    document.getElementById('drawer-title').innerText = title;
+    document.getElementById('drawer-page').innerText = page;
+    document.getElementById('drawer-text').innerText = text;
+    document.getElementById('drawer-section-label').innerText = sectionCode;
+    const drawer = document.getElementById('passage-drawer');
+    drawer.classList.remove('hidden');
+    drawer.classList.add('flex');
+  }
+
+  function closePassageDrawer() {
+    const drawer = document.getElementById('passage-drawer');
+    drawer.classList.add('hidden');
+    drawer.classList.remove('flex');
+  }
+
+  // Custom search modal logic
+  function openCustomSearchModal() {
+    const modal = document.getElementById('search-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    const input = document.getElementById('custom-keyword-input');
+    if (input) {
+      input.value = '';
+      input.focus();
+    }
+    const feedback = document.getElementById('search-results-feedback');
+    if (feedback) feedback.classList.add('hidden');
+  }
+
+  function closeCustomSearchModal() {
+    const modal = document.getElementById('search-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  function simulateCustomSearch() {
+    const input = document.getElementById('custom-keyword-input');
+    const feedback = document.getElementById('search-results-feedback');
+    const val = input.value.trim();
+    if (!val) return;
+    feedback.classList.remove('hidden');
+    feedback.innerText = `Scan complete: 0 matches found for term "${val}". Added to missing criteria audit.`;
+  }
+</script></main></div></div></body></html>

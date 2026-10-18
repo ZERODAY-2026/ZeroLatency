@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&amp;family=Inter:wght@400;550;600&amp;family=Inter+Tight:wght@600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.tactile-noise{background-image:radial-gradient(rgba(243,237,224,0.03) 1px,transparent 0);background-size:24px 24px;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"primary-container":"#f7d748","surface":"#15130f","primary-fixed-dim":"#e4c537","on-error":"#690005","line":"#2C2923","outline-variant":"#4c4734","surface-container-highest":"#373430","tertiary":"#faf2ff","tertiary-fixed":"#eaddff","on-tertiary-fixed-variant":"#513787","error-red":"#FF7A8A","inverse-primary":"#6f5d00","bg-app":"#0D0C0A","ember":"#FF9566","on-tertiary-fixed":"#25005a","surface-container-high":"#2c2a25","bg-surface":"#181612","on-primary-fixed-variant":"#544600","local-teal":"#4FE3C8","surface-container-low":"#1d1b17","outline":"#98907a","line-strong":"#433E34","on-secondary-fixed":"#001d31","tertiary-container":"#e2d1ff","on-tertiary":"#3a1e6f","inverse-on-surface":"#33302b","on-background":"#e8e1da","secondary":"#92ccff","on-primary-fixed":"#221b00","on-primary":"#3a3000","on-error-container":"#ffdad6","on-secondary-fixed-variant":"#004b73","bg-raised":"#211E19","surface-variant":"#373430","on-surface-variant":"#cfc6ae","secondary-fixed-dim":"#92ccff","on-tertiary-container":"#6a4fa1","on-secondary":"#003351","on-secondary-container":"#c8e3ff","inverse-surface":"#e8e1da","surface-container":"#221f1b","surface-bright":"#3c3934","surface-dim":"#15130f","tertiary-fixed-dim":"#d2bbff","paper-muted":"#968D7B","background":"#15130f","jurisdiction":"#A9B7C2","bg-rail":"#12110E","marker-dark":"#1A1608","error-container":"#93000a","on-surface":"#e8e1da","surface-tint":"#e4c537","secondary-fixed":"#cce5ff","primary-fixed":"#ffe165","bg-inset":"#0A0908","paper-secondary":"#CFC7B6","primary":"#fff4d6","on-primary-container":"#6e5d00","paper-primary":"#F3EDE0","surface-container-lowest":"#100e0a","secondary-container":"#00699e","error":"#ffb4ab"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","margin-desktop":"2rem","gutter":"1rem","space-lg":"1.5rem","margin":"1rem","space-md":"1rem","space-xl":"2rem","space-xs":"0.25rem","gutter-desktop":"1.5rem"},"fontFamily":{"caption-default":["Inter"],"stat-numeral":["Fraunces"],"display-hero-mobile":["Fraunces"],"headline-h1-mobile":["Fraunces"],"body-default":["Inter"],"headline-h2":["Fraunces"],"display-hero":["Fraunces"],"headline-h3":["Inter Tight"],"badge-label":["Inter"],"code-quote":["JetBrains Mono"],"headline-h1":["Fraunces"]},"fontSize":{"caption-default":["13px",{"lineHeight":"20px","fontWeight":"400"}],"stat-numeral":["40px",{"lineHeight":"44px","fontWeight":"600"}],"display-hero-mobile":["32px",{"lineHeight":"38px","fontWeight":"600"}],"headline-h1-mobile":["26px",{"lineHeight":"32px","fontWeight":"600"}],"body-default":["15px",{"lineHeight":"25px","fontWeight":"400"}],"headline-h2":["24px",{"lineHeight":"32px","fontWeight":"600"}],"display-hero":["56px",{"lineHeight":"60px","fontWeight":"600"}],"headline-h3":["17px",{"lineHeight":"24px","fontWeight":"600"}],"badge-label":["12px",{"lineHeight":"16px","fontWeight":"550"}],"code-quote":["13px",{"lineHeight":"22px","fontWeight":"400"}],"headline-h1":["36px",{"lineHeight":"42px","fontWeight":"600"}]}}}};</script></head><body class="bg-bg-app text-paper-primary font-body-default text-body-default min-h-screen tactile-noise antialiased selection:bg-primary-container selection:text-marker-dark flex flex-col justify-between"><header class="w-full pt-space-xl px-space-xl flex items-center justify-between select-none"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-bg-raised border border-line flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[18px]">lock</span></div><span class="font-headline-h3 text-headline-h3 text-paper-primary tracking-tight">VAULT // LOCAL</span></div><div class="flex items-center gap-space-sm px-3 py-1 rounded-full bg-bg-raised border border-line"><span class="w-2 h-2 rounded-full bg-local-teal animate-pulse"></span><span class="font-code-quote text-code-quote text-jurisdiction tracking-wide">AIR-GAP ISOLATED</span></div></header><main class="flex-1 flex items-center justify-center w-full px-space-md py-space-xl"><div class="flex flex-col w-full items-center justify-center relative select-none">
+<!-- Subtle warm radial spotlight glow behind card -->
+<div class="absolute w-[680px] h-[680px] rounded-full bg-primary-container/[0.05] blur-[120px] pointer-events-none -top-12"></div>
+<!-- Interactive State Switcher Pill Dock (Top Contextual Control) -->
+<div class="mb-space-lg z-20 flex items-center gap-1.5 p-1 rounded-full bg-bg-surface border border-line-strong shadow-lg backdrop-blur">
+<button class="px-3 py-1.5 rounded-full font-badge-label text-badge-label transition-all flex items-center gap-1.5 bg-bg-raised text-paper-primary border border-line" id="tab-returning" onclick="switchState('returning')" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span>1. Return Unlock</span>
+</button>
+<button class="px-3 py-1.5 rounded-full font-badge-label text-badge-label transition-all flex items-center gap-1.5 text-paper-muted hover:text-paper-secondary" id="tab-firstrun" onclick="switchState('firstrun')" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-line-strong"></span>
+<span>2. First Run Setup</span>
+</button>
+<button class="px-3 py-1.5 rounded-full font-badge-label text-badge-label transition-all flex items-center gap-1.5 text-paper-muted hover:text-paper-secondary" id="tab-failed" onclick="switchState('failed')" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-ember"></span>
+<span>3. Wrong Key (Alert)</span>
+</button>
+<button class="px-3 py-1.5 rounded-full font-badge-label text-badge-label transition-all flex items-center gap-1.5 text-paper-muted hover:text-paper-secondary" id="tab-reset" onclick="switchState('reset')" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-error-red"></span>
+<span>4. Reset Session</span>
+</button>
+</div>
+<!-- Top Discreet Brand / Local Verification Micro-bar -->
+<div class="w-full max-w-[440px] mb-space-md flex items-center justify-between px-1 text-paper-muted font-code-quote text-code-quote">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-xs bg-primary-container inline-block"></span>
+<span class="tracking-tight text-paper-secondary font-medium">REDLINE // TRIAGE</span>
+<span class="text-line-strong font-light">|</span>
+<span>Local Device Lock</span>
+</div>
+<div class="flex items-center gap-1.5 text-jurisdiction bg-bg-inset px-2 py-0.5 rounded border border-line">
+<span class="material-symbols-outlined text-[13px] text-local-teal">lan</span>
+<span class="tracking-widest">127.0.0.1:0</span>
+</div>
+</div>
+<!-- Central Vault Card Canvas (440px fixed width from spec) -->
+<div class="w-full max-w-[440px] bg-bg-surface rounded-xl border border-line shadow-2xl relative z-10 transition-transform duration-300" id="vault-card-wrapper">
+<!-- Header Aperture Area: Mechanical Segmented Ring (Animation A5) -->
+<div class="pt-8 pb-4 px-6 flex flex-col items-center text-center relative border-b border-line">
+<!-- Vault Dial Mechanical Mechanism -->
+<div class="relative w-24 h-24 mb-4 flex items-center justify-center">
+<!-- SVG Iris Mechanism -->
+<svg class="w-24 h-24 transform transition-transform duration-700 ease-out" fill="none" id="vault-dial-svg" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<!-- Outer dial ring track with tick marks -->
+<circle cx="50" cy="50" r="46" stroke="#433E34" stroke-dasharray="2 4" stroke-width="1.2"></circle>
+<circle cx="50" cy="50" r="41" stroke="#2C2923" stroke-width="1"></circle>
+<!-- Segmented Outer Brass Latches (3 segments) -->
+<circle class="transition-colors duration-300" cx="50" cy="50" id="latch-ring" r="34" stroke="#F7D748" stroke-dasharray="28 8 28 8 28 8" stroke-linecap="round" stroke-width="2.5"></circle>
+<!-- Radial Iris blades -->
+<g id="iris-blades" opacity="0.65" stroke="#98907A" stroke-linecap="round" stroke-width="1.2">
+<line x1="50" x2="38" y1="20" y2="44"></line>
+<line x1="76" x2="52" y1="35" y2="52"></line>
+<line x1="76" x2="48" y1="65" y2="58"></line>
+<line x1="50" x2="62" y1="80" y2="56"></line>
+<line x1="24" x2="48" y1="65" y2="48"></line>
+<line x1="24" x2="52" y1="35" y2="42"></line>
+</g>
+<!-- Core Mechanical Aperture Hub -->
+<circle cx="50" cy="50" fill="#0A0908" r="16" stroke="#433E34" stroke-width="1.5"></circle>
+<circle cx="50" cy="50" r="12" stroke="#2C2923" stroke-dasharray="1.5 2" stroke-width="1"></circle>
+</svg>
+<!-- Center Keyway / Shield Emblem Inside Aperture -->
+<div class="absolute inset-0 flex items-center justify-center text-primary-container transition-colors duration-300" id="dial-center-glyph">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<!-- Perimeter Micro Telemetry -->
+<span class="absolute -top-1 -right-2 font-code-quote text-[10px] text-paper-muted uppercase tracking-tighter">SEC-K8</span>
+<span class="absolute -bottom-1 -left-2 font-code-quote text-[10px] text-local-teal uppercase tracking-tighter">AIRGAP</span>
+</div>
+<!-- Typography Header -->
+<h1 class="font-headline-h2 text-headline-h2 text-paper-primary tracking-tight font-semibold" id="vault-title">
+        Unlock Redline
+      </h1>
+<p class="font-caption-default text-caption-default text-paper-secondary mt-1" id="vault-subtitle">
+        Your passphrase never leaves this computer.
+      </p>
+</div>
+<!-- MAIN BODY CONTENT SLOTS (Multi-state forms) -->
+<div class="p-6 flex flex-col gap-5">
+<!-- STATE 1 & STATE 3: RETURNING USER UNLOCK FORM -->
+<div class="flex flex-col gap-4" id="state-returning-view">
+<!-- Input Group -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-caption-default font-caption-default">
+<label class="text-paper-secondary font-medium flex items-center gap-1.5" for="passphrase-input">
+<span>Local Master Passphrase</span>
+</label>
+<span class="hidden text-ember font-code-quote text-[11px] items-center gap-1" id="caps-warning">
+<span class="material-symbols-outlined text-[13px]">keyboard_capslock</span> CAPS ON
+            </span>
+</div>
+<div class="relative flex items-center">
+<div class="absolute left-3.5 text-paper-muted flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+<input class="w-full h-11 pl-10 pr-24 bg-bg-inset border border-line-strong rounded-lg text-paper-primary font-code-quote text-code-quote placeholder:text-paper-muted focus:border-primary-container focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="passphrase-input" onkeyup="handleInputKey(event)" placeholder="Enter local passphrase" type="password" value="redline-local-triage-safe"/>
+<!-- Trailing Controls: Eye Toggle & Entropy status -->
+<div class="absolute right-2.5 flex items-center gap-1.5">
+<button class="p-1 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised transition-colors" onclick="toggleVisibility('passphrase-input', 'eye-icon')" title="Toggle passphrase visibility" type="button">
+<span class="material-symbols-outlined text-[18px]" id="eye-icon">visibility</span>
+</button>
+<div class="w-px h-4 bg-line-strong"></div>
+<span class="w-2 h-2 rounded-full bg-local-teal" title="Device Vault Ready"></span>
+</div>
+</div>
+<!-- Entropy & Cryptography Micro-indicator -->
+<div class="flex items-center justify-between pt-1 font-code-quote text-[11px] text-paper-muted">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary-container">check_circle</span>
+<span class="text-paper-secondary">Entropy: 78 bits</span>
+</span>
+<span class="text-jurisdiction">Argon2id · 64MB · 4-lanes</span>
+</div>
+</div>
+<!-- Error Lockout Banner (Visible in State 3) -->
+<div class="hidden p-3 rounded-lg bg-bg-inset border border-ember text-ember flex flex-col gap-1 text-caption-default" id="error-lockout-banner">
+<div class="flex items-center gap-2 font-medium">
+<span class="material-symbols-outlined text-[18px]">gpp_maybe</span>
+<span>Passphrase mismatch · Lockout active</span>
+</div>
+<p class="font-code-quote text-[12px] text-paper-secondary pl-6">
+            Attempt 3/5 failed. Enforcing hardware rate-limit: <span class="font-bold text-ember" id="countdown-val">04s</span> remaining.
+          </p>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full h-11 rounded-lg bg-primary-container text-marker-dark font-badge-label text-badge-label font-semibold flex items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-transform active:scale-[0.99] select-none" id="btn-unlock" onclick="triggerUnlockSim()" type="button">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+<span>Unlock Vault</span>
+</button>
+<!-- Secondary Local Actions -->
+<div class="flex items-center justify-between pt-1">
+<button class="text-caption-default font-caption-default text-paper-muted hover:text-paper-primary underline decoration-line-strong underline-offset-4 transition-colors" onclick="switchState('reset')" type="button">
+            Forgot it? Reset local session
+          </button>
+<span class="font-code-quote text-[11px] text-paper-muted flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">desktop_windows</span>
+<span>Node: Station-01</span>
+</span>
+</div>
+</div>
+<!-- STATE 2: FIRST RUN INITIALIZATION VIEW (Hidden by default) -->
+<div class="hidden flex flex-col gap-4" id="state-firstrun-view">
+<div class="p-3 rounded bg-bg-inset border border-line text-caption-default text-paper-secondary">
+<p class="leading-relaxed">
+            Create an offline passphrase for Redline on this machine. There are no recovery emails or SMS resets.
+          </p>
+</div>
+<!-- New Passphrase Input -->
+<div class="flex flex-col gap-1.5">
+<label class="text-caption-default font-caption-default text-paper-secondary font-medium">
+            New Local Passphrase
+          </label>
+<div class="relative flex items-center">
+<input class="w-full h-11 px-3.5 bg-bg-inset border border-line-strong rounded-lg text-paper-primary font-code-quote text-code-quote focus:border-primary-container focus:outline-none focus:ring-1 focus:ring-primary-container" id="firstrun-pass" placeholder="Choose strong master key..." type="password" value="editorial-archive-4481"/>
+</div>
+<!-- 4-bar strength indicator -->
+<div class="grid grid-cols-4 gap-1.5 mt-1">
+<div class="h-1 rounded-full bg-primary-container"></div>
+<div class="h-1 rounded-full bg-primary-container"></div>
+<div class="h-1 rounded-full bg-primary-container"></div>
+<div class="h-1 rounded-full bg-line-strong"></div>
+</div>
+<span class="font-code-quote text-[11px] text-paper-secondary flex items-center justify-between">
+<span>Strength: Robust</span>
+<span class="text-primary-container">3 of 4 rules met</span>
+</span>
+</div>
+<!-- Confirm Passphrase Input -->
+<div class="flex flex-col gap-1.5">
+<label class="text-caption-default font-caption-default text-paper-secondary font-medium">
+            Confirm Passphrase
+          </label>
+<input class="w-full h-11 px-3.5 bg-bg-inset border border-line-strong rounded-lg text-paper-primary font-code-quote text-code-quote focus:border-primary-container focus:outline-none" placeholder="Re-enter passphrase" type="password" value="editorial-archive-4481"/>
+</div>
+<!-- Strict Rules Checklist -->
+<div class="p-3 rounded-lg bg-bg-inset border border-line flex flex-col gap-1.5 font-code-quote text-[11px] text-paper-muted">
+<div class="flex items-center gap-1.5 text-paper-secondary">
+<span class="material-symbols-outlined text-[13px] text-local-teal">check</span>
+<span>At least 14 characters or 4 random words</span>
+</div>
+<div class="flex items-center gap-1.5 text-paper-secondary">
+<span class="material-symbols-outlined text-[13px] text-local-teal">check</span>
+<span>Does not match personal system username</span>
+</div>
+<div class="flex items-center gap-1.5 text-paper-secondary">
+<span class="material-symbols-outlined text-[13px] text-local-teal">check</span>
+<span>Stored exclusively as Argon2id salted hash locally</span>
+</div>
+</div>
+<!-- Save Button -->
+<button class="w-full h-11 rounded-lg bg-primary-container text-marker-dark font-badge-label text-badge-label font-semibold flex items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-transform" onclick="switchState('returning')" type="button">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+<span>Commit Passphrase to Device</span>
+</button>
+</div>
+<!-- STATE 4: RESET SESSION CONFIRMATION VIEW (Hidden by default) -->
+<div class="hidden flex flex-col gap-4" id="state-reset-view">
+<div class="p-3.5 rounded-lg bg-bg-inset border border-error-red/40 text-caption-default flex flex-col gap-2">
+<div class="flex items-center gap-2 text-error-red font-medium">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span>Device Storage Wipe Confirmation</span>
+</div>
+<p class="text-paper-secondary leading-relaxed">
+            Resetting removes the local hash, volatile session encryption keys, and unbinds open matter triage files cached in this browser.
+          </p>
+<div class="p-2 rounded bg-bg-surface font-code-quote text-[11px] text-paper-primary border border-line">
+            Notice: Original documents on your hard drive (e.g., in Downloads or LegalFolio) are NOT touched.
+          </div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-caption-default text-paper-muted font-caption-default">
+            Type <span class="font-code-quote text-error-red font-semibold">PURGE</span> to confirm:
+          </label>
+<input class="w-full h-11 px-3.5 bg-bg-inset border border-line-strong rounded-lg text-paper-primary font-code-quote text-code-quote uppercase tracking-widest focus:border-error-red focus:outline-none" placeholder="PURGE" type="text"/>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<button class="flex-1 h-11 rounded-lg bg-bg-raised border border-line text-paper-primary font-badge-label text-badge-label hover:bg-line-strong transition-colors" onclick="switchState('returning')" type="button">
+            Cancel
+          </button>
+<button class="flex-1 h-11 rounded-lg bg-error-red/10 border border-error-red text-error-red font-badge-label text-badge-label font-semibold hover:bg-error-red/20 transition-colors flex items-center justify-center gap-1.5" onclick="alert('Local IndexedDB salt wiped. Vault returned to factory state.'); switchState('firstrun');" type="button">
+<span class="material-symbols-outlined text-[17px]">delete_forever</span>
+<span>Purge Vault</span>
+</button>
+</div>
+</div>
+<!-- Scope & Honest Privacy Explanatory Box (Strict mandate from Section 6.2) -->
+<div class="pt-2 border-t border-line flex flex-col gap-2 text-caption-default font-caption-default">
+<div class="flex items-start gap-2 text-paper-secondary">
+<span class="material-symbols-outlined text-[16px] text-primary-container shrink-0 mt-0.5">verified</span>
+<div>
+<span class="font-medium text-paper-primary">No account. No cloud. Nothing to sign in to.</span>
+<p class="text-paper-muted text-[12px] leading-relaxed mt-0.5">
+              Protects the screen on this workstation. Without disk encryption (e.g., FileVault / BitLocker), raw files on disk remain accessible to root users.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Base Micro-strip -->
+<div class="px-6 py-2.5 bg-bg-inset rounded-b-xl border-t border-line flex items-center justify-between text-paper-muted font-code-quote text-[11px]">
+<span class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-local-teal"></span>
+<span>CLIENT-SIDE CIPHER: AES-GCM-256</span>
+</span>
+<span>0 KB EGRESS</span>
+</div>
+</div>
+<!-- Discreet System Level Footnote -->
+<div class="mt-space-md max-w-[440px] text-center font-code-quote text-[11px] text-paper-muted leading-relaxed">
+    Hardware-backed salt stored in volatile browser indexedDB · Zero telemetry · Redline v0.9.4-local
+  </div>
+</div>
+<script>
+  let countdownTimer = null;
+
+  function switchState(stateName) {
+    // Reset tabs
+    ['returning', 'firstrun', 'failed', 'reset'].forEach(s => {
+      const tab = document.getElementById('tab-' + s);
+      if (tab) {
+        tab.className = "px-3 py-1.5 rounded-full font-badge-label text-badge-label transition-all flex items-center gap-1.5 text-paper-muted hover:text-paper-secondary";
+      }
+    });
+
+    const activeTab = document.getElementById('tab-' + stateName);
+    if (activeTab) {
+      activeTab.className = "px-3 py-1.5 rounded-full font-badge-label text-badge-label transition-all flex items-center gap-1.5 bg-bg-raised text-paper-primary border border-line";
+    }
+
+    // View toggles
+    const returningView = document.getElementById('state-returning-view');
+    const firstrunView = document.getElementById('state-firstrun-view');
+    const resetView = document.getElementById('state-reset-view');
+    const errorBanner = document.getElementById('error-lockout-banner');
+    const dialRing = document.getElementById('latch-ring');
+    const dialSvg = document.getElementById('vault-dial-svg');
+    const dialGlyph = document.getElementById('dial-center-glyph');
+    const cardWrap = document.getElementById('vault-card-wrapper');
+    const title = document.getElementById('vault-title');
+    const subtitle = document.getElementById('vault-subtitle');
+
+    if (countdownTimer) clearInterval(countdownTimer);
+
+    // Reset standard transforms
+    cardWrap.classList.remove('translate-x-2', '-translate-x-2', 'translate-x-1', '-translate-x-1');
+    dialRing.setAttribute('stroke', '#F7D748');
+    dialGlyph.className = "absolute inset-0 flex items-center justify-center text-primary-container transition-colors duration-300";
+    dialGlyph.innerHTML = '<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: \'FILL\' 1;">shield</span>';
+
+    if (stateName === 'returning') {
+      returningView.classList.remove('hidden');
+      firstrunView.classList.add('hidden');
+      resetView.classList.add('hidden');
+      errorBanner.classList.add('hidden');
+      title.innerText = 'Unlock Redline';
+      subtitle.innerText = 'Your passphrase never leaves this computer.';
+      dialSvg.style.transform = 'rotate(0deg)';
+    } 
+    else if (stateName === 'firstrun') {
+      returningView.classList.add('hidden');
+      firstrunView.classList.remove('hidden');
+      resetView.classList.add('hidden');
+      title.innerText = 'Set Passphrase';
+      subtitle.innerText = 'Establish an offline key for this local workspace.';
+      dialSvg.style.transform = 'rotate(45deg)';
+    } 
+    else if (stateName === 'failed') {
+      returningView.classList.remove('hidden');
+      firstrunView.classList.add('hidden');
+      resetView.classList.add('hidden');
+      errorBanner.classList.remove('hidden');
+      title.innerText = 'Access Denied';
+      subtitle.innerText = 'Hardware delay lock initiated.';
+      dialRing.setAttribute('stroke', '#FF9566');
+      dialGlyph.className = "absolute inset-0 flex items-center justify-center text-ember transition-colors duration-300";
+      dialGlyph.innerHTML = '<span class="material-symbols-outlined text-[20px]">lock</span>';
+      
+      // Jitter / Shake simulation
+      cardWrap.classList.add('translate-x-2');
+      setTimeout(() => cardWrap.classList.remove('translate-x-2'), 60);
+      setTimeout(() => cardWrap.classList.add('-translate-x-2'), 120);
+      setTimeout(() => cardWrap.classList.remove('-translate-x-2'), 180);
+      setTimeout(() => cardWrap.classList.add('translate-x-1'), 240);
+      setTimeout(() => cardWrap.classList.remove('translate-x-1'), 300);
+
+      // Countdown simulation
+      let timeLeft = 5;
+      const countEl = document.getElementById('countdown-val');
+      countEl.innerText = '05s';
+      countdownTimer = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+          clearInterval(countdownTimer);
+          countEl.innerText = 'Ready';
+        } else {
+          countEl.innerText = '0' + timeLeft + 's';
+        }
+      }, 1000);
+    } 
+    else if (stateName === 'reset') {
+      returningView.classList.add('hidden');
+      firstrunView.classList.add('hidden');
+      resetView.classList.remove('hidden');
+      title.innerText = 'Reset Session';
+      subtitle.innerText = 'Volatile storage purge and key unbinding.';
+      dialRing.setAttribute('stroke', '#FF7A8A');
+      dialGlyph.className = "absolute inset-0 flex items-center justify-center text-error-red transition-colors duration-300";
+      dialGlyph.innerHTML = '<span class="material-symbols-outlined text-[20px]">delete_forever</span>';
+    }
+  }
+
+  function toggleVisibility(inputId, iconId) {
+    const field = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+    if (!field || !icon) return;
+
+    if (field.type === 'password') {
+      field.type = 'text';
+      icon.innerText = 'visibility_off';
+    } else {
+      field.type = 'password';
+      icon.innerText = 'visibility';
+    }
+  }
+
+  function handleInputKey(e) {
+    const capsWarning = document.getElementById('caps-warning');
+    if (e.getModifierState && e.getModifierState('CapsLock')) {
+      capsWarning.classList.remove('hidden');
+      capsWarning.classList.add('flex');
+    } else {
+      capsWarning.classList.remove('flex');
+      capsWarning.classList.add('hidden');
+    }
+
+    if (e.key === 'Enter') {
+      triggerUnlockSim();
+    }
+  }
+
+  function triggerUnlockSim() {
+    const dialSvg = document.getElementById('vault-dial-svg');
+    const btn = document.getElementById('btn-unlock');
+    
+    // Iris rotation animation A5 simulation
+    dialSvg.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+    dialSvg.style.transform = 'rotate(120deg)';
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Verifying Salt...</span>';
+
+    setTimeout(() => {
+      dialSvg.style.transform = 'rotate(240deg)';
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px] text-local-teal">verified</span><span>Vault Open</span>';
+      setTimeout(() => {
+        dialSvg.style.transform = 'rotate(0deg)';
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">lock_open</span><span>Unlock Vault</span>';
+      }, 1400);
+    }, 700);
+  }
+</script></main><footer class="w-full pb-space-lg px-space-xl flex flex-col sm:flex-row items-center justify-between gap-space-xs text-paper-muted font-code-quote text-code-quote"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[14px]">verified_user</span><span>EDITION PRIVEE // ZERO-TELEMETRY BOUND</span></div><div><span>SHA-256 INTEGRITY VALIDATED</span></div></footer></body></html>

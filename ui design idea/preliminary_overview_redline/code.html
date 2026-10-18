@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}@keyframes pulse-subtle{0%,100%{opacity:1;}50%{opacity:0.35;}}.animate-breathing{animation:pulse-subtle 2.5s cubic-bezier(0.4,0,0.6,1) infinite;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#92ccff", "surface-tint": "#e4c537", "line": "#2C2923", "on-tertiary-fixed": "#25005a", "secondary-container": "#00699e", "tertiary-fixed-dim": "#d2bbff", "bg-inset": "#0A0908", "bg-app": "#0D0C0A", "on-tertiary": "#3a1e6f", "on-error": "#690005", "bg-surface": "#181612", "surface-container-low": "#1d1b17", "on-secondary": "#003351", "outline-variant": "#4c4734", "primary": "#fff4d6", "primary-fixed": "#ffe165", "tertiary-fixed": "#eaddff", "on-secondary-container": "#c8e3ff", "on-secondary-fixed-variant": "#004b73", "on-surface-variant": "#cfc6ae", "primary-fixed-dim": "#e4c537", "on-primary-fixed": "#221b00", "on-background": "#e8e1da", "on-tertiary-fixed-variant": "#513787", "secondary-fixed": "#cce5ff", "bg-rail": "#12110E", "on-secondary-fixed": "#001d31", "outline": "#98907a", "surface-bright": "#3c3934", "jurisdiction": "#A9B7C2", "on-primary": "#3a3000", "surface": "#15130f", "on-tertiary-container": "#6a4fa1", "surface-container": "#221f1b", "tertiary-container": "#e2d1ff", "primary-container": "#f7d748", "ember": "#FF9566", "error-container": "#93000a", "inverse-primary": "#6f5d00", "line-strong": "#433E34", "marker-dark": "#1A1608", "on-error-container": "#ffdad6", "inverse-surface": "#e8e1da", "bg-raised": "#211E19", "on-surface": "#e8e1da", "surface-container-highest": "#373430", "on-primary-fixed-variant": "#544600", "background": "#15130f", "error-red": "#FF7A8A", "paper-secondary": "#CFC7B6", "surface-container-high": "#2c2a25", "surface-variant": "#373430", "tertiary": "#faf2ff", "surface-container-lowest": "#100e0a", "inverse-on-surface": "#33302b", "error": "#ffb4ab", "on-primary-container": "#6e5d00", "paper-muted": "#968D7B", "surface-dim": "#15130f", "local-teal": "#4FE3C8", "secondary": "#92ccff", "paper-primary": "#F3EDE0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "margin-desktop": "2rem", "margin": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "stat-numeral": [ "Fraunces" ], "body-default": [ "Inter" ], "caption-default": [ "Inter" ], "headline-h1": [ "Fraunces" ], "code-quote": [ "JetBrains Mono" ], "headline-h2": [ "Fraunces" ], "badge-label": [ "Inter" ], "display-hero-mobile": [ "Fraunces" ], "headline-h3": [ "Inter Tight" ], "headline-h1-mobile": [ "Fraunces" ], "display-hero": [ "Fraunces" ] }, "fontSize": { "stat-numeral": [ "40px", { "lineHeight": "44px", "fontWeight": "600" } ], "body-default": [ "15px", { "lineHeight": "25px", "fontWeight": "400" } ], "caption-default": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-h1": [ "36px", { "lineHeight": "42px", "fontWeight": "600" } ], "code-quote": [ "13px", { "lineHeight": "22px", "fontWeight": "400" } ], "headline-h2": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ], "badge-label": [ "12px", { "lineHeight": "16px", "fontWeight": "550" } ], "display-hero-mobile": [ "32px", { "lineHeight": "38px", "fontWeight": "600" } ], "headline-h3": [ "17px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-h1-mobile": [ "26px", { "lineHeight": "32px", "fontWeight": "600" } ], "display-hero": [ "56px", { "lineHeight": "60px", "fontWeight": "600" } ] } } } };</script></head><body class="bg-bg-app font-body-default text-body-default text-paper-primary antialiased selection:bg-primary-container selection:text-marker-dark"><aside class="group fixed left-0 top-0 h-screen w-[72px] hover:w-[264px] transition-all duration-300 ease-in-out bg-bg-rail border-r border-line z-50 flex flex-col justify-between overflow-hidden shadow-[4px_0_24px_rgba(0,0,0,0.5)]"><div class="flex flex-col"><div class="h-14 border-b border-line flex items-center px-[18px] gap-3 shrink-0 overflow-hidden"><img alt="Redline Logo" class="h-8 w-8 object-contain shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WE4RtI4ZABgMOeNUHv0x3EgyOZf3xWje2moel5qvpkJD7Ej-0lpNs3fR_TRiGeAUv_LJtT3bYQaCAwFY5ux4qG9kbIpbQltnG3dAZkz0j72y0VZVXPKaF8Ru31ywtkJrCpEJIiMYjOMosB5168gBeS3n_Eb5JKdW94bD7qkBYY2TQQ0jKe0sKXUHuZs5PqJJqKkMvIBo0f_jm-MprDkUWZ3bCWsVqvtL1kx_EVbXavhHgA_GZK7WLSkkA"/><div class="flex flex-col whitespace-nowrap overflow-hidden transition-opacity duration-200 group-hover:opacity-100 opacity-0"><span class="font-headline-h3 text-headline-h3 text-paper-primary tracking-tight leading-none">Redline</span><span class="font-caption-default text-caption-default text-paper-muted text-[11px] leading-tight mt-0.5 tracking-wide uppercase">Private legal triage</span></div></div><nav class="flex flex-col py-3 gap-1 px-2" data-active-classes="bg-bg-raised text-paper-primary border-l-2 border-primary-container font-medium"><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="desk" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">folder</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Desk</span></a><a aria-current="page" class="flex items-center h-10 px-3.5 rounded transition-colors shrink-0 group/item bg-bg-raised text-paper-primary border-l-2 border-primary-container font-medium" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px] shrink-0 text-primary-container">dashboard</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-headline-h3 text-headline-h3 text-[14px]">Overview</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="findings" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">manage_search</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Findings</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="ask" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">chat_bubble_outline</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Ask</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="key-facts" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">table_rows</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Key facts</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="checklist" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">check_box</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Checklist</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="export" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">download</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Export</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item" data-path="privacy-and-model" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">shield_person</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Privacy &amp; model</span></a></nav></div><div class="flex flex-col p-2 gap-2 border-t border-line"><div class="bg-bg-inset border border-local-teal/30 rounded p-2 flex items-center gap-2.5 overflow-hidden"><div class="relative flex items-center justify-center shrink-0 w-6 h-6"><span class="material-symbols-outlined text-local-teal text-[18px]">shield_lock</span><span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-local-teal animate-breathing"></span></div><div class="flex flex-col whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden"><div class="flex items-center gap-1.5"><span class="font-badge-label text-badge-label text-local-teal font-medium">Local only</span></div><span class="font-caption-default text-[10px] text-paper-muted leading-tight">Nothing leaves this computer</span></div></div><div class="flex items-center justify-between px-2 py-1 text-paper-muted hover:text-paper-primary cursor-pointer rounded hover:bg-bg-raised/60 transition-colors"><div class="flex items-center gap-3 shrink-0"><span class="material-symbols-outlined text-[18px]">dark_mode</span><span class="font-caption-default text-caption-default whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">Ink Room theme</span></div><span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">expand_more</span></div><button class="flex items-center w-full px-2 py-1.5 text-error-red/80 hover:text-error-red hover:bg-error-red/10 rounded transition-colors text-left group/btn" type="button"><span class="material-symbols-outlined text-[18px] shrink-0">delete_sweep</span><span class="ml-3 font-caption-default text-caption-default whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">Clear and start over</span></button></div></aside><div class="pl-[72px] min-h-screen flex flex-col"><header class="fixed top-0 left-[72px] right-0 h-14 bg-bg-app border-b border-line z-40 flex items-center justify-between px-6"><div class="flex items-center gap-3"><div class="flex items-center text-paper-muted font-caption-default text-caption-default"><span class="hover:text-paper-primary transition-colors cursor-pointer">Desk</span><span class="mx-2 text-line-strong">/</span><span class="text-paper-primary font-medium">Overview</span></div><div class="h-4 w-px bg-line-strong mx-1"></div><div class="flex items-center gap-2 bg-bg-inset border border-line px-2.5 py-1 rounded"><span class="material-symbols-outlined text-[16px] text-paper-secondary">description</span><span class="font-code-quote text-code-quote text-paper-secondary">rental_agreement.pdf</span><span class="font-badge-label text-[10px] px-1.5 py-0.2 bg-bg-raised text-paper-muted border border-line-strong rounded">12 pages</span></div></div><div class="flex items-center gap-3"><div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container-low border border-line rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-ember"></span><span class="font-badge-label text-badge-label text-paper-muted">Informational only. Not legal advice.</span></div><div class="flex items-center gap-1.5 px-2.5 py-1 bg-local-teal/10 border border-local-teal/35 rounded-full"><span class="material-symbols-outlined text-local-teal text-[14px]">verified_user</span><span class="font-badge-label text-badge-label text-local-teal">Air-gap active</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><div class="pt-14 w-full"><div class="w-full bg-bg-app border-b border-line px-6 py-3.5"><div class="flex flex-wrap items-center justify-between gap-4"><div class="flex flex-wrap items-center gap-3 text-paper-secondary font-code-quote text-code-quote"><div class="flex items-center gap-2 text-paper-primary font-medium"><span class="material-symbols-outlined text-[18px] text-paper-secondary">description</span><span>rental_agreement.pdf</span></div><span class="text-line-strong">|</span><div class="flex items-center gap-2"><span class="text-paper-muted">Findings</span><span class="text-primary-container font-semibold">14</span></div><span class="text-line-strong">·</span><div class="flex items-center gap-2"><span class="text-paper-muted">Quote found</span><span class="text-paper-primary font-semibold">11</span></div><span class="text-line-strong">·</span><div class="flex items-center gap-2"><span class="text-paper-muted">Need review</span><span class="text-ember font-semibold">4</span></div><span class="text-line-strong">·</span><div class="flex items-center gap-2"><span class="text-paper-muted">Elapsed</span><span class="text-paper-secondary font-semibold">02:41</span></div></div><div class="flex items-center gap-3"><div class="flex items-center gap-1.5 px-2.5 py-0.5 bg-local-teal/10 border border-local-teal/35 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-local-teal animate-breathing"></span><span class="font-badge-label text-[11px] text-local-teal">Air-gap active</span></div><span class="font-caption-default text-[12px] text-paper-muted">Informational only. Not legal advice.</span></div></div></div><main class="w-full p-6"><div class="flex flex-col w-full max-w-[1440px] mx-auto gap-8 pb-16">
+<!-- Screen Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="font-code-quote text-code-quote text-primary-container uppercase tracking-wider text-[11px] px-2 py-0.5 rounded bg-bg-raised">ORIENTATION BRIEF</span>
+<span class="text-line-strong">•</span>
+<span class="font-caption-default text-caption-default text-paper-muted">File digest: 8f9a…3b12</span>
+</div>
+<h1 class="font-headline-h1 text-headline-h1 text-paper-primary tracking-tight">Preliminary overview</h1>
+<p class="font-body-default text-body-default text-paper-secondary max-w-3xl">
+        Synthesized plain-language orientation across 12 analyzed pages. Everything was processed locally via Gemma 3B.
+      </p>
+</div>
+<!-- Quick Action Bar -->
+<div class="flex items-center gap-3 shrink-0">
+<button class="h-[44px] px-4 rounded-lg bg-bg-surface hover:bg-bg-raised text-paper-primary font-body-default text-caption-default font-medium flex items-center gap-2 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-paper-muted">download</span>
+        Export Markdown
+      </button>
+<button class="h-[44px] px-5 rounded-lg bg-primary-container hover:bg-primary-fixed-dim text-marker-dark font-body-default text-body-default font-semibold flex items-center gap-2 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">rule</span>
+        Begin triage checklist
+      </button>
+</div>
+</header>
+<!-- Top Grid: Summary Card (~60%) and Counts by Category (~40%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Summary Card (Left 7 cols / ~58%) -->
+<div class="lg:col-span-7 flex flex-col bg-bg-surface rounded-[14px] p-6 shadow-md relative overflow-hidden">
+<!-- Top Badges / Metadata strip -->
+<div class="flex flex-wrap items-center justify-between gap-2.5 mb-5 pb-4 bg-bg-app/40 -mx-6 -mt-6 p-6">
+<div class="flex items-center gap-2">
+<!-- Dashed outline interpretive badge -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-badge-label font-badge-label bg-ember/10 text-ember shadow-xs">
+<span class="material-symbols-outlined text-[14px]">help_outline</span>
+            Possible reading
+          </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-badge-label font-badge-label bg-bg-raised text-paper-muted">
+<span class="material-symbols-outlined text-[14px]">layers</span>
+            12 Pages indexed
+          </span>
+</div>
+<div class="flex items-center gap-2 text-paper-muted font-code-quote text-caption-default">
+<span class="material-symbols-outlined text-[15px] text-local-teal">verified</span>
+<span>Air-gap isolated</span>
+</div>
+</div>
+<!-- Editorial Lead Paragraph -->
+<div class="mb-5">
+<p class="font-headline-h2 text-[19px] leading-[29px] text-paper-primary font-normal">
+          This agreement is a 12-page residential lease with several uncommonly unilateral obligations placed on the tenant, specifically regarding forfeiture of security deposits, unilateral entry covenants, and aggressive auto-renewal clauses.
+        </p>
+</div>
+<!-- Plain-Language Bulleted Points -->
+<div class="flex flex-col gap-3.5 mb-6 text-paper-secondary font-body-default text-body-default">
+<div class="flex items-start gap-3 bg-bg-inset/40 p-3 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-ember mt-2 shrink-0"></span>
+<div>
+<strong class="text-paper-primary font-medium">Early Termination &amp; Deposit Retention:</strong> 
+            Clause 14.2 asserts full forfeiture of the $7,700 deposit plus double recovery rent penalties.
+          </div>
+</div>
+<div class="flex items-start gap-3 bg-bg-inset/40 p-3 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-jurisdiction mt-2 shrink-0"></span>
+<div>
+<strong class="text-paper-primary font-medium">Landlord Inspection Rights:</strong> 
+            Clause 15.2 provides unilateral entry without customary 24-hour statutory advance notice.
+          </div>
+</div>
+<div class="flex items-start gap-3 bg-bg-inset/40 p-3 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-tertiary-container mt-2 shrink-0"></span>
+<div>
+<strong class="text-paper-primary font-medium">Silent Automatic Renewal:</strong> 
+            Clause 14.3 triggers a mandatory 11-month extension unless written notice is received 60 days prior.
+          </div>
+</div>
+<div class="flex items-start gap-3 bg-bg-inset/40 p-3 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-paper-muted mt-2 shrink-0"></span>
+<div>
+<strong class="text-paper-primary font-medium">Tenant Maintenance Allocation:</strong> 
+            Extraordinary routine HVAC deep-cleaning and repair burdens shifted to tenant.
+          </div>
+</div>
+</div>
+<!-- Inset quote honesty notice box -->
+<div class="mt-auto bg-bg-inset p-4 rounded-r-lg shadow-inner flex items-start gap-3 bg-gradient-to-r from-primary-container/10 via-transparent to-transparent">
+<span class="material-symbols-outlined text-primary-container text-[20px] shrink-0 mt-0.5">policy</span>
+<p class="font-code-quote text-caption-default text-paper-secondary leading-relaxed">
+<span class="text-primary-container font-medium uppercase tracking-wider text-[11px] block mb-0.5">Honesty Guardrail</span>
+          A quote found in the document does not mean the reading is correct or legally valid. Redline validates textual existence, never legal enforceability.
+        </p>
+</div>
+</div>
+<!-- Counts by Category Card (Right 5 cols / ~42%) -->
+<div class="lg:col-span-5 flex flex-col bg-bg-surface rounded-[14px] p-6 shadow-md justify-between">
+<div>
+<div class="flex items-start justify-between gap-3 mb-2">
+<div>
+<h2 class="font-headline-h3 text-headline-h3 text-paper-primary tracking-tight">Findings by category</h2>
+<p class="font-caption-default text-caption-default text-paper-muted mt-0.5">14 candidate extractions across 6 legal domains</p>
+</div>
+<span class="px-2.5 py-1 bg-bg-raised text-paper-secondary rounded font-code-quote text-caption-default">Total: 14</span>
+</div>
+<!-- Category Horizontal Bars -->
+<div class="flex flex-col gap-3.5 mt-6">
+<!-- Category 1 -->
+<div class="group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-bg-raised transition-colors">
+<div class="flex justify-between items-center mb-1.5 font-caption-default text-caption-default">
+<span class="font-medium text-paper-primary group-hover:text-primary-container transition-colors">Fees &amp; Penalties</span>
+<div class="flex items-center gap-1.5">
+<span class="font-code-quote text-paper-muted text-[11px]">4 findings</span>
+<span class="w-5 h-5 rounded flex items-center justify-center text-[11px] font-semibold bg-bg-raised text-paper-primary">4</span>
+</div>
+</div>
+<div class="h-2 w-full bg-bg-inset rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full transition-all duration-700 ease-out" style="width: 80%;"></div>
+</div>
+</div>
+<!-- Category 2 -->
+<div class="group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-bg-raised transition-colors">
+<div class="flex justify-between items-center mb-1.5 font-caption-default text-caption-default">
+<span class="font-medium text-paper-primary group-hover:text-primary-container transition-colors">Termination &amp; Renewal</span>
+<div class="flex items-center gap-1.5">
+<span class="font-code-quote text-paper-muted text-[11px]">3 findings</span>
+<span class="w-5 h-5 rounded flex items-center justify-center text-[11px] font-semibold bg-bg-raised text-paper-primary">3</span>
+</div>
+</div>
+<div class="h-2 w-full bg-bg-inset rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full transition-all duration-700 ease-out" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Category 3 -->
+<div class="group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-bg-raised transition-colors">
+<div class="flex justify-between items-center mb-1.5 font-caption-default text-caption-default">
+<span class="font-medium text-paper-primary group-hover:text-primary-container transition-colors">Landlord Access &amp; Entry</span>
+<div class="flex items-center gap-1.5">
+<span class="font-code-quote text-paper-muted text-[11px]">2 findings</span>
+<span class="w-5 h-5 rounded flex items-center justify-center text-[11px] font-semibold bg-bg-raised text-paper-primary">2</span>
+</div>
+</div>
+<div class="h-2 w-full bg-bg-inset rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full transition-all duration-700 ease-out" style="width: 40%;"></div>
+</div>
+</div>
+<!-- Category 4 -->
+<div class="group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-bg-raised transition-colors">
+<div class="flex justify-between items-center mb-1.5 font-caption-default text-caption-default">
+<span class="font-medium text-paper-primary group-hover:text-primary-container transition-colors">Maintenance &amp; Alterations</span>
+<div class="flex items-center gap-1.5">
+<span class="font-code-quote text-paper-muted text-[11px]">2 findings</span>
+<span class="w-5 h-5 rounded flex items-center justify-center text-[11px] font-semibold bg-bg-raised text-paper-primary">2</span>
+</div>
+</div>
+<div class="h-2 w-full bg-bg-inset rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full transition-all duration-700 ease-out" style="width: 40%;"></div>
+</div>
+</div>
+<!-- Category 5 -->
+<div class="group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-bg-raised transition-colors">
+<div class="flex justify-between items-center mb-1.5 font-caption-default text-caption-default">
+<span class="font-medium text-paper-primary group-hover:text-primary-container transition-colors">Liability &amp; Indemnification</span>
+<div class="flex items-center gap-1.5">
+<span class="font-code-quote text-paper-muted text-[11px]">2 findings</span>
+<span class="w-5 h-5 rounded flex items-center justify-center text-[11px] font-semibold bg-bg-raised text-paper-primary">2</span>
+</div>
+</div>
+<div class="h-2 w-full bg-bg-inset rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full transition-all duration-700 ease-out" style="width: 40%;"></div>
+</div>
+</div>
+<!-- Category 6 -->
+<div class="group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-bg-raised transition-colors">
+<div class="flex justify-between items-center mb-1.5 font-caption-default text-caption-default">
+<span class="font-medium text-paper-primary group-hover:text-primary-container transition-colors">Dispute Resolution &amp; Venue</span>
+<div class="flex items-center gap-1.5">
+<span class="font-code-quote text-paper-muted text-[11px]">1 finding</span>
+<span class="w-5 h-5 rounded flex items-center justify-center text-[11px] font-semibold bg-bg-raised text-paper-primary">1</span>
+</div>
+</div>
+<div class="h-2 w-full bg-bg-inset rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full transition-all duration-700 ease-out" style="width: 20%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Helper / Footer text -->
+<div class="mt-8 pt-4 bg-bg-inset/50 -mx-6 -mb-6 p-4 px-6 flex items-center justify-between text-paper-muted font-caption-default text-[12px]">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-paper-muted">filter_alt</span>
+          Click any category to filter in Findings view.
+        </span>
+<a class="text-primary-container hover:underline font-medium" href="#">View all 14 findings →</a>
+</div>
+</div>
+</div>
+<!-- Needs Professional Review (Top 4-5 Shortlist) -->
+<section class="flex flex-col gap-4 mt-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-tertiary-container/15 flex items-center justify-center text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">person_check</span>
+</div>
+<div>
+<h2 class="font-headline-h2 text-[22px] leading-tight text-paper-primary tracking-tight">Needs professional review</h2>
+<p class="font-caption-default text-caption-default text-paper-muted">Clauses carrying high financial exposure, statutory friction, or asymmetric liability.</p>
+</div>
+</div>
+<span class="font-badge-label text-badge-label px-3 py-1 bg-bg-raised text-tertiary-fixed-dim rounded-full">
+        4 critical flags
+      </span>
+</div>
+<!-- Actionable rows -->
+<div class="grid grid-cols-1 gap-3">
+<!-- Item 1 -->
+<div class="group bg-bg-surface hover:bg-bg-raised transition-all duration-200 rounded-xl p-4.5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/10 flex items-center justify-center text-tertiary-fixed-dim shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">person_check</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex flex-wrap items-center gap-2.5">
+<h3 class="font-headline-h3 text-headline-h3 text-paper-primary group-hover:text-primary transition-colors">
+                Liquidated Early Termination Penalty (§ 8.4)
+              </h3>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-badge-label text-badge-label bg-tertiary-container/15 text-tertiary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>
+                Review with a professional
+              </span>
+<span class="px-2 py-0.5 rounded bg-bg-inset text-paper-muted font-code-quote text-[11px]">
+                p. 7
+              </span>
+</div>
+<p class="font-body-default text-caption-default text-paper-secondary">
+              Mandates 200% monthly rent penalty in addition to deposit forfeiture regardless of re-letting mitigation efforts.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center">
+<button class="px-3.5 py-1.5 rounded-lg bg-bg-inset hover:bg-bg-surface text-paper-primary group-hover:text-primary-container font-caption-default text-caption-default font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span>Open finding</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group bg-bg-surface hover:bg-bg-raised transition-all duration-200 rounded-xl p-4.5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-jurisdiction/10 flex items-center justify-center text-jurisdiction shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex flex-wrap items-center gap-2.5">
+<h3 class="font-headline-h3 text-headline-h3 text-paper-primary group-hover:text-primary transition-colors">
+                Unannounced Landlord Right of Entry (§ 5.2)
+              </h3>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-badge-label text-badge-label bg-jurisdiction/15 text-jurisdiction">
+<span class="material-symbols-outlined text-[13px]">location_searching</span>
+                Depends on local law
+              </span>
+<span class="px-2 py-0.5 rounded bg-bg-inset text-paper-muted font-code-quote text-[11px]">
+                p. 4
+              </span>
+</div>
+<p class="font-body-default text-caption-default text-paper-secondary">
+              Permits landlord ingress between 08:00–18:00 without prior notice. Direct friction with statutory 24-hour baseline notices in most municipal jurisdictions.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center">
+<button class="px-3.5 py-1.5 rounded-lg bg-bg-inset hover:bg-bg-surface text-paper-primary group-hover:text-primary-container font-caption-default text-caption-default font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span>Open finding</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group bg-bg-surface hover:bg-bg-raised transition-all duration-200 rounded-xl p-4.5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/10 flex items-center justify-center text-tertiary-fixed-dim shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">person_check</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex flex-wrap items-center gap-2.5">
+<h3 class="font-headline-h3 text-headline-h3 text-paper-primary group-hover:text-primary transition-colors">
+                Silent Auto-Renewal Window (§ 14.3)
+              </h3>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-badge-label text-badge-label bg-tertiary-container/15 text-tertiary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>
+                Review with a professional
+              </span>
+<span class="px-2 py-0.5 rounded bg-bg-inset text-paper-muted font-code-quote text-[11px]">
+                p. 8
+              </span>
+</div>
+<p class="font-body-default text-caption-default text-paper-secondary">
+              60-day calendar notice requirement or lease rolls into full 11-month secondary term without tenant re-confirmation.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center">
+<button class="px-3.5 py-1.5 rounded-lg bg-bg-inset hover:bg-bg-surface text-paper-primary group-hover:text-primary-container font-caption-default text-caption-default font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span>Open finding</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="group bg-bg-surface hover:bg-bg-raised transition-all duration-200 rounded-xl p-4.5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/10 flex items-center justify-center text-tertiary-fixed-dim shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">person_check</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex flex-wrap items-center gap-2.5">
+<h3 class="font-headline-h3 text-headline-h3 text-paper-primary group-hover:text-primary transition-colors">
+                Broad Tenant Indemnification Covenants (§ 16.1)
+              </h3>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-badge-label text-badge-label bg-tertiary-container/15 text-tertiary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>
+                Review with a professional
+              </span>
+<span class="px-2 py-0.5 rounded bg-bg-inset text-paper-muted font-code-quote text-[11px]">
+                p. 9
+              </span>
+</div>
+<p class="font-body-default text-caption-default text-paper-secondary">
+              Requires tenant to hold lessor harmless for building mechanical failures, structural water leaks, and common-area incidents.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center">
+<button class="px-3.5 py-1.5 rounded-lg bg-bg-inset hover:bg-bg-surface text-paper-primary group-hover:text-primary-container font-caption-default text-caption-default font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span>Open finding</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Security Notice: Prompt Injection Guard (Section 6.6 / X5) -->
+<div class="bg-bg-surface rounded-xl p-4.5 flex items-start gap-3.5 shadow-sm">
+<div class="w-7 h-7 rounded-md bg-ember/15 flex items-center justify-center text-ember shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-badge-label text-badge-label text-ember uppercase tracking-wider font-semibold">Triage Safety Isolation Active</span>
+<p class="font-caption-default text-caption-default text-paper-secondary">
+        Notice: This document contains text formatting on <span class="font-code-quote text-paper-primary font-medium">page 11</span> that resembles prompt-injection syntax or system directives. It was quarantined and treated strictly as raw document content with zero execution.
+      </p>
+</div>
+</div>
+<!-- Limitations & Disclaimer (Section 6.6 / 5.10 - Open by default) -->
+<details class="group bg-bg-surface rounded-xl overflow-hidden shadow-sm transition-colors" open="">
+<summary class="flex items-center justify-between p-4 cursor-pointer hover:bg-bg-raised transition-colors select-none list-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-paper-muted group-open:text-primary-container transition-colors">balance</span>
+<h4 class="font-headline-h3 text-caption-default font-medium text-paper-primary">
+          Limitations &amp; Ethical Disclosure
+        </h4>
+</div>
+<span class="material-symbols-outlined text-[18px] text-paper-muted group-open:rotate-180 transition-transform duration-200">expand_more</span>
+</summary>
+<div class="px-4.5 pb-4.5 pt-1 text-paper-secondary font-body-default text-caption-default bg-bg-inset/30">
+<p class="leading-relaxed">
+        This tool is for informational triage only and does not give legal advice, evaluate contract validity, or establish an attorney-client relationship. Never treat automated findings or verified quotes as proof that a contract is safe to sign or enforceable in court. Take any clause that matters to a qualified lawyer or legal aid service in your jurisdiction.
+      </p>
+</div>
+</details>
+</div>
+<script>
+  // Simple micro-interaction for category bar hover telemetry
+  document.querySelectorAll('.group.cursor-pointer').forEach(cat => {
+    cat.addEventListener('mouseenter', () => {
+      const bar = cat.querySelector('.bg-secondary-fixed-dim');
+      if (bar) bar.classList.add('bg-primary-container');
+    });
+    cat.addEventListener('mouseleave', () => {
+      const bar = cat.querySelector('.bg-secondary-fixed-dim');
+      if (bar) bar.classList.remove('bg-primary-container');
+    });
+  });
+</script></main></div></div></body></html>

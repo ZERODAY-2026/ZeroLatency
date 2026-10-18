@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@100..900&family=Inter:wght@100..900&family=Inter+Tight:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary-container":"#6a4fa1","surface-bright":"#3c3934","error-red":"#FF7A8A","on-tertiary-fixed":"#25005a","on-background":"#e8e1da","surface-container-highest":"#373430","on-tertiary-fixed-variant":"#513787","primary-fixed-dim":"#e4c537","paper-primary":"#F3EDE0","on-secondary":"#003351","marker-dark":"#1A1608","on-primary":"#3a3000","secondary-fixed":"#cce5ff","on-secondary-fixed-variant":"#004b73","tertiary-fixed":"#eaddff","bg-raised":"#211E19","bg-surface":"#181612","ember":"#FF9566","surface-tint":"#e4c537","on-surface-variant":"#cfc6ae","surface-dim":"#15130f","surface-container-lowest":"#100e0a","on-error-container":"#ffdad6","bg-app":"#0D0C0A","error":"#ffb4ab","on-secondary-container":"#c8e3ff","secondary-fixed-dim":"#92ccff","bg-inset":"#0A0908","tertiary":"#faf2ff","on-secondary-fixed":"#001d31","surface":"#15130f","surface-container":"#221f1b","on-primary-container":"#6e5d00","line-strong":"#433E34","local-teal":"#4FE3C8","bg-rail":"#12110E","secondary":"#92ccff","surface-variant":"#373430","primary-container":"#f7d748","primary":"#fff4d6","surface-container-low":"#1d1b17","line":"#2C2923","tertiary-fixed-dim":"#d2bbff","on-primary-fixed-variant":"#544600","paper-secondary":"#CFC7B6","surface-container-high":"#2c2a25","primary-fixed":"#ffe165","on-error":"#690005","on-tertiary":"#3a1e6f","jurisdiction":"#A9B7C2","outline":"#98907a","inverse-primary":"#6f5d00","outline-variant":"#4c4734","on-surface":"#e8e1da","on-primary-fixed":"#221b00","background":"#15130f","error-container":"#93000a","inverse-surface":"#e8e1da","inverse-on-surface":"#33302b","paper-muted":"#968D7B","secondary-container":"#00699e","tertiary-container":"#e2d1ff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","gutter-desktop":"1.5rem","space-md":"1rem","space-sm":"0.5rem","margin":"1rem","space-xs":"0.25rem","space-xl":"2rem","margin-desktop":"2rem","gutter":"1rem"},"fontFamily":{"display-hero":["Fraunces"],"headline-h1":["Fraunces"],"headline-h3":["Inter Tight"],"display-hero-mobile":["Fraunces"],"stat-numeral":["Fraunces"],"body-default":["Inter"],"code-quote":["JetBrains Mono"],"headline-h1-mobile":["Fraunces"],"headline-h2":["Fraunces"],"badge-label":["Inter"],"caption-default":["Inter"]},"fontSize":{"display-hero":["56px",{"lineHeight":"60px","fontWeight":"600"}],"headline-h1":["36px",{"lineHeight":"42px","fontWeight":"600"}],"headline-h3":["17px",{"lineHeight":"24px","fontWeight":"600"}],"display-hero-mobile":["32px",{"lineHeight":"38px","fontWeight":"600"}],"stat-numeral":["40px",{"lineHeight":"44px","fontWeight":"600"}],"body-default":["15px",{"lineHeight":"25px","fontWeight":"400"}],"code-quote":["13px",{"lineHeight":"22px","fontWeight":"400"}],"headline-h1-mobile":["26px",{"lineHeight":"32px","fontWeight":"600"}],"headline-h2":["24px",{"lineHeight":"32px","fontWeight":"600"}],"badge-label":["12px",{"lineHeight":"16px","fontWeight":"550"}],"caption-default":["13px",{"lineHeight":"20px","fontWeight":"400"}]}}}};</script></head><body class="bg-bg-app font-body-default text-body-default text-on-surface selection:bg-primary-container selection:text-marker-dark"><aside class="fixed left-0 top-0 h-screen w-72 bg-bg-rail z-50 flex flex-col justify-between border-r border-line shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-14 px-space-lg flex items-center justify-between border-b border-line"><div class="flex items-center gap-space-sm"><div class="w-3 h-3 rounded-full bg-primary-container flex items-center justify-center"><div class="w-1.5 h-1.5 rounded-full bg-marker-dark"></div></div><span class="font-headline-h3 text-headline-h3 text-paper-primary tracking-tight">Redline</span><span class="font-code-quote text-code-quote text-paper-muted uppercase tracking-widest text-[11px]">Triage</span></div><span class="px-2 py-0.5 rounded font-caption-default text-[11px] bg-bg-inset text-local-teal border border-local-teal/30">v1.4 airgap</span></div><nav class="flex flex-col p-space-sm gap-1" data-active-classes="bg-bg-raised text-paper-primary border-l-2 border-primary-container shadow-sm"><a class="flex items-center justify-between px-3 py-2 rounded-lg text-paper-muted hover:bg-bg-surface hover:text-on-surface transition-all group" data-path="desk" href="#"><div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-[19px] text-paper-muted group-hover:text-paper-primary transition-colors">upload_file</span><span class="font-body-default text-[14px]">Desk (upload)</span></div><span class="font-code-quote text-[11px] text-outline opacity-0 group-hover:opacity-100">⌘1</span></a><a class="flex items-center justify-between px-3 py-2 rounded-lg text-paper-muted hover:bg-bg-surface hover:text-on-surface transition-all group" data-path="overview" href="#"><div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-[19px] text-paper-muted group-hover:text-paper-primary transition-colors">dashboard</span><span class="font-body-default text-[14px]">Overview</span></div><span class="font-code-quote text-[11px] text-outline opacity-0 group-hover:opacity-100">⌘2</span></a><a class="flex items-center justify-between px-3 py-2 rounded-lg text-paper-muted hover:bg-bg-surface hover:text-on-surface transition-all group" data-path="findings" href="#"><div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-[19px] text-paper-muted group-hover:text-paper-primary transition-colors">rule</span><span class="font-body-default text-[14px]">Findings</span></div><span class="px-1.5 py-0.2 rounded font-caption-default text-[11px] bg-bg-inset text-paper-secondary border border-line">14</span></a><a class="flex items-center justify-between px-3 py-2 rounded-lg text-paper-muted hover:bg-bg-surface hover:text-on-surface transition-all group" data-path="ask" href="#"><div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-[19px] text-paper-muted group-hover:text-paper-primary transition-colors">contact_support</span><span class="font-body-default text-[14px]">Ask</span></div><span class="font-code-quote text-[11px] text-outline opacity-0 group-hover:opacity-100">⌘4</span></a><a aria-current="page" class="flex items-center justify-between px-3 py-2 rounded-lg transition-all group bg-bg-raised text-paper-primary border-l-2 border-primary-container shadow-sm" data-path="key-facts-and-checklist" href="#"><div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-[19px] text-paper-muted group-hover:text-paper-primary transition-colors">fact_check</span><span class="font-body-default text-[14px]">Key facts & Checklist</span></div><div class="w-1.5 h-1.5 rounded-full bg-primary-container"></div></a><a class="flex items-center justify-between px-3 py-2 rounded-lg text-paper-muted hover:bg-bg-surface hover:text-on-surface transition-all group" data-path="export" href="#"><div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-[19px] text-paper-muted group-hover:text-paper-primary transition-colors">file_download</span><span class="font-body-default text-[14px]">Export</span></div><span class="font-code-quote text-[11px] text-outline opacity-0 group-hover:opacity-100">⌘6</span></a><a class="flex items-center justify-between px-3 py-2 rounded-lg text-paper-muted hover:bg-bg-surface hover:text-on-surface transition-all group" data-path="privacy-and-model-verification" href="#"><div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-[19px] text-paper-muted group-hover:text-paper-primary transition-colors">verified_user</span><span class="font-body-default text-[14px]">Privacy & model verification</span></div><span class="material-symbols-outlined text-[15px] text-local-teal">lock</span></a></nav></div><div class="p-space-sm flex flex-col gap-2 border-t border-line"><div class="px-3 py-2.5 rounded-lg bg-bg-inset border border-local-teal/30 flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-local-teal text-[18px]">verified</span><div><div class="font-caption-default text-[12px] font-medium text-paper-primary leading-tight">Air-gap Active</div><div class="font-code-quote text-[10px] text-local-teal leading-tight">No external calls</div></div></div><div class="w-2 h-2 rounded-full bg-local-teal animate-pulse"></div></div><div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-bg-surface border border-line"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[17px] text-paper-muted">palette</span><span class="font-caption-default text-[12px] text-paper-secondary">Paper Room (Tactile)</span></div><span class="font-code-quote text-[10px] text-paper-muted uppercase tracking-wider">v2</span></div><button class="w-full h-10 px-3 rounded-lg bg-error-container/20 border border-error-red/40 hover:bg-error-container/40 text-error-red flex items-center justify-center gap-2 transition-all group"><span class="material-symbols-outlined text-[18px] group-hover:rotate-12 transition-transform">delete_forever</span><span class="font-caption-default text-[12px] font-semibold text-error-red">Clear & Start Over</span></button></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-14 bg-bg-surface/95 backdrop-blur-xl border-b border-line z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-3"><div class="flex items-center gap-1.5 font-caption-default text-paper-muted text-[13px]"><span>Desk</span><span class="material-symbols-outlined text-[14px] text-line-strong">chevron_right</span><span class="text-paper-primary font-medium">Key facts & Checklist</span></div><div class="h-4 w-px bg-line mx-1"></div><div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-bg-raised border border-line-strong text-paper-secondary font-code-quote text-[12px]"><span class="material-symbols-outlined text-[15px] text-paper-muted">description</span><span>rental_agreement.pdf (12 pages)</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-1.5 font-caption-default text-[11px] text-paper-muted bg-bg-inset px-2.5 py-1 rounded border border-line"><span class="material-symbols-outlined text-[14px] text-outline">info</span><span>Informational only. Not legal advice.</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border border-primary-container"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><div class="fixed top-14 left-72 right-0 h-10 bg-bg-rail border-b border-line z-30 flex items-center px-space-lg overflow-x-auto gap-4 text-[12px]"><div class="flex items-center gap-1.5 font-code-quote text-paper-primary font-medium shrink-0"><span class="material-symbols-outlined text-[15px] text-paper-muted">draft</span><span>rental_agreement.pdf</span></div><div class="h-3 w-px bg-line shrink-0"></div><div class="flex items-center gap-3 shrink-0"><span class="font-caption-default text-paper-muted">Findings <strong class="font-code-quote text-paper-primary font-medium">14</strong></span><span class="font-caption-default text-paper-muted">Quote found <strong class="font-code-quote text-secondary font-medium">11</strong></span><span class="font-caption-default text-paper-muted">Need review <strong class="font-code-quote text-ember font-medium">4</strong></span><span class="font-caption-default text-paper-muted">Elapsed <strong class="font-code-quote text-paper-primary font-medium">02:41</strong></span></div><div class="h-3 w-px bg-line shrink-0"></div><div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-local-teal/10 border border-local-teal/30 text-local-teal font-badge-label text-[11px] shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-local-teal"></span><span>Air-gap active</span></div><div class="flex items-center gap-1.5 font-code-quote text-paper-muted text-[11px] ml-auto shrink-0"><span class="material-symbols-outlined text-[13px] text-local-teal">shield</span><span>Telemetry local · Zero external calls</span></div></div><main class="w-full pt-24 min-h-screen bg-bg-app"><div class="flex flex-col w-full pb-16">
+<!-- Top Ambient Paper Sheet Banner -->
+<div class="w-full bg-[#EDE5D4] border-b border-[#E2D8C3] px-8 py-7 shadow-[0_1px_4px_rgba(28,26,22,0.03)]">
+<div class="max-w-[1520px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="flex flex-col max-w-3xl">
+<div class="flex items-center gap-2 mb-2 text-[#6B6354] font-code-quote text-[12px] uppercase tracking-widest">
+<span class="w-2 h-2 rounded-full bg-[#F2C500] ring-2 ring-[#F2C500]/30"></span>
+<span>Index · Section 6.09 & 6.10</span>
+<span class="text-[#C9BDA3]">·</span>
+<span>Indexed AST 12 Pages</span>
+</div>
+<h1 class="font-headline-h1 text-headline-h1 text-[#1C1A16] tracking-tight">Key facts & clause checklist</h1>
+<p class="font-body-default text-body-default text-[#403B31] mt-2 text-[15px] leading-relaxed">
+          Structured quantitative terms, critical dates, financial obligations, and mandatory clause occurrences extracted from <span class="font-code-quote text-[13px] bg-[#E2D8C3]/50 px-1.5 py-0.5 rounded text-[#1C1A16]">rental_agreement.pdf</span>.
+        </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="h-11 px-4 rounded-[10px] bg-[#FFFBF2] hover:bg-[#FFFFFF] border border-[#C9BDA3] text-[#1C1A16] font-headline-h3 text-[14px] flex items-center gap-2 transition-all shadow-[0_1px_2px_rgba(0,0,0,0.04)] active:translate-y-px" id="btn-export-csv">
+<span class="material-symbols-outlined text-[19px] text-[#403B31]">download</span>
+<span>Export facts (CSV)</span>
+</button>
+<button class="h-11 px-5 rounded-[10px] bg-[#F2C500] hover:bg-[#e0b500] text-[#1C1A16] font-headline-h3 text-[14px] font-semibold flex items-center gap-2 transition-all shadow-[0_2px_8px_rgba(242,197,0,0.25)] active:translate-y-px" id="btn-batch-verify">
+<span class="material-symbols-outlined text-[19px] text-[#1C1A16]">verified</span>
+<span>Batch verify sources</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1520px] mx-auto w-full px-8 pt-8 flex flex-col gap-10">
+<!-- SECTION 1: KEY FACTS TABLE & INSPECTOR PREVIEW -->
+<section class="flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-1">
+<div>
+<div class="flex items-center gap-2.5">
+<h2 class="font-headline-h2 text-headline-h2 text-[#1C1A16]">Key facts extracted from document</h2>
+<span class="px-2 py-0.5 rounded-full bg-[#E2D8C3]/60 font-code-quote text-[11px] text-[#403B31] font-semibold">8 facts locked</span>
+</div>
+<p class="font-caption-default text-caption-default text-[#6B6354] mt-0.5">Amounts, dates, durations, and percentages grounded directly in physical text offsets.</p>
+</div>
+<div class="text-[12px] font-code-quote text-[#6B6354] flex items-center gap-1.5 self-end sm:self-auto">
+<span class="w-1.5 h-1.5 rounded-full bg-[#0F5FA8]"></span>
+<span>Lexical confidence: 100% deterministic</span>
+</div>
+</div>
+<!-- Filter and Search Toolbar -->
+<div class="bg-[#FFFBF2] p-2.5 rounded-xl border border-[#E2D8C3] shadow-[0_1px_3px_rgba(28,26,22,0.02)] flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-[280px]">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-[#6B6354]">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-lg bg-[#FFFFFF] border border-[#E2D8C3] text-[#1C1A16] placeholder-[#6B6354] text-[14px] font-body-default focus:outline-none focus:ring-2 focus:ring-[#F2C500] focus:border-transparent transition-all" id="facts-search" placeholder="Search facts, amounts, parties..." type="text"/>
+</div>
+<!-- Filter Pills -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0" id="filter-container">
+<button class="fact-filter-btn px-3 py-1.5 rounded-lg text-[13px] font-headline-h3 flex items-center gap-1.5 bg-[#1C1A16] text-[#FFFBF2] transition-colors shrink-0" data-filter="all">
+<span>All facts</span>
+<span class="px-1.5 py-0.2 rounded text-[11px] font-code-quote bg-[#FFFFFF]/20 text-[#FFFBF2]">8</span>
+</button>
+<button class="fact-filter-btn px-3 py-1.5 rounded-lg text-[13px] font-headline-h3 flex items-center gap-1.5 bg-[#F0E8D8] text-[#403B31] hover:bg-[#E2D8C3] transition-colors shrink-0" data-filter="currency">
+<span class="material-symbols-outlined text-[15px]">payments</span>
+<span>Currency & Fees</span>
+<span class="px-1.5 py-0.2 rounded text-[11px] font-code-quote bg-[#C9BDA3]/40 text-[#403B31]">3</span>
+</button>
+<button class="fact-filter-btn px-3 py-1.5 rounded-lg text-[13px] font-headline-h3 flex items-center gap-1.5 bg-[#F0E8D8] text-[#403B31] hover:bg-[#E2D8C3] transition-colors shrink-0" data-filter="dates">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span>
+<span>Dates & Milestones</span>
+<span class="px-1.5 py-0.2 rounded text-[11px] font-code-quote bg-[#C9BDA3]/40 text-[#403B31]">2</span>
+</button>
+<button class="fact-filter-btn px-3 py-1.5 rounded-lg text-[13px] font-headline-h3 flex items-center gap-1.5 bg-[#F0E8D8] text-[#403B31] hover:bg-[#E2D8C3] transition-colors shrink-0" data-filter="duration">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+<span>Notice & Durations</span>
+<span class="px-1.5 py-0.2 rounded text-[11px] font-code-quote bg-[#C9BDA3]/40 text-[#403B31]">2</span>
+</button>
+<button class="fact-filter-btn px-3 py-1.5 rounded-lg text-[13px] font-headline-h3 flex items-center gap-1.5 bg-[#F0E8D8] text-[#403B31] hover:bg-[#E2D8C3] transition-colors shrink-0" data-filter="percentage">
+<span class="material-symbols-outlined text-[15px]">percent</span>
+<span>Ratios & Rates</span>
+<span class="px-1.5 py-0.2 rounded text-[11px] font-code-quote bg-[#C9BDA3]/40 text-[#403B31]">1</span>
+</button>
+</div>
+</div>
+<!-- Main Layout: Table with Docked Tactile Document Preview Inspector -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+<!-- Table Column (XL: 8 cols) -->
+<div class="xl:col-span-8 bg-[#FFFBF2] rounded-[14px] border border-[#E2D8C3] overflow-hidden shadow-[0_2px_6px_rgba(28,26,22,0.03)]">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="facts-table">
+<thead>
+<tr class="bg-[#F0E8D8]/70 border-b border-[#E2D8C3] text-[12px] font-code-quote uppercase tracking-wider text-[#6B6354]">
+<th class="py-3.5 px-4 font-semibold">Fact Label</th>
+<th class="py-3.5 px-3 font-semibold">Value</th>
+<th class="py-3.5 px-3 font-semibold">Type</th>
+<th class="py-3.5 px-2.5 font-semibold text-center">Page</th>
+<th class="py-3.5 px-4 font-semibold">Verbatim Snippet</th>
+<th class="py-3.5 px-4 font-semibold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E2D8C3] text-[13px]">
+<!-- Row 1 -->
+<tr class="fact-row group hover:bg-[#F5EFE3]/70 transition-colors" data-category="currency" data-label="Monthly Base Rent" data-offset="0x0084..0x00D9" data-page="1" data-quote="agrees to pay Base Monthly Rent of three thousand eight hundred fifty dollars ($3,850.00)" data-val="$3,850.00 / month">
+<td class="py-3 px-4 font-headline-h3 text-[14px] font-semibold text-[#1C1A16] whitespace-nowrap">
+                    Monthly Base Rent
+                  </td>
+<td class="py-3 px-3">
+<span class="font-code-quote font-bold text-[13px] text-[#1C1A16] bg-[#FFFFFF] px-2 py-1 rounded border border-[#E2D8C3] shadow-xs inline-block">
+                      $3,850.00 <span class="font-normal text-[#6B6354] text-[11px]">/ mo</span>
+</span>
+</td>
+<td class="py-3 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-code-quote bg-[#0F5FA8]/10 text-[#0F5FA8] border border-[#0F5FA8]/20">
+<span class="material-symbols-outlined text-[12px]">payments</span> Currency
+                    </span>
+</td>
+<td class="py-3 px-2.5 text-center">
+<span class="font-code-quote text-[12px] text-[#403B31] font-semibold bg-[#E2D8C3]/50 px-1.5 py-0.5 rounded">p. 1</span>
+</td>
+<td class="py-3 px-4 max-w-xs font-code-quote text-[12px] text-[#403B31] leading-relaxed truncate" title="agrees to pay Base Monthly Rent of three thousand eight hundred fifty dollars ($3,850.00)">
+                    “...agrees to pay Base Monthly Rent of three thousand eight hundred fifty dollars ($3,850.00)...”
+                  </td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-page-btn text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium inline-flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[15px] text-[#403B31]">visibility</span>
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="fact-row group hover:bg-[#F5EFE3]/70 transition-colors" data-category="currency" data-label="Security Deposit" data-offset="0x04C1..0x051F" data-page="3" data-quote="deposit in the total amount of $7,700.00 held as security for faithful performance" data-val="$7,700.00 (2 months)">
+<td class="py-3 px-4 font-headline-h3 text-[14px] font-semibold text-[#1C1A16] whitespace-nowrap">
+                    Security Deposit
+                  </td>
+<td class="py-3 px-3">
+<span class="font-code-quote font-bold text-[13px] text-[#1C1A16] bg-[#FFFFFF] px-2 py-1 rounded border border-[#E2D8C3] shadow-xs inline-block">
+                      $7,700.00 <span class="font-normal text-[#6B6354] text-[11px]">(2 mo)</span>
+</span>
+</td>
+<td class="py-3 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-code-quote bg-[#0F5FA8]/10 text-[#0F5FA8] border border-[#0F5FA8]/20">
+<span class="material-symbols-outlined text-[12px]">payments</span> Currency
+                    </span>
+</td>
+<td class="py-3 px-2.5 text-center">
+<span class="font-code-quote text-[12px] text-[#403B31] font-semibold bg-[#E2D8C3]/50 px-1.5 py-0.5 rounded">p. 3</span>
+</td>
+<td class="py-3 px-4 max-w-xs font-code-quote text-[12px] text-[#403B31] leading-relaxed truncate" title="deposit in the total amount of $7,700.00 held as security for faithful performance">
+                    “...deposit in the total amount of $7,700.00 held as security for faithful performance...”
+                  </td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-page-btn text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium inline-flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[15px] text-[#403B31]">visibility</span>
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="fact-row group hover:bg-[#F5EFE3]/70 transition-colors" data-category="duration" data-label="Lease Term Duration" data-offset="0x002B..0x0078" data-page="1" data-quote="commencing November 1, 2024 and terminating October 31, 2025, for twelve (12) full months" data-val="12 months (1 yr)">
+<td class="py-3 px-4 font-headline-h3 text-[14px] font-semibold text-[#1C1A16] whitespace-nowrap">
+                    Lease Term Duration
+                  </td>
+<td class="py-3 px-3">
+<span class="font-code-quote font-bold text-[13px] text-[#1C1A16] bg-[#FFFFFF] px-2 py-1 rounded border border-[#E2D8C3] shadow-xs inline-block">
+                      12 months
+                    </span>
+</td>
+<td class="py-3 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-code-quote bg-[#6B6354]/10 text-[#403B31] border border-[#6B6354]/20">
+<span class="material-symbols-outlined text-[12px]">schedule</span> Duration
+                    </span>
+</td>
+<td class="py-3 px-2.5 text-center">
+<span class="font-code-quote text-[12px] text-[#403B31] font-semibold bg-[#E2D8C3]/50 px-1.5 py-0.5 rounded">p. 1</span>
+</td>
+<td class="py-3 px-4 max-w-xs font-code-quote text-[12px] text-[#403B31] leading-relaxed truncate" title="commencing November 1, 2024 and terminating October 31, 2025, for twelve (12) full months">
+                    “...commencing November 1, 2024 and terminating October 31, 2025, for twelve (12) full months...”
+                  </td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-page-btn text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium inline-flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[15px] text-[#403B31]">visibility</span>
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 (Selected default to demonstrate dock inspector link) -->
+<tr class="fact-row active-fact-row group bg-[#F5EFE3] border-l-4 border-l-[#F2C500] transition-colors" data-category="duration" data-label="Non-Renewal Notice Period" data-offset="0x018F..0x01D4" data-page="1" data-quote="thirty (30) days prior to the expiration of the Lease Term, Lessee must serve definitive written notice" data-val="30 calendar days">
+<td class="py-3 px-4 font-headline-h3 text-[14px] font-semibold text-[#1C1A16] whitespace-nowrap flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F2C500]"></span>
+                    Non-Renewal Notice Period
+                  </td>
+<td class="py-3 px-3">
+<span class="font-code-quote font-bold text-[13px] text-[#1C1A16] bg-[#FFFFFF] px-2 py-1 rounded border border-[#E2D8C3] shadow-xs inline-block">
+                      30 days
+                    </span>
+</td>
+<td class="py-3 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-code-quote bg-[#6B6354]/10 text-[#403B31] border border-[#6B6354]/20">
+<span class="material-symbols-outlined text-[12px]">schedule</span> Duration
+                    </span>
+</td>
+<td class="py-3 px-2.5 text-center">
+<span class="font-code-quote text-[12px] text-[#1C1A16] font-bold bg-[#F2C500]/30 px-1.5 py-0.5 rounded">p. 1</span>
+</td>
+<td class="py-3 px-4 max-w-xs font-code-quote text-[12px] text-[#1C1A16] leading-relaxed truncate font-medium">
+                    “...written notice at least thirty (30) days prior to the expiration of the Lease Term...”
+                  </td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-page-btn text-[#1C1A16] bg-[#F2C500]/40 hover:bg-[#F2C500] px-2.5 py-1.5 rounded-lg border border-[#F2C500] text-[12px] font-headline-h3 font-semibold inline-flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[15px] text-[#1C1A16]">edit_note</span>
+<span>Inspecting</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="fact-row group hover:bg-[#F5EFE3]/70 transition-colors" data-category="percentage" data-label="Early Surrender Penalty" data-offset="0x1140..0x119A" data-page="7" data-quote="liquidated damages equal to not less than twice (200%) the then-applicable Monthly Base Rent" data-val="200% Base Rent">
+<td class="py-3 px-4 font-headline-h3 text-[14px] font-semibold text-[#1C1A16] whitespace-nowrap">
+                    Early Surrender Penalty
+                  </td>
+<td class="py-3 px-3">
+<span class="font-code-quote font-bold text-[13px] text-[#1C1A16] bg-[#FFFFFF] px-2 py-1 rounded border border-[#E2D8C3] shadow-xs inline-block">
+                      200% Base
+                    </span>
+</td>
+<td class="py-3 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-code-quote bg-[#FF9566]/15 text-[#9E4A00] border border-[#FF9566]/30">
+<span class="material-symbols-outlined text-[12px]">percent</span> Ratio / Risk
+                    </span>
+</td>
+<td class="py-3 px-2.5 text-center">
+<span class="font-code-quote text-[12px] text-[#403B31] font-semibold bg-[#E2D8C3]/50 px-1.5 py-0.5 rounded">p. 7</span>
+</td>
+<td class="py-3 px-4 max-w-xs font-code-quote text-[12px] text-[#403B31] leading-relaxed truncate" title="liquidated damages equal to not less than twice (200%) the then-applicable Monthly Base Rent">
+                    “...liquidated damages equal to not less than twice (200%) the then-applicable Monthly Base Rent...”
+                  </td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-page-btn text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium inline-flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[15px] text-[#403B31]">visibility</span>
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="fact-row group hover:bg-[#F5EFE3]/70 transition-colors" data-category="currency" data-label="Late Payment Charge" data-offset="0x0310..0x036F" data-page="2" data-quote="if rent is not received by the 5th day, a late service charge of $250.00 shall become immediately due" data-val="$250.00 flat fee">
+<td class="py-3 px-4 font-headline-h3 text-[14px] font-semibold text-[#1C1A16] whitespace-nowrap">
+                    Late Payment Charge
+                  </td>
+<td class="py-3 px-3">
+<span class="font-code-quote font-bold text-[13px] text-[#1C1A16] bg-[#FFFFFF] px-2 py-1 rounded border border-[#E2D8C3] shadow-xs inline-block">
+                      $250.00 <span class="font-normal text-[#6B6354] text-[11px]">flat</span>
+</span>
+</td>
+<td class="py-3 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-code-quote bg-[#0F5FA8]/10 text-[#0F5FA8] border border-[#0F5FA8]/20">
+<span class="material-symbols-outlined text-[12px]">payments</span> Currency
+                    </span>
+</td>
+<td class="py-3 px-2.5 text-center">
+<span class="font-code-quote text-[12px] text-[#403B31] font-semibold bg-[#E2D8C3]/50 px-1.5 py-0.5 rounded">p. 2</span>
+</td>
+<td class="py-3 px-4 max-w-xs font-code-quote text-[12px] text-[#403B31] leading-relaxed truncate" title="if rent is not received by the 5th day, a late service charge of $250.00 shall become immediately due">
+                    “...if rent is not received by the 5th day, a late service charge of $250.00 shall become immediately due...”
+                  </td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-page-btn text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium inline-flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[15px] text-[#403B31]">visibility</span>
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="fact-row group hover:bg-[#F5EFE3]/70 transition-colors" data-category="dates" data-label="Unannounced Entry Window" data-offset="0x06A2..0x06F0" data-page="4" data-quote="during normal business hours (defined herein as 08:00 to 18:00) upon verbal advice" data-val="08:00 – 18:00 hrs">
+<td class="py-3 px-4 font-headline-h3 text-[14px] font-semibold text-[#1C1A16] whitespace-nowrap">
+                    Unannounced Entry Window
+                  </td>
+<td class="py-3 px-3">
+<span class="font-code-quote font-bold text-[13px] text-[#1C1A16] bg-[#FFFFFF] px-2 py-1 rounded border border-[#E2D8C3] shadow-xs inline-block">
+                      08:00–18:00
+                    </span>
+</td>
+<td class="py-3 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-code-quote bg-[#6B6354]/10 text-[#403B31] border border-[#6B6354]/20">
+<span class="material-symbols-outlined text-[12px]">schedule</span> Hours
+                    </span>
+</td>
+<td class="py-3 px-2.5 text-center">
+<span class="font-code-quote text-[12px] text-[#403B31] font-semibold bg-[#E2D8C3]/50 px-1.5 py-0.5 rounded">p. 4</span>
+</td>
+<td class="py-3 px-4 max-w-xs font-code-quote text-[12px] text-[#403B31] leading-relaxed truncate" title="during normal business hours (defined herein as 08:00 to 18:00) upon verbal advice">
+                    “...during normal business hours (defined herein as 08:00 to 18:00) upon verbal advice...”
+                  </td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-page-btn text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium inline-flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[15px] text-[#403B31]">visibility</span>
+<span>View</span>
+</button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="fact-row group hover:bg-[#F5EFE3]/70 transition-colors" data-category="dates" data-label="Move-in Inspection Date" data-offset="0x0280..0x02D5" data-page="2" data-quote="joint pre-occupancy walkthrough shall occur no later than October 28, 2024" data-val="October 28, 2024">
+<td class="py-3 px-4 font-headline-h3 text-[14px] font-semibold text-[#1C1A16] whitespace-nowrap">
+                    Move-in Inspection Date
+                  </td>
+<td class="py-3 px-3">
+<span class="font-code-quote font-bold text-[13px] text-[#1C1A16] bg-[#FFFFFF] px-2 py-1 rounded border border-[#E2D8C3] shadow-xs inline-block">
+                      Oct 28, 2024
+                    </span>
+</td>
+<td class="py-3 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-code-quote bg-[#0F5FA8]/10 text-[#0F5FA8] border border-[#0F5FA8]/20">
+<span class="material-symbols-outlined text-[12px]">calendar_today</span> Date
+                    </span>
+</td>
+<td class="py-3 px-2.5 text-center">
+<span class="font-code-quote text-[12px] text-[#403B31] font-semibold bg-[#E2D8C3]/50 px-1.5 py-0.5 rounded">p. 2</span>
+</td>
+<td class="py-3 px-4 max-w-xs font-code-quote text-[12px] text-[#403B31] leading-relaxed truncate" title="joint pre-occupancy walkthrough shall occur no later than October 28, 2024">
+                    “...joint pre-occupancy walkthrough shall occur no later than October 28, 2024...”
+                  </td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-page-btn text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium inline-flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[15px] text-[#403B31]">visibility</span>
+<span>View</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer status -->
+<div class="px-4 py-2.5 bg-[#F0E8D8]/50 border-t border-[#E2D8C3] flex items-center justify-between text-[12px] font-code-quote text-[#6B6354]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-[#0F5FA8]">check_circle</span>
+<span>All 8 quantitative attributes anchored with non-zero byte bounds</span>
+</div>
+<span class="hidden sm:inline">SHA256: 9e08a..d217 (Validated)</span>
+</div>
+</div>
+<!-- Docked Tactile Document Inspector (XL: 4 cols) -->
+<div class="xl:col-span-4 sticky top-28 flex flex-col gap-3">
+<div class="flex items-center justify-between px-1">
+<span class="font-headline-h3 text-[13px] font-semibold text-[#1C1A16] uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-[#F2C500]">find_in_page</span>
+<span>Physical Source Excerpt</span>
+</span>
+<span class="px-2 py-0.5 bg-[#FFFBF2] border border-[#C9BDA3] text-[#1C1A16] font-code-quote text-[11px] rounded-md shadow-xs" id="inspector-page-pill">
+              Page 1 of 12
+            </span>
+</div>
+<!-- Physical Document Sheet with Real Paper Metaphor (0.4deg rotation) -->
+<div class="relative bg-[#FFFFFF] rounded-lg border border-[#E2D8C3] p-6 shadow-[0_12px_32px_rgba(28,26,22,0.08)] transform rotate-[0.4deg] transition-transform hover:rotate-0">
+<!-- Archival Header watermark band -->
+<div class="flex items-center justify-between border-b border-[#E2D8C3] pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#6B6354]">draft</span>
+<span class="font-code-quote text-[12px] font-bold text-[#1C1A16]" id="inspector-doc-title">RENTAL_AGREEMENT.PDF</span>
+</div>
+<span class="text-[10px] font-code-quote text-[#6B6354] uppercase bg-[#F0E8D8] px-1.5 py-0.5 rounded">Airgap Cached</span>
+</div>
+<!-- Page Context Mock Snippet -->
+<div class="font-code-quote text-[12px] leading-relaxed text-[#403B31] space-y-3 select-none">
+<p class="text-[#6B6354] text-[11px] font-sans italic border-b border-dashed border-[#E2D8C3] pb-1.5">
+                [EXCERPT SECTION 3.2 - TERM RENEWAL & SURRENDER]
+              </p>
+<p>
+                ...Lessee shall occupy the Premises exclusively as a private dwelling. At the expiration of said original term, Lessee may elect to renew this Agreement only by tendering formal
+              </p>
+<!-- Yellow Highlighter Sweep Effect -->
+<div class="p-2.5 rounded bg-[#F2C500]/25 border-l-4 border-l-[#F2C500] text-[#1C1A16] font-medium transition-all shadow-xs" id="inspector-highlighted-box">
+                “<span class="bg-[#F2C500]/40 px-1 py-0.5" id="inspector-quote-text">thirty (30) days prior to the expiration of the Lease Term, Lessee must serve definitive written notice</span>”
+              </div>
+<p>
+                ...upon Lessor in person or through certified mail. Failure to tender such notice shall forfeit all rights to continuous tenancy at prevailing rental amounts...
+              </p>
+</div>
+<!-- Technical Inspector Offset Card -->
+<div class="mt-6 pt-3 border-t border-[#E2D8C3] flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-[11px] font-code-quote">
+<span class="text-[#6B6354]">AST Byte Offset:</span>
+<span class="text-[#1C1A16] font-semibold bg-[#F0E8D8] px-1.5 py-0.5 rounded" id="inspector-offset">0x018F..0x01D4</span>
+</div>
+<div class="flex items-center justify-between text-[11px] font-code-quote">
+<span class="text-[#6B6354]">Confidence:</span>
+<span class="text-[#0F5FA8] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified</span> 100% Verbatim Match
+                </span>
+</div>
+<div class="flex items-center justify-between text-[11px] font-code-quote">
+<span class="text-[#6B6354]">Anchor target:</span>
+<span class="text-[#1C1A16] font-medium" id="inspector-active-label">Non-Renewal Notice Period</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-end">
+<span class="font-code-quote text-[10px] text-[#6B6354] tracking-tight">Click any row “View” to remap preview</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: CLAUSE CHECKLIST -->
+<section class="flex flex-col gap-5 pt-4">
+<div class="flex flex-col gap-1">
+<h2 class="font-headline-h2 text-headline-h2 text-[#1C1A16]">Clause checklist</h2>
+<p class="font-caption-default text-caption-default text-[#6B6354]">Deterministic occurrence verification for standard lease covenant categories.</p>
+</div>
+<!-- Mandatory Honest Notice Callout (Strict Section 6.10 compliance) -->
+<div class="bg-[#F0E8D8] rounded-[12px] border border-[#C9BDA3] p-4 sm:p-5 flex items-start gap-4 shadow-[0_1px_3px_rgba(28,26,22,0.03)]">
+<div class="w-8 h-8 rounded-full bg-[#E2D8C3] flex items-center justify-center shrink-0 text-[#1C1A16] mt-0.5">
+<span class="material-symbols-outlined text-[19px]">balance</span>
+</div>
+<div class="flex flex-col gap-1 text-[13px] leading-relaxed">
+<div class="font-headline-h3 font-semibold text-[#1C1A16] flex items-center gap-2">
+<span>Notice of Lexical Scope & Legal Fallibility</span>
+<span class="px-2 py-0.2 rounded text-[10px] font-code-quote bg-[#C9BDA3]/50 text-[#1C1A16] uppercase tracking-wider">Advisory</span>
+</div>
+<p class="text-[#403B31]">
+<strong class="text-[#1C1A16] font-medium">“Wording found”</strong> means syntactic clause patterns exist in the text layers of this document. <strong class="text-[#1C1A16] font-medium">“No matching wording found”</strong> means the indexed document text is silent or uses non-standard phraseology. Neither designation constitutes legal validity, enforceability, or comprehensive risk clearance. Consult qualified counsel for formal guidance.
+          </p>
+</div>
+</div>
+<!-- Two-Column Grouping (50% / 50% Desktop Bento Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+<!-- Column A: Wording found in document (7 categories) -->
+<div class="bg-[#FFFBF2] rounded-[14px] border border-[#E2D8C3] p-5 shadow-[0_2px_6px_rgba(28,26,22,0.03)] flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#E2D8C3]">
+<div class="flex items-center gap-2.5">
+<span class="w-6 h-6 rounded-full bg-[#0F5FA8]/15 text-[#0F5FA8] flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</span>
+<h3 class="font-headline-h3 text-[16px] text-[#1C1A16] font-semibold">Wording found in document</h3>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-code-quote text-[11px] font-bold bg-[#0F5FA8]/10 text-[#0F5FA8] border border-[#0F5FA8]/20">
+              7 categories
+            </span>
+</div>
+<div class="flex flex-col divide-y divide-[#E2D8C3]/80">
+<!-- Item 1 -->
+<div class="py-3 flex items-center justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#0F5FA8] mt-0.5 shrink-0">check_circle</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Term & Auto-Renewal</span>
+<span class="px-1.5 py-0.2 rounded font-code-quote text-[11px] bg-[#E2D8C3]/50 text-[#403B31]">p. 1</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354]">Matches defined term, expiration dates, and renewal requirements.</span>
+</div>
+</div>
+<button class="ghost-doc-btn shrink-0 text-[#403B31] hover:text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium flex items-center gap-1 transition-all">
+<span>View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Item 2 -->
+<div class="py-3 flex items-center justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#0F5FA8] mt-0.5 shrink-0">check_circle</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Security Deposit Terms</span>
+<span class="px-1.5 py-0.2 rounded font-code-quote text-[11px] bg-[#E2D8C3]/50 text-[#403B31]">p. 3</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354]">Contains holding rules, commingling terms, and return periods.</span>
+</div>
+</div>
+<button class="ghost-doc-btn shrink-0 text-[#403B31] hover:text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium flex items-center gap-1 transition-all">
+<span>View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Item 3 -->
+<div class="py-3 flex items-center justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#0F5FA8] mt-0.5 shrink-0">check_circle</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Early Termination & Liquidated Damages</span>
+<span class="px-1.5 py-0.2 rounded font-code-quote text-[11px] bg-[#E2D8C3]/50 text-[#403B31]">p. 7</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354]">Identifies early surrender penalty clauses and forfeiture provisions.</span>
+</div>
+</div>
+<button class="ghost-doc-btn shrink-0 text-[#403B31] hover:text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium flex items-center gap-1 transition-all">
+<span>View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Item 4 -->
+<div class="py-3 flex items-center justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#0F5FA8] mt-0.5 shrink-0">check_circle</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Landlord Access & Routine Entry</span>
+<span class="px-1.5 py-0.2 rounded font-code-quote text-[11px] bg-[#E2D8C3]/50 text-[#403B31]">p. 4</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354]">Explicit access hours and verbal notification guidelines detected.</span>
+</div>
+</div>
+<button class="ghost-doc-btn shrink-0 text-[#403B31] hover:text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium flex items-center gap-1 transition-all">
+<span>View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Item 5 -->
+<div class="py-3 flex items-center justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#0F5FA8] mt-0.5 shrink-0">check_circle</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Quiet Enjoyment</span>
+<span class="px-1.5 py-0.2 rounded font-code-quote text-[11px] bg-[#E2D8C3]/50 text-[#403B31]">p. 5</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354]">Covenants of undisturbed possession subject to condition compliance.</span>
+</div>
+</div>
+<button class="ghost-doc-btn shrink-0 text-[#403B31] hover:text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium flex items-center gap-1 transition-all">
+<span>View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Item 6 -->
+<div class="py-3 flex items-center justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#0F5FA8] mt-0.5 shrink-0">check_circle</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Utilities & Service Allocation</span>
+<span class="px-1.5 py-0.2 rounded font-code-quote text-[11px] bg-[#E2D8C3]/50 text-[#403B31]">p. 2</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354]">Outlines tenant electricity, water, and trash payment split.</span>
+</div>
+</div>
+<button class="ghost-doc-btn shrink-0 text-[#403B31] hover:text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium flex items-center gap-1 transition-all">
+<span>View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Item 7 -->
+<div class="py-3 flex items-center justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#0F5FA8] mt-0.5 shrink-0">check_circle</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Default & Remedies</span>
+<span class="px-1.5 py-0.2 rounded font-code-quote text-[11px] bg-[#E2D8C3]/50 text-[#403B31]">p. 9</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354]">Defines cure intervals, legal recourse, and re-entry procedures.</span>
+</div>
+</div>
+<button class="ghost-doc-btn shrink-0 text-[#403B31] hover:text-[#1C1A16] hover:bg-[#E2D8C3] px-2.5 py-1.5 rounded-lg border border-[#C9BDA3] text-[12px] font-headline-h3 font-medium flex items-center gap-1 transition-all">
+<span>View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Column B: No matching wording found (5 categories) -->
+<div class="bg-[#FFFBF2] rounded-[14px] border border-[#E2D8C3] p-5 shadow-[0_2px_6px_rgba(28,26,22,0.03)] flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#E2D8C3]">
+<div class="flex items-center gap-2.5">
+<span class="w-6 h-6 rounded-full bg-[#6B6354]/15 text-[#6B6354] flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">radio_button_unchecked</span>
+</span>
+<h3 class="font-headline-h3 text-[16px] text-[#1C1A16] font-semibold">No matching wording found</h3>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-code-quote text-[11px] font-bold bg-[#6B6354]/10 text-[#6B6354] border border-[#6B6354]/20">
+              5 categories silent
+            </span>
+</div>
+<div class="flex flex-col divide-y divide-[#E2D8C3]/80">
+<!-- Silent 1 -->
+<div class="py-3 flex items-start justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#6B6354] mt-0.5 shrink-0">radio_button_unchecked</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Subletting & Assignment Allowances</span>
+<span class="px-2 py-0.2 rounded-full font-caption-default text-[11px] bg-[#F0E8D8] text-[#6B6354] font-medium border border-[#C9BDA3]/50">Document silent</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354] mt-0.5">Zero text occurrences found across 12 indexed pages. Common law or local tenant statute controls.</span>
+</div>
+</div>
+</div>
+<!-- Silent 2 -->
+<div class="py-3 flex items-start justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#6B6354] mt-0.5 shrink-0">radio_button_unchecked</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Statutory Rent Control Conformance</span>
+<span class="px-2 py-0.2 rounded-full font-caption-default text-[11px] bg-[#F0E8D8] text-[#6B6354] font-medium border border-[#C9BDA3]/50">Document silent</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354] mt-0.5">No municipal ordinance reference (e.g. AB 1482 or local rent stabilization notices).</span>
+</div>
+</div>
+</div>
+<!-- Silent 3 -->
+<div class="py-3 flex items-start justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#6B6354] mt-0.5 shrink-0">radio_button_unchecked</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Mandatory Dispute Arbitration / Mediation</span>
+<span class="px-2 py-0.2 rounded-full font-caption-default text-[11px] bg-[#F0E8D8] text-[#6B6354] font-medium border border-[#C9BDA3]/50">Document silent</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354] mt-0.5">No pre-litigation ADR clause identified; disputes proceed under default civil trial jurisdiction.</span>
+</div>
+</div>
+</div>
+<!-- Silent 4 -->
+<div class="py-3 flex items-start justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#6B6354] mt-0.5 shrink-0">radio_button_unchecked</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Mold & Environmental Disclosure</span>
+<span class="px-2 py-0.2 rounded-full font-caption-default text-[11px] bg-[#F0E8D8] text-[#6B6354] font-medium border border-[#C9BDA3]/50">Document silent</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354] mt-0.5">Neither toxic mold addendum nor humidity maintenance disclosures detected in lease body.</span>
+</div>
+</div>
+</div>
+<!-- Silent 5 -->
+<div class="py-3 flex items-start justify-between gap-3 group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[19px] text-[#6B6354] mt-0.5 shrink-0">radio_button_unchecked</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">Lead-Based Paint Hazard Addendum</span>
+<span class="px-2 py-0.2 rounded-full font-caption-default text-[11px] bg-[#F0E8D8] text-[#6B6354] font-medium border border-[#C9BDA3]/50">Document silent</span>
+</div>
+<span class="font-caption-default text-[12px] text-[#6B6354] mt-0.5">Federal EPA Form 1710 disclosure missing from indexed execution attachments.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script>
+  // Interactive Filtering & Search Logic for Facts Table
+  (function initFactsInteractions() {
+    const searchInput = document.getElementById('facts-search');
+    const filterButtons = document.querySelectorAll('.fact-filter-btn');
+    const rows = document.querySelectorAll('.fact-row');
+
+    let currentFilter = 'all';
+
+    function applyFilters() {
+      const query = (searchInput?.value || '').toLowerCase().trim();
+
+      rows.forEach(row => {
+        const category = row.getAttribute('data-category');
+        const textContent = row.textContent.toLowerCase();
+
+        const matchesFilter = (currentFilter === 'all') || (category === currentFilter);
+        const matchesQuery = !query || textContent.includes(query);
+
+        if (matchesFilter && matchesQuery) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-[#1C1A16]', 'text-[#FFFBF2]');
+          b.classList.add('bg-[#F0E8D8]', 'text-[#403B31]');
+        });
+        btn.classList.add('bg-[#1C1A16]', 'text-[#FFFBF2]');
+        btn.classList.remove('bg-[#F0E8D8]', 'text-[#403B31]');
+
+        currentFilter = btn.getAttribute('data-filter') || 'all';
+        applyFilters();
+      });
+    });
+
+    searchInput?.addEventListener('input', applyFilters);
+
+    // Dynamic Inspector Preview Sync when clicking rows
+    const inspectorPagePill = document.getElementById('inspector-page-pill');
+    const inspectorQuoteText = document.getElementById('inspector-quote-text');
+    const inspectorOffset = document.getElementById('inspector-offset');
+    const inspectorActiveLabel = document.getElementById('inspector-active-label');
+
+    rows.forEach(row => {
+      const viewBtn = row.querySelector('.view-page-btn');
+      
+      const activateRow = () => {
+        // Deselect previous
+        rows.forEach(r => {
+          r.classList.remove('active-fact-row', 'bg-[#F5EFE3]', 'border-l-4', 'border-l-[#F2C500]');
+          const b = r.querySelector('.view-page-btn');
+          if (b) {
+            b.innerHTML = '<span class="material-symbols-outlined text-[15px] text-[#403B31]">visibility</span><span>View</span>';
+            b.classList.remove('bg-[#F2C500]', 'border-[#F2C500]', 'font-semibold');
+            b.classList.add('border-[#C9BDA3]', 'font-medium');
+          }
+        });
+
+        // Select current
+        row.classList.add('active-fact-row', 'bg-[#F5EFE3]', 'border-l-4', 'border-l-[#F2C500]');
+        if (viewBtn) {
+          viewBtn.innerHTML = '<span class="material-symbols-outlined text-[15px] text-[#1C1A16]">edit_note</span><span>Inspecting</span>';
+          viewBtn.classList.add('bg-[#F2C500]', 'border-[#F2C500]', 'font-semibold');
+          viewBtn.classList.remove('border-[#C9BDA3]', 'font-medium');
+        }
+
+        // Update Docked Inspector Content
+        const page = row.getAttribute('data-page') || '1';
+        const quote = row.getAttribute('data-quote') || '';
+        const offset = row.getAttribute('data-offset') || '0x0000..0x0000';
+        const label = row.getAttribute('data-label') || 'Extracted Fact';
+
+        if (inspectorPagePill) inspectorPagePill.textContent = 'Page ' + page + ' of 12';
+        if (inspectorQuoteText) inspectorQuoteText.textContent = quote;
+        if (inspectorOffset) inspectorOffset.textContent = offset;
+        if (inspectorActiveLabel) inspectorActiveLabel.textContent = label;
+      };
+
+      row.addEventListener('click', activateRow);
+      viewBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        activateRow();
+      });
+    });
+
+    // CSV Download Simulation
+    const exportBtn = document.getElementById('btn-export-csv');
+    exportBtn?.addEventListener('click', () => {
+      const headers = "Fact Label,Value,Type,Page,Verbatim Snippet\n";
+      const rowsData = [
+        '"Monthly Base Rent","$3,850.00 / month","Currency","1","...agrees to pay Base Monthly Rent of three thousand eight hundred fifty dollars ($3,850.00)..."',
+        '"Security Deposit","$7,700.00 (2 months)","Currency","3","...deposit in the total amount of $7,700.00 held as security for faithful performance..."',
+        '"Lease Term Duration","12 months (1 yr)","Duration","1","...commencing November 1, 2024 and terminating October 31, 2025..."',
+        '"Non-Renewal Notice Period","30 calendar days","Duration","1","...written notice at least thirty (30) days prior to expiration..."',
+        '"Early Surrender Penalty","200% Base Rent","Percentage","7","...liquidated damages equal to not less than twice (200%)..."',
+        '"Late Payment Charge","$250.00 flat fee","Currency","2","...late service charge of $250.00 shall become immediately due..."',
+        '"Unannounced Entry Window","08:00 – 18:00 hrs","Hours","4","...during normal business hours (08:00 to 18:00)..."',
+        '"Move-in Inspection Date","October 28, 2024","Date","2","...joint pre-occupancy walkthrough shall occur no later than October 28, 2024..."'
+      ].join("\n");
+
+      const blob = new Blob([headers + rowsData], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "redline_key_facts_rental_agreement.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Batch Verify Notification Feedback
+    const batchBtn = document.getElementById('btn-batch-verify');
+    batchBtn?.addEventListener('click', () => {
+      const originalText = batchBtn.innerHTML;
+      batchBtn.innerHTML = '<span class="material-symbols-outlined text-[19px] animate-spin">sync</span><span>Verifying AST Offsets...</span>';
+      setTimeout(() => {
+        batchBtn.innerHTML = '<span class="material-symbols-outlined text-[19px]">check_circle</span><span>8/8 Verified In Situ</span>';
+        setTimeout(() => {
+          batchBtn.innerHTML = originalText;
+        }, 2400);
+      }, 700);
+    });
+  })();
+</script></main></div></body></html>

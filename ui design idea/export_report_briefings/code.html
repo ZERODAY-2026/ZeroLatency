@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}@keyframes pulse-subtle{0%,100%{opacity:1;}50%{opacity:0.35;}}.animate-breathing{animation:pulse-subtle 2.5s cubic-bezier(0.4,0,0.6,1) infinite;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#92ccff", "surface-tint": "#e4c537", "line": "#2C2923", "on-tertiary-fixed": "#25005a", "secondary-container": "#00699e", "tertiary-fixed-dim": "#d2bbff", "bg-inset": "#0A0908", "bg-app": "#0D0C0A", "on-tertiary": "#3a1e6f", "on-error": "#690005", "bg-surface": "#181612", "surface-container-low": "#1d1b17", "on-secondary": "#003351", "outline-variant": "#4c4734", "primary": "#fff4d6", "primary-fixed": "#ffe165", "tertiary-fixed": "#eaddff", "on-secondary-container": "#c8e3ff", "on-secondary-fixed-variant": "#004b73", "on-surface-variant": "#cfc6ae", "primary-fixed-dim": "#e4c537", "on-primary-fixed": "#221b00", "on-background": "#e8e1da", "on-tertiary-fixed-variant": "#513787", "secondary-fixed": "#cce5ff", "bg-rail": "#12110E", "on-secondary-fixed": "#001d31", "outline": "#98907a", "surface-bright": "#3c3934", "jurisdiction": "#A9B7C2", "on-primary": "#3a3000", "surface": "#15130f", "on-tertiary-container": "#6a4fa1", "surface-container": "#221f1b", "tertiary-container": "#e2d1ff", "primary-container": "#f7d748", "ember": "#FF9566", "error-container": "#93000a", "inverse-primary": "#6f5d00", "line-strong": "#433E34", "marker-dark": "#1A1608", "on-error-container": "#ffdad6", "inverse-surface": "#e8e1da", "bg-raised": "#211E19", "on-surface": "#e8e1da", "surface-container-highest": "#373430", "on-primary-fixed-variant": "#544600", "background": "#15130f", "error-red": "#FF7A8A", "paper-secondary": "#CFC7B6", "surface-container-high": "#2c2a25", "surface-variant": "#373430", "tertiary": "#faf2ff", "surface-container-lowest": "#100e0a", "inverse-on-surface": "#33302b", "error": "#ffb4ab", "on-primary-container": "#6e5d00", "paper-muted": "#968D7B", "surface-dim": "#15130f", "local-teal": "#4FE3C8", "secondary": "#92ccff", "paper-primary": "#F3EDE0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "margin-desktop": "2rem", "margin": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "stat-numeral": [ "Fraunces" ], "body-default": [ "Inter" ], "caption-default": [ "Inter" ], "headline-h1": [ "Fraunces" ], "code-quote": [ "JetBrains Mono" ], "headline-h2": [ "Fraunces" ], "badge-label": [ "Inter" ], "display-hero-mobile": [ "Fraunces" ], "headline-h3": [ "Inter Tight" ], "headline-h1-mobile": [ "Fraunces" ], "display-hero": [ "Fraunces" ] }, "fontSize": { "stat-numeral": [ "40px", { "lineHeight": "44px", "fontWeight": "600" } ], "body-default": [ "15px", { "lineHeight": "25px", "fontWeight": "400" } ], "caption-default": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-h1": [ "36px", { "lineHeight": "42px", "fontWeight": "600" } ], "code-quote": [ "13px", { "lineHeight": "22px", "fontWeight": "400" } ], "headline-h2": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ], "badge-label": [ "12px", { "lineHeight": "16px", "fontWeight": "550" } ], "display-hero-mobile": [ "32px", { "lineHeight": "38px", "fontWeight": "600" } ], "headline-h3": [ "17px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-h1-mobile": [ "26px", { "lineHeight": "32px", "fontWeight": "600" } ], "display-hero": [ "56px", { "lineHeight": "60px", "fontWeight": "600" } ] } } } };</script></head><body class="bg-bg-app font-body-default text-body-default text-paper-primary antialiased selection:bg-primary-container selection:text-marker-dark"><aside class="group fixed left-0 top-0 h-screen w-[72px] hover:w-[264px] transition-all duration-300 ease-in-out bg-bg-rail border-r border-line z-50 flex flex-col justify-between overflow-hidden shadow-[4px_0_24px_rgba(0,0,0,0.5)]"><div class="flex flex-col"><div class="h-14 border-b border-line flex items-center px-[18px] gap-3 shrink-0 overflow-hidden"><img alt="Redline Logo" class="h-8 w-8 object-contain shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WE4RtI4ZABgMOeNUHv0x3EgyOZf3xWje2moel5qvpkJD7Ej-0lpNs3fR_TRiGeAUv_LJtT3bYQaCAwFY5ux4qG9kbIpbQltnG3dAZkz0j72y0VZVXPKaF8Ru31ywtkJrCpEJIiMYjOMosB5168gBeS3n_Eb5JKdW94bD7qkBYY2TQQ0jKe0sKXUHuZs5PqJJqKkMvIBo0f_jm-MprDkUWZ3bCWsVqvtL1kx_EVbXavhHgA_GZK7WLSkkA"/><div class="flex flex-col whitespace-nowrap overflow-hidden transition-opacity duration-200 group-hover:opacity-100 opacity-0"><span class="font-headline-h3 text-headline-h3 text-paper-primary tracking-tight leading-none">Redline</span><span class="font-caption-default text-caption-default text-paper-muted text-[11px] leading-tight mt-0.5 tracking-wide uppercase">Private legal triage</span></div></div><nav class="flex flex-col py-3 gap-1 px-2" data-active-classes="bg-bg-raised text-paper-primary border-l-2 border-primary-container font-medium"><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item relative" data-path="desk" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">folder</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Desk</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item relative" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">dashboard</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Overview</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item relative" data-path="findings" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">manage_search</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Findings</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item relative" data-path="ask" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">chat_bubble_outline</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Ask</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item relative" data-path="key-facts" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">table_rows</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Key facts</span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item relative" data-path="checklist" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">check_box</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Checklist</span></a><a class="flex items-center h-10 px-3.5 rounded bg-bg-raised text-paper-primary border-l-2 border-primary-container font-medium hover:bg-bg-raised/90 transition-colors shrink-0 group/item relative" data-path="export" href="#"><span class="material-symbols-outlined text-[20px] shrink-0 text-primary-container">download</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Export</span><span class="absolute right-2.5 w-1.5 h-1.5 rounded-full bg-primary-container opacity-0 group-hover:opacity-100 transition-opacity"></span></a><a class="flex items-center h-10 px-3.5 rounded text-paper-muted hover:text-paper-primary hover:bg-bg-raised/70 transition-colors shrink-0 group/item relative" data-path="privacy-and-model" href="#"><span class="material-symbols-outlined text-[20px] shrink-0">shield_person</span><span class="ml-3.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-body-default text-body-default">Privacy &amp; model</span></a></nav></div><div class="flex flex-col p-2 gap-2 border-t border-line"><div class="bg-bg-inset border border-local-teal/30 rounded p-2 flex items-center gap-2.5 overflow-hidden"><div class="relative flex items-center justify-center shrink-0 w-6 h-6"><span class="material-symbols-outlined text-local-teal text-[18px]">shield_lock</span><span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-local-teal animate-breathing"></span></div><div class="flex flex-col whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden"><div class="flex items-center gap-1.5"><span class="font-badge-label text-badge-label text-local-teal font-medium">Local only</span></div><span class="font-caption-default text-[10px] text-paper-muted leading-tight">Nothing leaves this computer</span></div></div><div class="flex items-center justify-between px-2 py-1 text-paper-muted hover:text-paper-primary cursor-pointer rounded hover:bg-bg-raised/60 transition-colors"><div class="flex items-center gap-3 shrink-0"><span class="material-symbols-outlined text-[18px]">dark_mode</span><span class="font-caption-default text-caption-default whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">Ink Room theme</span></div><span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">expand_more</span></div><button class="flex items-center w-full px-2 py-1.5 text-error-red/80 hover:text-error-red hover:bg-error-red/10 rounded transition-colors text-left group/btn" type="button"><span class="material-symbols-outlined text-[18px] shrink-0">delete_sweep</span><span class="ml-3 font-caption-default text-caption-default whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">Clear and start over</span></button></div></aside><div class="pl-[72px] min-h-screen flex flex-col"><header class="fixed top-0 left-[72px] right-0 h-14 bg-bg-app border-b border-line z-40 flex items-center justify-between px-6"><div class="flex items-center gap-3"><div class="flex items-center text-paper-muted font-caption-default text-caption-default"><span class="hover:text-paper-primary transition-colors cursor-pointer">Desk</span><span class="mx-2 text-line-strong">/</span><span class="text-paper-primary font-medium">Export</span></div><div class="h-4 w-px bg-line-strong mx-1"></div><div class="flex items-center gap-2 bg-bg-inset border border-line px-2.5 py-1 rounded"><span class="material-symbols-outlined text-[16px] text-paper-secondary">description</span><span class="font-code-quote text-code-quote text-paper-secondary">rental_agreement.pdf</span><span class="font-badge-label text-[10px] px-1.5 py-0.2 bg-bg-raised text-paper-muted border border-line-strong rounded">12 pages</span></div></div><div class="flex items-center gap-4"><div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container-low border border-line rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-ember"></span><span class="font-badge-label text-badge-label text-paper-muted">Informational only. Not legal advice.</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><div class="pt-14 w-full"><div class="w-full bg-bg-app border-b border-line px-6 py-3.5"><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><div class="bg-bg-surface border border-line rounded p-3 flex flex-col"><span class="font-caption-default text-caption-default text-paper-muted uppercase tracking-wider text-[11px]">Findings</span><span class="font-stat-numeral text-stat-numeral text-primary-container leading-none mt-1">14</span></div><div class="bg-bg-surface border border-line rounded p-3 flex flex-col"><span class="font-caption-default text-caption-default text-paper-muted uppercase tracking-wider text-[11px]">Quote found</span><span class="font-stat-numeral text-stat-numeral text-paper-primary leading-none mt-1">11</span></div><div class="bg-bg-surface border border-line rounded p-3 flex flex-col"><span class="font-caption-default text-caption-default text-paper-muted uppercase tracking-wider text-[11px]">Need review</span><span class="font-stat-numeral text-stat-numeral text-ember leading-none mt-1">4</span></div><div class="bg-bg-surface border border-line rounded p-3 flex flex-col"><span class="font-caption-default text-caption-default text-paper-muted uppercase tracking-wider text-[11px]">Elapsed</span><span class="font-code-quote text-[28px] font-semibold text-paper-secondary leading-none mt-2">02:41</span></div></div></div><main class="w-full p-6"><div class="flex flex-col w-full">
+<!-- Top Stage & Format Switcher Header -->
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-code-quote text-[11px] tracking-widest text-primary-container uppercase bg-bg-inset px-2.5 py-0.5 rounded border border-line-strong">
+            STAGE 04 • TRIAGE ARTIFACTS • REPORT SYNTHESIS
+          </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-local-teal/10 text-local-teal border border-local-teal/30 text-badge-label font-badge-label">
+<span class="material-symbols-outlined text-[13px]">lock</span>
+            Air-Gapped Synthesis
+          </span>
+</div>
+<h1 class="font-headline-h1 text-headline-h1 text-paper-primary tracking-tight">
+          Export your report
+        </h1>
+<p class="font-body-default text-body-default text-paper-muted max-w-2xl">
+          Generated on demand from local in-memory session. Nothing has been sent to any cloud server or external API.
+        </p>
+</div>
+<!-- Format Switcher Segmented Control -->
+<div class="flex items-center p-1 rounded-xl bg-bg-surface border border-line shadow-sm self-start lg:self-center">
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-bg-raised text-paper-primary border border-line-strong shadow-sm font-badge-label text-badge-label transition-all" id="btn-format-md" onclick="switchFormat('md')" type="button">
+<span class="material-symbols-outlined text-[17px] text-primary-container">article</span>
+<span>Markdown (.md)</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-lg text-paper-muted hover:text-paper-primary hover:bg-bg-raised/50 font-badge-label text-badge-label transition-all" id="btn-format-txt" onclick="switchFormat('txt')" type="button">
+<span class="material-symbols-outlined text-[17px]">format_align_left</span>
+<span>Plain Text (.txt)</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-lg text-paper-muted hover:text-paper-primary hover:bg-bg-raised/50 font-badge-label text-badge-label transition-all" id="btn-format-json" onclick="switchFormat('json')" type="button">
+<span class="material-symbols-outlined text-[17px]">data_object</span>
+<span>JSON Audit Log (.json)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Asymmetric Workspace Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN: Physical Paper Sheet Document Preview (approx 60% -> 7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<!-- Preview Pane Auxiliary Controls Bar -->
+<div class="flex items-center justify-between px-3 py-2 bg-bg-surface border border-line rounded-lg">
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1.5 text-paper-secondary font-caption-default text-caption-default">
+<span class="material-symbols-outlined text-[16px] text-primary-container">visibility</span>
+<span>Desk Viewport Preview</span>
+</span>
+<span class="text-line-strong">•</span>
+<span class="font-code-quote text-[11px] text-paper-muted">RENDERED IN MEMORY (UTF-8)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded hover:bg-bg-raised text-paper-muted hover:text-paper-primary transition-colors" onclick="zoomSheet()" title="Zoom preview" type="button">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span>
+</button>
+<button class="p-1.5 rounded hover:bg-bg-raised text-paper-muted hover:text-paper-primary transition-colors" onclick="printPreview()" title="Print document" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</div>
+<!-- Physical Paper Presentation Canvas -->
+<div class="relative w-full p-2 sm:p-4 rounded-2xl bg-bg-inset border border-line overflow-hidden">
+<!-- Tactile Paper Desk Sheet with subtle rotation & deep authentic shadow -->
+<div class="w-full transition-transform duration-300 origin-top-left" id="paper-sheet" style="transform: rotate(0.4deg); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(0, 0, 0, 0.4);">
+<!-- Physical Paper Surface (Warm Cream Printed Stock) -->
+<article class="w-full bg-[#F5EFE3] text-[#1C1A16] rounded-[2px] p-8 sm:p-12 relative select-text border-l-[3px] border-[#DDD5C5]">
+<!-- Paper Header Stamp / Top Bar -->
+<div class="flex flex-col border-b-2 border-[#1C1A16] pb-5 mb-6">
+<div class="flex items-start justify-between gap-4">
+<div>
+<span class="font-code-quote text-[11px] tracking-wider uppercase text-[#6B6355] block mb-1">Redline Local Dossier // Private Triage</span>
+<h2 class="font-headline-h2 text-headline-h2 text-[#1C1A16] leading-tight">REDLINE LOCAL TRIAGE REPORT</h2>
+<div class="font-code-quote text-[13px] font-semibold text-[#3B362C] mt-0.5">TARGET: rental_agreement.pdf</div>
+</div>
+<div class="text-right shrink-0">
+<div class="inline-block border-2 border-[#1C1A16] px-2.5 py-1 text-center bg-[#EFE7D8]">
+<span class="font-code-quote text-[10px] font-bold block leading-none tracking-widest text-[#1C1A16]">CONFIDENTIAL</span>
+<span class="font-code-quote text-[9px] block text-[#6B6355] mt-0.5">LOCAL HOST ONLY</span>
+</div>
+</div>
+</div>
+<!-- Metadata Details Block -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 pt-3 border-t border-[#DDD5C5] font-code-quote text-[11px] text-[#4A4437]">
+<div><span class="text-[#8C8373] block">SHA-256</span>fd81..309c</div>
+<div><span class="text-[#8C8373] block">Engine</span>Gemma 3B local (e2b)</div>
+<div><span class="text-[#8C8373] block">Length</span>12 pages (3,418 tokens)</div>
+<div><span class="text-[#8C8373] block">Triage Date</span>Oct 24, 2024 • 14:32</div>
+</div>
+</div>
+<!-- Mandatory Legal Notice Banner inside the physical paper -->
+<div class="bg-[#ECE4D4] border-l-4 border-[#C88A2B] p-3.5 mb-8 rounded-r">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#A66E14] shrink-0 mt-0.5">warning</span>
+<p class="font-body-default text-[12px] leading-[18px] text-[#3E382E]">
+<strong class="font-semibold text-[#1C1A16]">IMPORTANT DISCLAIMER:</strong> This document is an algorithmic triage extract for informational review only and does not constitute formal legal advice. A quote found in the target document does not mean the interpretation is legally sound, valid, or enforceable under applicable jurisdictional law.
+                </p>
+</div>
+</div>
+<!-- Section 1: Executive Summary & Overview -->
+<section class="mb-8">
+<div class="flex items-center gap-2 mb-3">
+<span class="font-code-quote text-[12px] font-bold text-[#8C8373]">§ 01</span>
+<h3 class="font-headline-h3 text-headline-h3 text-[#1C1A16]">Executive Summary &amp; Metric Breakdown</h3>
+</div>
+<p class="font-body-default text-[14px] leading-[22px] text-[#2C2923] mb-4">
+                Preliminary structural triage completed across 12 source pages. The agreement represents a standard high-density residential lease with several uncommonly restrictive tenant covenants and unilateral fee structures.
+              </p>
+<!-- Metric Tiles in Paper styling -->
+<div class="grid grid-cols-3 gap-3 p-3 bg-[#EFE8DC] border border-[#DDD5C5] rounded mb-3">
+<div class="flex flex-col">
+<span class="font-code-quote text-[10px] text-[#786E5E] uppercase tracking-wider">Total Findings</span>
+<span class="font-stat-numeral text-[28px] font-bold leading-tight text-[#1C1A16]">14</span>
+</div>
+<div class="flex flex-col border-l border-[#DDD5C5] pl-3">
+<span class="font-code-quote text-[10px] text-[#786E5E] uppercase tracking-wider">Quotes Verified</span>
+<span class="font-stat-numeral text-[28px] font-bold leading-tight text-[#2D628F]">11</span>
+</div>
+<div class="flex flex-col border-l border-[#DDD5C5] pl-3">
+<span class="font-code-quote text-[10px] text-[#786E5E] uppercase tracking-wider">Flagged for Review</span>
+<span class="font-stat-numeral text-[28px] font-bold leading-tight text-[#A84B29]">4</span>
+</div>
+</div>
+</section>
+<!-- Section 2: Flagged Clauses Requiring Human Review -->
+<section class="mb-8">
+<div class="flex items-center gap-2 mb-3">
+<span class="font-code-quote text-[12px] font-bold text-[#8C8373]">§ 02</span>
+<h3 class="font-headline-h3 text-headline-h3 text-[#1C1A16]">Flagged Clauses Requiring Human Review</h3>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Flagged Item 1 -->
+<div class="p-3.5 bg-[#FAF6EE] border-l-2 border-[#D96B43] rounded-r border-t border-r border-b border-[#E3DAC9]">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">1. Liquidated Early Termination Penalty</span>
+<span class="font-code-quote text-[11px] text-[#9E4D2B] bg-[#F7E5DE] px-2 py-0.5 rounded">Page 7, §8.4</span>
+</div>
+<blockquote class="font-code-quote text-[12px] leading-[19px] text-[#332F27] bg-[#EFE8DC] p-2.5 rounded border border-[#E0D7C6] mb-2">
+                    "Tenant shall forfeit entirety of Security Deposit plus an early termination assessment fee equivalent to 200% of standard monthly rate ($7,700) regardless of re-letting mitigation."
+                  </blockquote>
+<div class="flex items-center gap-2">
+<span class="font-code-quote text-[11px] text-[#554D3F]"><strong>Jurisdiction Note:</strong> Unmitigated double recovery penalties may conflict with CA Civil Code § 1951.2.</span>
+</div>
+</div>
+<!-- Flagged Item 2 -->
+<div class="p-3.5 bg-[#FAF6EE] border-l-2 border-[#D96B43] rounded-r border-t border-r border-b border-[#E3DAC9]">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-headline-h3 text-[14px] font-semibold text-[#1C1A16]">2. Unannounced Landlord Right of Entry</span>
+<span class="font-code-quote text-[11px] text-[#9E4D2B] bg-[#F7E5DE] px-2 py-0.5 rounded">Page 4, §5.2</span>
+</div>
+<blockquote class="font-code-quote text-[12px] leading-[19px] text-[#332F27] bg-[#EFE8DC] p-2.5 rounded border border-[#E0D7C6] mb-2">
+                    "Lessor reserves immediate unannounced right of physical ingress during standard daytime hours (08:00 to 18:00) for prospective inspection without prior 24-hour delivery."
+                  </blockquote>
+<div class="flex items-center gap-2">
+<span class="font-code-quote text-[11px] text-[#554D3F]"><strong>Statutory Conflict:</strong> Deviates from statutory 24h written notice rule.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Extracted Key Facts (Structured mini-table) -->
+<section class="mb-8">
+<div class="flex items-center gap-2 mb-3">
+<span class="font-code-quote text-[12px] font-bold text-[#8C8373]">§ 03</span>
+<h3 class="font-headline-h3 text-headline-h3 text-[#1C1A16]">Extracted Key Facts</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-default text-[13px] border-collapse">
+<thead>
+<tr class="border-b-2 border-[#1C1A16] font-code-quote text-[11px] text-[#5C5345]">
+<th class="py-1.5 px-2 font-semibold">PARAMETER</th>
+<th class="py-1.5 px-2 font-semibold">EXTRACTED VALUE</th>
+<th class="py-1.5 px-2 font-semibold">LOCATOR</th>
+<th class="py-1.5 px-2 font-semibold">CONFIDENCE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#DDD5C5]">
+<tr>
+<td class="py-2 px-2 font-medium">Monthly Rent</td>
+<td class="py-2 px-2 font-code-quote font-semibold text-[#1C1A16]">$3,850.00 USD</td>
+<td class="py-2 px-2 font-code-quote text-[11px] text-[#6E6454]">Page 2, §2.1</td>
+<td class="py-2 px-2 text-[#2D628F] font-code-quote text-[11px]">100% Verbatim</td>
+</tr>
+<tr>
+<td class="py-2 px-2 font-medium">Security Deposit</td>
+<td class="py-2 px-2 font-code-quote font-semibold text-[#1C1A16]">$7,700.00 USD (2x monthly)</td>
+<td class="py-2 px-2 font-code-quote text-[11px] text-[#6E6454]">Page 3, §3.0</td>
+<td class="py-2 px-2 text-[#2D628F] font-code-quote text-[11px]">100% Verbatim</td>
+</tr>
+<tr>
+<td class="py-2 px-2 font-medium">Notice of Non-Renewal</td>
+<td class="py-2 px-2 font-code-quote font-semibold text-[#1C1A16]">60 Calendar Days in writing</td>
+<td class="py-2 px-2 font-code-quote text-[11px] text-[#6E6454]">Page 8, §9.2</td>
+<td class="py-2 px-2 text-[#2D628F] font-code-quote text-[11px]">100% Verbatim</td>
+</tr>
+<tr>
+<td class="py-2 px-2 font-medium">Grace Period for Rent</td>
+<td class="py-2 px-2 font-code-quote font-semibold text-[#1C1A16]">3 Calendar Days (Late: $150)</td>
+<td class="py-2 px-2 font-code-quote text-[11px] text-[#6E6454]">Page 2, §2.3</td>
+<td class="py-2 px-2 text-[#2D628F] font-code-quote text-[11px]">100% Verbatim</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 4: Standard Clause Checklist Summary -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="font-code-quote text-[12px] font-bold text-[#8C8373]">§ 04</span>
+<h3 class="font-headline-h3 text-headline-h3 text-[#1C1A16]">Standard Clause Checklist</h3>
+</div>
+<span class="font-code-quote text-[11px] text-[#554D3F] bg-[#E9E1D2] px-2 py-0.5 rounded">9 Matched / 5 Gaps</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-body-default text-[13px]">
+<div class="flex items-center justify-between p-2 rounded bg-[#EFE8DC] border border-[#DDD5C5]">
+<span class="flex items-center gap-1.5 text-[#2C2923]">
+<span class="material-symbols-outlined text-[16px] text-[#2D628F]">check_circle</span>
+                    Joint &amp; Several Liability
+                  </span>
+<span class="font-code-quote text-[11px] text-[#6E6454]">Found (p.11)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-[#EFE8DC] border border-[#DDD5C5]">
+<span class="flex items-center gap-1.5 text-[#2C2923]">
+<span class="material-symbols-outlined text-[16px] text-[#2D628F]">check_circle</span>
+                    Subletting Restrictions
+                  </span>
+<span class="font-code-quote text-[11px] text-[#6E6454]">Found (p.6)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-[#FAF6EE] border border-[#E3DAC9]">
+<span class="flex items-center gap-1.5 text-[#736A5B]">
+<span class="material-symbols-outlined text-[16px] text-[#C48425]">radio_button_unchecked</span>
+                    Quiet Enjoyment Covenant
+                  </span>
+<span class="font-code-quote text-[11px] text-[#A66E14]">No match</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-[#FAF6EE] border border-[#E3DAC9]">
+<span class="flex items-center gap-1.5 text-[#736A5B]">
+<span class="material-symbols-outlined text-[16px] text-[#C48425]">radio_button_unchecked</span>
+                    Habitability Cure Window
+                  </span>
+<span class="font-code-quote text-[11px] text-[#A66E14]">No match</span>
+</div>
+</div>
+</section>
+<!-- Section 5: Ask Session Audit -->
+<section class="mb-8">
+<div class="flex items-center gap-2 mb-3">
+<span class="font-code-quote text-[12px] font-bold text-[#8C8373]">§ 05</span>
+<h3 class="font-headline-h3 text-headline-h3 text-[#1C1A16]">Ask Session Audit (Excerpt)</h3>
+</div>
+<div class="p-3 bg-[#EFE8DC] rounded border border-[#DDD5C5]">
+<div class="font-code-quote text-[11px] font-semibold text-[#1C1A16] mb-1">
+                  Q: "Can the landlord charge for carpet cleaning automatically upon move-out?"
+                </div>
+<p class="font-body-default text-[12px] leading-[18px] text-[#3E382E] mb-2">
+                  A: Clause §6.3 specifies a mandatory $350 non-negotiable deduction for professional deep cleaning, regardless of return condition. Under California law, routine non-damage cleaning deductions from security deposits are heavily restricted.
+                </p>
+<div class="font-code-quote text-[10px] text-[#6E6454]">
+                  Grounded Citation: Page 5, §6.3 [Hash: 3f8b0e..2a19]
+                </div>
+</div>
+</section>
+<!-- Paper Footer & Monospace Verification Seal -->
+<footer class="pt-6 border-t-2 border-[#1C1A16] flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#1C1A16]">shield_lock</span>
+<span class="font-code-quote text-[11px] text-[#4A4437]">
+                  Air-gap verification hash: <strong class="text-[#1C1A16]">9d7a2..4e11</strong>
+</span>
+</div>
+<div class="font-code-quote text-[11px] tracking-wide text-[#786E5E] uppercase">
+                Zero network bytes transferred
+              </div>
+</footer>
+</article>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Export Controls & Details (approx 40% -> 5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Card 1: What's Inside This Report -->
+<div class="bg-bg-surface border border-line rounded-xl p-6 flex flex-col shadow-sm">
+<div class="flex items-center justify-between pb-4 border-b border-line mb-5">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-container text-[22px]">inventory_2</span>
+<h3 class="font-headline-h3 text-headline-h3 text-paper-primary">What's inside this report</h3>
+</div>
+<span class="font-badge-label text-[11px] px-2 py-0.5 rounded bg-bg-raised text-paper-muted border border-line-strong">
+            5 Sections
+          </span>
+</div>
+<ul class="flex flex-col gap-3.5 mb-6">
+<li class="flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-secondary/10 border border-secondary/30 text-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">format_quote</span>
+</span>
+<div class="flex flex-col">
+<span class="font-body-default text-body-default text-paper-primary font-medium leading-snug">14 Candidate findings with verbatim quotes</span>
+<span class="font-caption-default text-caption-default text-paper-muted">Mapped to source PDF page references and clause indices.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-primary-container/10 border border-primary-container/30 text-primary-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">table_chart</span>
+</span>
+<div class="flex flex-col">
+<span class="font-body-default text-body-default text-paper-primary font-medium leading-snug">Key facts extraction table</span>
+<span class="font-caption-default text-caption-default text-paper-muted">Rent figures, security deposit sums, notice windows, and penalty grace days.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-tertiary-fixed-dim/10 border border-tertiary-fixed-dim/30 text-tertiary-fixed-dim flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">rule</span>
+</span>
+<div class="flex flex-col">
+<span class="font-body-default text-body-default text-paper-primary font-medium leading-snug">Standard clause coverage checklist</span>
+<span class="font-caption-default text-caption-default text-paper-muted">Identified lease safeguards vs 5 silent/unaddressed tenant risk gaps.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-local-teal/10 border border-local-teal/30 text-local-teal flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">forum</span>
+</span>
+<div class="flex flex-col">
+<span class="font-body-default text-body-default text-paper-primary font-medium leading-snug">Interactive session Q&amp;A record</span>
+<span class="font-caption-default text-caption-default text-paper-muted">Full query history accompanied by grounded passage hashes.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-ember/10 border border-ember/30 text-ember flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">gavel</span>
+</span>
+<div class="flex flex-col">
+<span class="font-body-default text-body-default text-paper-primary font-medium leading-snug">Explicit scope boundaries &amp; disclaimer</span>
+<span class="font-caption-default text-caption-default text-paper-muted">Strict adherence to non-advice verification thresholds.</span>
+</div>
+</li>
+</ul>
+<!-- Quote Honesty Callout Box -->
+<div class="p-3.5 bg-bg-inset border-l-2 border-primary-container rounded-r flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-container text-[18px] shrink-0 mt-0.5">lightbulb</span>
+<p class="font-caption-default text-caption-default text-paper-secondary leading-relaxed">
+<strong class="text-paper-primary font-medium">Quote Honesty Notice:</strong> A quote found in the document does not mean the reading is legally valid. The exported report explicitly documents these evidentiary boundaries.
+          </p>
+</div>
+</div>
+<!-- Card 2: Primary Download Actions -->
+<div class="bg-bg-surface border border-line rounded-xl p-6 flex flex-col shadow-sm">
+<h3 class="font-headline-h3 text-headline-h3 text-paper-primary mb-1">Export Generation</h3>
+<p class="font-caption-default text-caption-default text-paper-muted mb-4">
+          Select target format or save the synthesis artifact to your local storage drive.
+        </p>
+<!-- Main Prominent Action Button -->
+<button class="w-full h-11 rounded-lg bg-primary-container text-marker-dark font-body-default text-body-default font-semibold flex items-center justify-center gap-2 hover:brightness-105 active:scale-[0.99] transition-all shadow-sm mb-3" id="primary-download-btn" onclick="triggerDownload()" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span id="primary-btn-label">Download Markdown report (.md)</span>
+</button>
+<!-- Secondary Action Buttons Row -->
+<div class="grid grid-cols-2 gap-3 mb-4">
+<button class="h-11 rounded-lg border border-line-strong bg-transparent text-paper-primary hover:bg-bg-raised font-body-default text-body-default font-medium flex items-center justify-center gap-2 transition-colors" onclick="copyReport()" type="button">
+<span class="material-symbols-outlined text-[18px] text-paper-muted">content_copy</span>
+<span>Copy to clipboard</span>
+</button>
+<button class="h-11 rounded-lg border border-line-strong bg-transparent text-paper-primary hover:bg-bg-raised font-body-default text-body-default font-medium flex items-center justify-center gap-2 transition-colors" onclick="switchFormat('json'); triggerDownload();" type="button">
+<span class="material-symbols-outlined text-[18px] text-paper-muted">receipt_long</span>
+<span>Raw JSON audit</span>
+</button>
+</div>
+<!-- Telemetry Caption -->
+<div class="flex items-center justify-between pt-3 border-t border-line text-paper-muted font-code-quote text-[11px]">
+<span>Est. size: 28.4 KB</span>
+<span>In-memory only</span>
+<span>Volatile on exit</span>
+</div>
+</div>
+<!-- Card 3: Privacy & Data Retention Guarantee -->
+<div class="bg-bg-surface border border-line rounded-xl p-6 flex flex-col shadow-sm relative overflow-hidden">
+<!-- Ambient subtle background glow -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 rounded-full bg-local-teal/5 blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-2.5 mb-3">
+<div class="w-8 h-8 rounded-lg bg-local-teal/10 border border-local-teal/30 flex items-center justify-center text-local-teal">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline-h3 text-[15px] text-paper-primary leading-tight">Zero-Telemetry Pipeline</h4>
+<span class="font-badge-label text-[11px] text-local-teal font-medium">100% In-Memory Generation</span>
+</div>
+</div>
+<p class="font-body-default text-[13px] leading-[20px] text-paper-secondary mb-4">
+          This report is compiled purely in browser RAM from local PyPDF text chunks. No telemetry, device fingerprints, or contract text are ever written to remote disk or sent across an external socket.
+        </p>
+<div class="flex items-center justify-between p-2.5 bg-bg-inset border border-line rounded font-code-quote text-[11px]">
+<span class="text-paper-muted">SESSION_RETENTION_MODE</span>
+<span class="text-local-teal font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-local-teal animate-breathing"></span>
+            EPHEMERAL_VOLATILE
+          </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Toast (Hidden by default, triggered on actions) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-12 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 bg-bg-raised border border-line-strong px-4 py-3 rounded-xl shadow-2xl" id="toast-export">
+<span class="material-symbols-outlined text-local-teal text-[20px]">check_circle</span>
+<span class="font-body-default text-[13px] text-paper-primary" id="toast-text">Report copied to local clipboard.</span>
+</div>
+</div>
+<script>
+  let currentFormat = 'md';
+  let isZoomed = false;
+
+  function switchFormat(fmt) {
+    currentFormat = fmt;
+    
+    // Update button states
+    const formats = ['md', 'txt', 'json'];
+    formats.forEach(f => {
+      const btn = document.getElementById('btn-format-' + f);
+      if (!btn) return;
+      if (f === fmt) {
+        btn.className = "flex items-center gap-2 px-3.5 py-2 rounded-lg bg-bg-raised text-paper-primary border border-line-strong shadow-sm font-badge-label text-badge-label transition-all";
+        if (!btn.querySelector('.bg-primary-container')) {
+          const dot = document.createElement('span');
+          dot.className = "w-1.5 h-1.5 rounded-full bg-primary-container";
+          btn.appendChild(dot);
+        }
+      } else {
+        btn.className = "flex items-center gap-2 px-3.5 py-2 rounded-lg text-paper-muted hover:text-paper-primary hover:bg-bg-raised/50 font-badge-label text-badge-label transition-all";
+        const dot = btn.querySelector('.bg-primary-container');
+        if (dot) dot.remove();
+      }
+    });
+
+    // Update Primary button label
+    const label = document.getElementById('primary-btn-label');
+    if (fmt === 'md') {
+      label.textContent = "Download Markdown report (.md)";
+    } else if (fmt === 'txt') {
+      label.textContent = "Download Plain Text report (.txt)";
+    } else if (fmt === 'json') {
+      label.textContent = "Download JSON Audit Log (.json)";
+    }
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast-export');
+    const toastText = document.getElementById('toast-text');
+    toastText.textContent = msg;
+    toast.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      toast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 2800);
+  }
+
+  function triggerDownload() {
+    const filenames = {
+      md: 'redline_triage_rental_agreement.md',
+      txt: 'redline_triage_rental_agreement.txt',
+      json: 'redline_audit_rental_agreement.json'
+    };
+    showToast(`Saved ${filenames[currentFormat]} locally (${currentFormat.toUpperCase()})`);
+  }
+
+  function copyReport() {
+    showToast("Report text formatted and copied to clipboard.");
+  }
+
+  function zoomSheet() {
+    const sheet = document.getElementById('paper-sheet');
+    isZoomed = !isZoomed;
+    if (isZoomed) {
+      sheet.style.transform = 'scale(1.03) rotate(0deg)';
+    } else {
+      sheet.style.transform = 'rotate(0.4deg)';
+    }
+  }
+
+  function printPreview() {
+    window.print();
+  }
+</script></main></div></div></body></html>
