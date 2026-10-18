@@ -150,13 +150,14 @@ def test_full_pipeline_citations_and_pages(fixture_path, cfg, client, run_log):
 def test_question_answering_recorded(fixture_path, cfg, client, run_log):
     session = DocumentSession(fixture_path, client, cfg)
     answer = session.ask("How many days' notice must the employee give to resign after probation?", model=MODEL)
-    if answer.answerable:
-        assert any(e.verification_status == "verified" for e in answer.evidence)
     run_log["results"]["qa_notice"] = {
         "answerable": answer.answerable,
-        "contains_expected_fact_45": KNOWN["notice"] in answer.answer,  # recorded, not asserted
+        "contains_expected_fact_45": KNOWN["notice"] in answer.answer,
         "evidence_verified": [e.verification_status for e in answer.evidence],
     }
+    assert answer.answerable, f"Question should be answerable, got: {answer.answer} (notes: {answer.notes})"
+    assert KNOWN["notice"] in answer.answer, f"Answer should mention 45 days, got: {answer.answer}"
+    assert any(e.verification_status == "verified" for e in answer.evidence), "At least one evidence quote must be verified"
 
 
 def test_only_selected_model_is_resident(client, run_log):

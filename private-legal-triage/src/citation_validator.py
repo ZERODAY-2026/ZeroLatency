@@ -1,3 +1,4 @@
+import difflib
 import re
 import unicodedata
 
@@ -38,14 +39,37 @@ class SourceIndex:
     def has_page(self, number: int) -> bool:
         return number in self.raw
 
+    def _fuzzy_match_page(self, needle: str, page_text: str, threshold: float = 0.85) -> bool:
+        words = page_text.split()
+        n_words = len(needle.split())
+        if n_words < 4:
+            return False
+        # Windowed sequence matching
+        step = max(1, n_words // 4)
+        for i in range(0, max(1, len(words) - n_words + 1), step):
+            chunk = " ".join(words[i : i + n_words])
+            sm = difflib.SequenceMatcher(None, needle, chunk)
+            if sm.quick_ratio() >= threshold and sm.ratio() >= threshold:
+                return True
+        return False
+
     def locate(self, quote: str, preferred: int | None = None) -> int | None:
         needle = normalize(quote.strip(QUOTE_EDGES))
         if len(needle) < self.min_quote_chars:
             return None
+        # 1. Exact match on preferred page
         if preferred in self.normalized and needle in self.normalized[preferred]:
             return preferred
+        # 2. Exact match on any page
         for number in sorted(self.normalized):
             if needle in self.normalized[number]:
+                return number
+        # 3. High-confidence fuzzy match on preferred page
+        if preferred in self.normalized and self._fuzzy_match_page(needle, self.normalized[preferred]):
+            return preferred
+        # 4. High-confidence fuzzy match on any page
+        for number in sorted(self.normalized):
+            if self._fuzzy_match_page(needle, self.normalized[number]):
                 return number
         return None
 

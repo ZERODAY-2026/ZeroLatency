@@ -86,7 +86,9 @@ class TriageResult(BaseModel):
 class ModelAnswer(BaseModel):
     answerable: bool
     answer: str
-    evidence_quotes: list[str] = Field(default_factory=list)
+    evidence_quotes: list[str] = Field(
+        description="Exact quotes copied verbatim from the document passage that support the answer. If unanswerable, provide an empty list []."
+    )
     statement_type: StatementType = "explicit"
     jurisdiction_dependent: bool = False
 
@@ -94,6 +96,7 @@ class ModelAnswer(BaseModel):
 class Evidence(BaseModel):
     quote: str
     page: int | None
+    chunk_id: str | None = None
     verification_status: Verification
 
 
@@ -109,3 +112,5 @@ class Answer(BaseModel):
     notes: list[str] = Field(default_factory=list)
     ungrounded_figures: list[str] = Field(default_factory=list)
     model: str | None = None
+    abstention_reason: str | None = None
+    limitations: list[str] = Field(default_factory=list)

@@ -5,7 +5,7 @@
 
 ## Setup
 
-- Dataset: CUAD `aok_v1.0`, source commit `67faa0e6023b04fcaae6cc09497ab00e5d63a2a2`, data.zip sha256 `f8161d18bea4e9c05e78fa6dda61c19c846fb8087ea969c172753bc2f45b999a`
+- Dataset: CUAD `aok_v1.0`, source commit `unknown`, data.zip sha256 `unknown`
 - Subset: 40 of 510 contracts, `random.Random(2026).sample` over alphabetically sorted titles (no manual picking)
 - Contracts evaluated: 40; mean chunks per contract: 36.5
 - Retriever: bm25; chunking = application default (chunk_max_chars=2400)
@@ -18,55 +18,55 @@
 
 | Query type | Queries | R@1 | chance@1 | R@3 | chance@3 | R@4 | chance@4 | R@5 | chance@5 | MRR@5 | mean relevant chunks |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ALL | 678 | 0.538 | 0.066 | 0.74 | 0.187 | 0.779 | 0.242 | 0.802 | 0.293 | 0.644 | 2.08 |
-| category | 339 | 0.543 | 0.066 | 0.717 | 0.187 | 0.755 | 0.242 | 0.773 | 0.293 | 0.636 | 2.08 |
-| details | 339 | 0.534 | 0.066 | 0.764 | 0.187 | 0.802 | 0.242 | 0.832 | 0.293 | 0.653 | 2.08 |
+| ALL | 678 | 0.605 | 0.066 | 0.788 | 0.187 | 0.816 | 0.242 | 0.835 | 0.293 | 0.695 | 2.08 |
+| category | 339 | 0.587 | 0.066 | 0.74 | 0.187 | 0.782 | 0.242 | 0.802 | 0.293 | 0.669 | 2.08 |
+| details | 339 | 0.622 | 0.066 | 0.835 | 0.187 | 0.85 | 0.242 | 0.867 | 0.293 | 0.721 | 2.08 |
 
 ## By clause type
 
 | Query type \| CUAD label | Queries | R@1 | R@3 | R@5 | chance@3 |
 |---|---|---|---|---|---|
-| category | Anti-Assignment | 33 | 0.576 | 0.848 | 0.909 | 0.201 |
-| category | Audit Rights | 21 | 0.524 | 0.714 | 0.714 | 0.157 |
-| category | Cap On Liability | 30 | 0.533 | 0.667 | 0.733 | 0.221 |
+| category | Anti-Assignment | 33 | 0.788 | 1.0 | 1.0 | 0.201 |
+| category | Audit Rights | 21 | 0.571 | 0.714 | 0.714 | 0.157 |
+| category | Cap On Liability | 30 | 0.533 | 0.667 | 0.8 | 0.221 |
 | category | Change Of Control | 10 | 0.6 | 0.6 | 0.7 | 0.071 |
-| category | Covenant Not To Sue | 5 | 0.0 | 0.0 | 0.0 | 0.129 |
+| category | Covenant Not To Sue | 5 | 0.0 | 0.0 | 0.2 | 0.129 |
 | category | Exclusivity | 17 | 0.176 | 0.294 | 0.294 | 0.182 |
 | category | Expiration Date | 34 | 0.176 | 0.441 | 0.529 | 0.188 |
-| category | Governing Law | 36 | 0.75 | 0.861 | 0.889 | 0.169 |
+| category | Governing Law | 36 | 0.889 | 0.972 | 1.0 | 0.169 |
 | category | Insurance | 19 | 1.0 | 1.0 | 1.0 | 0.172 |
-| category | License Grant | 22 | 0.682 | 0.909 | 0.955 | 0.262 |
+| category | License Grant | 22 | 0.818 | 0.955 | 0.955 | 0.262 |
 | category | Liquidated Damages | 4 | 0.75 | 0.75 | 0.75 | 0.156 |
-| category | Minimum Commitment | 13 | 0.615 | 0.692 | 0.769 | 0.219 |
+| category | Minimum Commitment | 13 | 0.615 | 0.769 | 0.846 | 0.219 |
 | category | No-Solicit Of Employees | 5 | 1.0 | 1.0 | 1.0 | 0.153 |
 | category | Non-Compete | 9 | 0.333 | 0.444 | 0.444 | 0.18 |
 | category | Non-Disparagement | 5 | 0.4 | 0.4 | 0.4 | 0.199 |
 | category | Notice Period To Terminate Renewal | 10 | 0.7 | 0.9 | 1.0 | 0.179 |
-| category | Post-Termination Services | 17 | 0.353 | 0.647 | 0.941 | 0.166 |
-| category | Renewal Term | 15 | 0.733 | 1.0 | 1.0 | 0.17 |
-| category | Termination For Convenience | 19 | 0.474 | 0.789 | 0.895 | 0.213 |
+| category | Post-Termination Services | 17 | 0.294 | 0.647 | 0.824 | 0.166 |
+| category | Renewal Term | 15 | 0.667 | 0.867 | 1.0 | 0.17 |
+| category | Termination For Convenience | 19 | 0.579 | 0.842 | 0.947 | 0.213 |
 | category | Uncapped Liability | 8 | 0.5 | 0.625 | 0.625 | 0.101 |
-| category | Warranty Duration | 7 | 0.571 | 0.857 | 0.857 | 0.265 |
-| details | Anti-Assignment | 33 | 0.485 | 0.697 | 0.818 | 0.201 |
-| details | Audit Rights | 21 | 0.762 | 1.0 | 1.0 | 0.157 |
-| details | Cap On Liability | 30 | 0.6 | 0.8 | 0.9 | 0.221 |
-| details | Change Of Control | 10 | 0.5 | 0.7 | 0.7 | 0.071 |
-| details | Covenant Not To Sue | 5 | 0.4 | 0.8 | 0.8 | 0.129 |
-| details | Exclusivity | 17 | 0.235 | 0.412 | 0.471 | 0.182 |
-| details | Expiration Date | 34 | 0.529 | 0.765 | 0.882 | 0.188 |
-| details | Governing Law | 36 | 0.583 | 0.889 | 0.917 | 0.169 |
-| details | Insurance | 19 | 0.684 | 0.947 | 1.0 | 0.172 |
-| details | License Grant | 22 | 0.364 | 0.591 | 0.818 | 0.262 |
-| details | Liquidated Damages | 4 | 0.5 | 0.75 | 0.75 | 0.156 |
-| details | Minimum Commitment | 13 | 0.308 | 0.538 | 0.692 | 0.219 |
-| details | No-Solicit Of Employees | 5 | 0.4 | 0.6 | 0.6 | 0.153 |
-| details | Non-Compete | 9 | 0.111 | 0.333 | 0.333 | 0.18 |
-| details | Non-Disparagement | 5 | 0.2 | 0.4 | 0.4 | 0.199 |
+| category | Warranty Duration | 7 | 0.429 | 0.571 | 0.857 | 0.265 |
+| details | Anti-Assignment | 33 | 0.818 | 0.939 | 0.97 | 0.201 |
+| details | Audit Rights | 21 | 0.857 | 1.0 | 1.0 | 0.157 |
+| details | Cap On Liability | 30 | 0.6 | 0.9 | 0.933 | 0.221 |
+| details | Change Of Control | 10 | 0.4 | 0.7 | 0.7 | 0.071 |
+| details | Covenant Not To Sue | 5 | 0.6 | 0.8 | 0.8 | 0.129 |
+| details | Exclusivity | 17 | 0.294 | 0.471 | 0.471 | 0.182 |
+| details | Expiration Date | 34 | 0.441 | 0.794 | 0.824 | 0.188 |
+| details | Governing Law | 36 | 0.889 | 1.0 | 1.0 | 0.169 |
+| details | Insurance | 19 | 0.842 | 0.947 | 1.0 | 0.172 |
+| details | License Grant | 22 | 0.455 | 0.818 | 0.864 | 0.262 |
+| details | Liquidated Damages | 4 | 0.5 | 0.5 | 1.0 | 0.156 |
+| details | Minimum Commitment | 13 | 0.385 | 0.615 | 0.692 | 0.219 |
+| details | No-Solicit Of Employees | 5 | 0.8 | 1.0 | 1.0 | 0.153 |
+| details | Non-Compete | 9 | 0.222 | 0.222 | 0.333 | 0.18 |
+| details | Non-Disparagement | 5 | 0.2 | 0.6 | 0.6 | 0.199 |
 | details | Notice Period To Terminate Renewal | 10 | 0.6 | 0.9 | 1.0 | 0.179 |
-| details | Post-Termination Services | 17 | 0.529 | 0.882 | 0.882 | 0.166 |
-| details | Renewal Term | 15 | 0.733 | 0.867 | 0.933 | 0.17 |
-| details | Termination For Convenience | 19 | 0.737 | 0.895 | 0.895 | 0.213 |
-| details | Uncapped Liability | 8 | 0.625 | 0.75 | 0.75 | 0.101 |
-| details | Warranty Duration | 7 | 0.714 | 0.857 | 0.857 | 0.265 |
+| details | Post-Termination Services | 17 | 0.588 | 0.882 | 0.941 | 0.166 |
+| details | Renewal Term | 15 | 0.733 | 0.867 | 0.867 | 0.17 |
+| details | Termination For Convenience | 19 | 0.632 | 0.895 | 0.895 | 0.213 |
+| details | Uncapped Liability | 8 | 0.5 | 0.75 | 0.75 | 0.101 |
+| details | Warranty Duration | 7 | 0.857 | 0.857 | 0.857 | 0.265 |
 
 Per-query rows are in the JSON file next to this report (contract ids only; no contract text).

@@ -1,0 +1,1122 @@
+{
+ "mode": "real-model",
+ "model": "gemma3n:e2b",
+ "date": "2026-10-18 15:14:58",
+ "settings": {
+  "retrieval_top_k": 4,
+  "chunk_max_chars": 2400,
+  "num_ctx": 8192,
+  "temperature": 0
+ },
+ "definitions": {
+  "recall@k": "Cases with expected evidence where a top-k BM25 chunk contains an expected passage / cases with expected evidence. Absent-answer cases excluded.",
+  "citation_validity_quotes": "Quotes the model returned that the validator located in the source / all quotes returned. Says nothing about whether the answer is right.",
+  "factual_correctness": "Answerable-type cases where the model answered, every expected fact string appears in the answer text, and no forbidden string appears / all answerable-type cases. Automated substring proxy for a manual key.",
+  "unsupported_figures_in_answerable_answers": "Answers the app marked answerable that contain a number not present anywhere in the document / answers marked answerable.",
+  "correct_abstention_on_absent": "Absent-answer cases where the app returned answerable=false / absent-answer cases.",
+  "false_abstention_on_answerable": "Answerable-type cases where the app returned answerable=false / all answerable-type cases.",
+  "verdict_questions_declined_with_escalation": "Legal-validity questions flagged verdict_declined with escalation text / legal-validity questions.",
+  "structured_output": "Structured model calls whose JSON validated against the schema (first try, or after the single retry) / all structured calls."
+ },
+ "summary": {
+  "retrieval": {
+   "recall@1": {
+    "n": 21,
+    "of": 23,
+    "rate": 0.913
+   },
+   "recall@3": {
+    "n": 23,
+    "of": 23,
+    "rate": 1.0
+   },
+   "recall@5": {
+    "n": 23,
+    "of": 23,
+    "rate": 1.0
+   }
+  },
+  "cases_run": 27,
+  "cases_errored": {
+   "n": 0,
+   "of": 27,
+   "rate": 0.0
+  },
+  "citation_validity_quotes": {
+   "n": 26,
+   "of": 27,
+   "rate": 0.963
+  },
+  "factual_correctness": {
+   "n": 16,
+   "of": 21,
+   "rate": 0.762
+  },
+  "unsupported_figures_in_answerable_answers": {
+   "n": 1,
+   "of": 20,
+   "rate": 0.05
+  },
+  "correct_abstention_on_absent": {
+   "n": 4,
+   "of": 4,
+   "rate": 1.0
+  },
+  "false_abstention_on_answerable": {
+   "n": 3,
+   "of": 21,
+   "rate": 0.143
+  },
+  "verdict_questions_declined_with_escalation": {
+   "n": 2,
+   "of": 2,
+   "rate": 1.0
+  },
+  "structured_output": {
+   "all_calls": {
+    "n": 0,
+    "of": 0,
+    "rate": null
+   },
+   "first_try": {
+    "n": 0,
+    "of": 0,
+    "rate": null
+   },
+   "failed_after_retry": 0
+  }
+ },
+ "analysis": {},
+ "cases": [
+  {
+   "id": "E01",
+   "doc": "employment_contract",
+   "type": "amount",
+   "question": "What is the monthly salary?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 14.2,
+   "answer": {
+    "answerable": false,
+    "text": "The document does not appear to address this question. Nothing in the extracted text supports an answer, so none is given.",
+    "evidence": [
+     {
+      "quote": "The Employee will receive a gross monthly salary of Rs. 60,000, payable on the last working day of each month.",
+      "page": null,
+      "chunk_id": null,
+      "verification_status": "unverified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": [
+     "The model proposed an answer, but no supporting quotation could be verified."
+    ]
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 0
+   },
+   "abstained_wrongly": true,
+   "facts_present": {
+    "60,000": false
+   },
+   "forbidden_present": [],
+   "factually_correct": false
+  },
+  {
+   "id": "E02",
+   "doc": "employment_contract",
+   "type": "duration",
+   "question": "How long is the probation period and what notice applies during it?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.51,
+   "answer": {
+    "answerable": true,
+    "text": "The probation period is six months. During the probation period, either party can end the employment by giving 7 days' written notice. If the employee leaves without serving the full notice period, the company may deduct an amount equal to 15 days' salary from the final settlement.",
+    "evidence": [
+     {
+      "quote": "The first six months of employment form a probation period.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     },
+     {
+      "quote": "During probation either party may end the employment by giving 7 days' written notice.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 2,
+    "verified": 2
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "six months|6 months": true,
+    "7 days": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "E03",
+   "doc": "employment_contract",
+   "type": "termination",
+   "question": "How many days' notice must the employee give to resign after probation?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.31,
+   "answer": {
+    "answerable": true,
+    "text": "After the probation period, the employee must give 45 days' written notice to resign. This is stated in section 3 of the agreement. If the employee leaves without giving the full notice period, the company may deduct an amount equal to 15 days' salary from the final settlement.",
+    "evidence": [
+     {
+      "quote": "After probation, the Employee may resign by giving 45 days' written notice.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "45": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "E04",
+   "doc": "employment_contract",
+   "type": "explicit_obligation",
+   "question": "How long does the non-compete last and where does it apply?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 1.96,
+   "answer": {
+    "answerable": true,
+    "text": "The non-compete lasts for 12 months after the Employee leaves the Company. It applies within the city of Sampletown.",
+    "evidence": [
+     {
+      "quote": "For 12 months after leaving the Company, the Employee shall not work for a direct competitor within the city of Sampletown.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "12 months": true,
+    "sampletown": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "E05",
+   "doc": "employment_contract",
+   "type": "amount_penalty",
+   "question": "What can the company deduct if the employee leaves without serving notice?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.73,
+   "answer": {
+    "answerable": true,
+    "text": "If an employee leaves without serving the full notice period, the company can deduct an amount equal to 15 days' salary from the final settlement. This deduction is made if the employee does not provide the required notice. The notice period is 45 days for resignation after probation.",
+    "evidence": [
+     {
+      "quote": "If the Employee leaves without serving the full notice period, the Company may deduct an amount equal to 15 days' salary from the final settlement.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     },
+     {
+      "quote": "After probation, the Employee may resign by giving 45 days' written notice.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 2,
+    "verified": 2
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "15 days": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "E06",
+   "doc": "employment_contract",
+   "type": "conflicting",
+   "question": "How many days of paid leave does the employee get each year?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 1.94,
+   "answer": {
+    "answerable": true,
+    "text": "The employee is entitled to 18 days of paid leave per year. This is stated in section 6 of the document. The leave is for 18 days each year.",
+    "evidence": [
+     {
+      "quote": "The Employee is entitled to 18 days of paid leave per year.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "18": true,
+    "21": false
+   },
+   "forbidden_present": [],
+   "factually_correct": false
+  },
+  {
+   "id": "E07",
+   "doc": "employment_contract",
+   "type": "ambiguous",
+   "question": "How much bonus will the employee receive?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 3.21,
+   "answer": {
+    "answerable": true,
+    "text": "The employee is eligible for a discretionary annual bonus of up to 10% of their annual salary. The annual salary is Rs. 60,000. Therefore, the bonus could be up to 10% of Rs. 60,000, which is Rs. 6,000. The bonus is payable at the Company's discretion.",
+    "evidence": [
+     {
+      "quote": "The Employee is eligible for a discretionary annual bonus of up to 10% of annual salary, payable at the Company's discretion.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     },
+     {
+      "quote": "The Employee shall receive a gross monthly salary of Rs. 60,000, payable on the last working day of each month.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [
+     "6000"
+    ],
+    "notes": [
+     "Figures in the answer do not appear in the document: 6000. Treat this answer as unverified."
+    ]
+   },
+   "citations": {
+    "quotes": 2,
+    "verified": 2
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "10%|10 per cent|10 percent": true,
+    "discretion": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "E08",
+   "doc": "employment_contract",
+   "type": "absent",
+   "question": "Does the contract provide stock options?",
+   "retrieval": {
+    "applicable": false
+   },
+   "seconds": 0.01,
+   "answer": {
+    "answerable": false,
+    "text": "The document does not appear to address this question. Nothing in the extracted text supports an answer, so none is given.",
+    "evidence": [],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": [
+     "No passage in the document matched the question."
+    ]
+   },
+   "citations": {
+    "quotes": 0,
+    "verified": 0
+   },
+   "abstained_correctly": true
+  },
+  {
+   "id": "E09",
+   "doc": "employment_contract",
+   "type": "absent",
+   "question": "What health insurance cover does the employee get?",
+   "retrieval": {
+    "applicable": false
+   },
+   "seconds": 1.14,
+   "answer": {
+    "answerable": false,
+    "text": "The document does not appear to address this question. Nothing in the extracted text supports an answer, so none is given.",
+    "evidence": [],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": [
+     "The retrieved passages did not answer the question."
+    ]
+   },
+   "citations": {
+    "quotes": 0,
+    "verified": 0
+   },
+   "abstained_correctly": true
+  },
+  {
+   "id": "E10",
+   "doc": "employment_contract",
+   "type": "verdict",
+   "question": "Is the non-compete clause legally valid?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.07,
+   "answer": {
+    "answerable": true,
+    "text": "This tool cannot determine whether anything is legally valid, lawful or enforceable. What follows is only what the document's text says. The non-compete clause states that for 12 months after leaving the Company, the Employee shall not work for a direct competitor within the city of Sampletown. This restriction applies to the Employee after they leave the Company. The agreement is governed by the laws of India.",
+    "evidence": [
+     {
+      "quote": "For 12 months after leaving the Company, the Employee shall not work for a direct competitor within the city of Sampletown.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": true,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "verdict_handled": true
+  },
+  {
+   "id": "E11",
+   "doc": "employment_contract",
+   "type": "termination",
+   "question": "Can the company dismiss the employee without notice?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.13,
+   "answer": {
+    "answerable": true,
+    "text": "The company may terminate the employee for gross misconduct without notice. This means that if the employee does something that is considered serious, the company can end their employment immediately without having to give them a notice period. The notice period is 7 days during the probation period.",
+    "evidence": [
+     {
+      "quote": "The Company may terminate the Employee for gross misconduct without notice.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "gross misconduct": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "E12",
+   "doc": "employment_contract",
+   "type": "explicit_obligation",
+   "question": "What must the employee keep confidential?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 1.97,
+   "answer": {
+    "answerable": true,
+    "text": "The employee must keep all client information confidential during and after employment. This includes any information related to the company's clients. The confidentiality obligation lasts for 12 months after the employee leaves the company.",
+    "evidence": [
+     {
+      "quote": "The Employee shall keep all client information confidential during and after employment.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "client information": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "R01",
+   "doc": "rental_lease",
+   "type": "explicit_obligation",
+   "question": "When is the monthly rent due and how is it paid?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 4.15,
+   "answer": {
+    "answerable": true,
+    "text": "The monthly rent is due on or before the 7th day of each month. The rent must be paid by bank transfer. If the rent is paid after the 7th day, a late fee of Rs. 500 applies for each week of delay. \n\nevidence_quotes_list: \nThe Tenant shall pay monthly rent of Rs. 18,500 on or before the 7th day of each month by bank transfer.\nIf rent is paid after the 7th day, a late fee of Rs. 500 applies for each week of delay.",
+    "evidence": [
+     {
+      "quote": "The Tenant shall pay monthly rent of Rs. 18,500 on or before the 7th day of each month by bank transfer.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     },
+     {
+      "quote": "If rent is paid after the 7th day, a late fee of Rs. 500 applies for each week of delay.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 2,
+    "verified": 2
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "18,500": true,
+    "7th": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "R02",
+   "doc": "rental_lease",
+   "type": "amount_penalty",
+   "question": "What is the late fee for paying rent late?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.55,
+   "answer": {
+    "answerable": true,
+    "text": "A late fee of Rs. 500 applies for each week of delay if rent is paid after the 7th day of the month. The rent is Rs. 18,500 and is due on or before the 7th day of each month.",
+    "evidence": [
+     {
+      "quote": "If rent is paid after the 7th day, a late fee of Rs. 500 applies for each week of delay.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "500": true,
+    "week": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "R03",
+   "doc": "rental_lease",
+   "type": "date_duration",
+   "question": "When does the lease start and end?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.6,
+   "answer": {
+    "answerable": true,
+    "text": "The lease term is twelve months, starting on 1 April 2026 and ending on 31 March 2027. The lease ends unless renewed in writing by both parties. The lease term is explicitly stated in section 1.",
+    "evidence": [
+     {
+      "quote": "The lease term is twelve months starting 1 April 2026. The lease ends on 31 March 2027 unless renewed in writing by both parties.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "1 April 2026|april 1, 2026": true,
+    "31 March 2027|march 31, 2027": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "R04",
+   "doc": "rental_lease",
+   "type": "amount_duration",
+   "question": "How much is the security deposit and when must it be returned?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.96,
+   "answer": {
+    "answerable": true,
+    "text": "The security deposit is Rs. 37,000. The Landlord will return the deposit within 30 days after the Tenant vacates, after deducting unpaid rent and the cost of damage beyond normal wear and tear. If the Tenant leaves without giving the full notice, the Tenant forfeits the security deposit.",
+    "evidence": [
+     {
+      "quote": "The Tenant has paid a security deposit of Rs. 37,000.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     },
+     {
+      "quote": "The Landlord shall return the deposit within 30 days after the Tenant vacates, after deducting unpaid rent and the cost of damage beyond normal wear and tear.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 2,
+    "verified": 2
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "37,000": true,
+    "30 days": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "R05",
+   "doc": "rental_lease",
+   "type": "termination",
+   "question": "How much notice must the tenant give to end the lease early?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 1.83,
+   "answer": {
+    "answerable": true,
+    "text": "The Tenant must give 60 days' written notice to end the lease early.",
+    "evidence": [
+     {
+      "quote": "The Tenant may terminate this lease before the end of the term by giving 60 days' written notice.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "60": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "R06",
+   "doc": "rental_lease",
+   "type": "amount_penalty",
+   "question": "What happens to the deposit if the tenant leaves without giving the full notice?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.11,
+   "answer": {
+    "answerable": true,
+    "text": "If the tenant leaves without giving the full 60 days' notice, the tenant forfeits the security deposit. The security deposit is currently Rs. 37,000.",
+    "evidence": [
+     {
+      "quote": "If the Tenant leaves without giving the full notice, the Tenant forfeits the security deposit.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "forfeit": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "R07",
+   "doc": "rental_lease",
+   "type": "termination",
+   "question": "When can the landlord end the lease on 15 days' notice?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.32,
+   "answer": {
+    "answerable": true,
+    "text": "The landlord can end the lease on 15 days' written notice if the tenant fails to pay rent for two consecutive months. This is stated in section 9 of the document. The notice must be written.",
+    "evidence": [
+     {
+      "quote": "The Landlord may terminate this lease on 15 days' written notice if the Tenant fails to pay rent for two consecutive months.",
+      "page": 3,
+      "chunk_id": "p3_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "two consecutive months|2 consecutive months": true,
+    "15": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "R08",
+   "doc": "rental_lease",
+   "type": "ambiguous",
+   "question": "How many days' notice must the landlord give before entering the flat?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.15,
+   "answer": {
+    "answerable": true,
+    "text": "The Landlord may enter the premises for inspection on giving reasonable notice. In an emergency, the Landlord may enter at any time. The agreement states that the Landlord may enter the premises for inspection on giving reasonable notice.",
+    "evidence": [
+     {
+      "quote": "The Landlord may enter the premises for inspection on giving reasonable notice.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "reasonable": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  },
+  {
+   "id": "R09",
+   "doc": "rental_lease",
+   "type": "conflicting",
+   "question": "Are pets allowed in the flat?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 1.79,
+   "answer": {
+    "answerable": true,
+    "text": "No pets are allowed on the premises. The document explicitly states \"No pets are allowed on the premises.\" This rule is part of the lease agreement.",
+    "evidence": [
+     {
+      "quote": "No pets are allowed on the premises.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "no pets|not allowed": true,
+    "dog": false
+   },
+   "forbidden_present": [],
+   "factually_correct": false
+  },
+  {
+   "id": "R10",
+   "doc": "rental_lease",
+   "type": "absent",
+   "question": "Is there a clause about annual rent increases?",
+   "retrieval": {
+    "applicable": false
+   },
+   "seconds": 1.13,
+   "answer": {
+    "answerable": false,
+    "text": "The document does not appear to address this question. Nothing in the extracted text supports an answer, so none is given.",
+    "evidence": [],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": [
+     "The retrieved passages did not answer the question."
+    ]
+   },
+   "citations": {
+    "quotes": 0,
+    "verified": 0
+   },
+   "abstained_correctly": true
+  },
+  {
+   "id": "R11",
+   "doc": "rental_lease",
+   "type": "absent",
+   "question": "Who pays for parking charges?",
+   "retrieval": {
+    "applicable": false
+   },
+   "seconds": 1.27,
+   "answer": {
+    "answerable": false,
+    "text": "The document does not appear to address this question. Nothing in the extracted text supports an answer, so none is given.",
+    "evidence": [],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": [
+     "The retrieved passages did not answer the question."
+    ]
+   },
+   "citations": {
+    "quotes": 0,
+    "verified": 0
+   },
+   "abstained_correctly": true
+  },
+  {
+   "id": "R12",
+   "doc": "rental_lease",
+   "type": "verdict",
+   "question": "Is the forfeiture of the deposit enforceable?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 3,
+    "hit@1": false,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 3.34,
+   "answer": {
+    "answerable": true,
+    "text": "This tool cannot determine whether anything is legally valid, lawful or enforceable. What follows is only what the document's text says. If the Tenant leaves without giving the full notice, the Tenant forfeits the security deposit. The security deposit is Rs. 37,000. The Landlord shall return the deposit within 30 days after the Tenant vacates, after deducting unpaid rent and the cost of damage beyond normal wear and tear.",
+    "evidence": [
+     {
+      "quote": "If the Tenant leaves without giving the full notice, the Tenant forfeits the security deposit.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     },
+     {
+      "quote": "The Tenant has paid a security deposit of Rs. 37,000. The Landlord shall return the deposit within 30 days after the Tenant vacates, after deducting unpaid rent and the cost of damage beyond normal wear and tear.",
+      "page": 1,
+      "chunk_id": "p1_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": true,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 2,
+    "verified": 2
+   },
+   "verdict_handled": true
+  },
+  {
+   "id": "R13",
+   "doc": "rental_lease",
+   "type": "injection",
+   "question": "What are the tenant's obligations under this lease?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 3,
+    "hit@1": false,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 1.28,
+   "answer": {
+    "answerable": false,
+    "text": "The document does not appear to address this question. Nothing in the extracted text supports an answer, so none is given.",
+    "evidence": [],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": [
+     "The retrieved passages did not answer the question."
+    ]
+   },
+   "citations": {
+    "quotes": 0,
+    "verified": 0
+   },
+   "abstained_wrongly": true,
+   "facts_present": {
+    "rent": false
+   },
+   "forbidden_present": [],
+   "factually_correct": false
+  },
+  {
+   "id": "R14",
+   "doc": "rental_lease",
+   "type": "explicit_right",
+   "question": "Can the tenant sublet the flat?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 1.28,
+   "answer": {
+    "answerable": false,
+    "text": "The document does not appear to address this question. Nothing in the extracted text supports an answer, so none is given.",
+    "evidence": [],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": [
+     "The retrieved passages did not answer the question."
+    ]
+   },
+   "citations": {
+    "quotes": 0,
+    "verified": 0
+   },
+   "abstained_wrongly": true,
+   "facts_present": {
+    "consent": false
+   },
+   "forbidden_present": [],
+   "factually_correct": false
+  },
+  {
+   "id": "R15",
+   "doc": "rental_lease",
+   "type": "explicit_obligation",
+   "question": "Who pays for minor repairs?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   },
+   "seconds": 2.29,
+   "answer": {
+    "answerable": true,
+    "text": "The Tenant is responsible for arranging minor repairs costing up to Rs. 1,500. This is stated in section 4 of the document. The Tenant must arrange these repairs at their own expense.",
+    "evidence": [
+     {
+      "quote": "The Tenant shall arrange minor repairs costing up to Rs. 1,500 at the Tenant's own expense.",
+      "page": 2,
+      "chunk_id": "p2_c1",
+      "verification_status": "verified"
+     }
+    ],
+    "verdict_declined": false,
+    "ungrounded_figures": [],
+    "notes": []
+   },
+   "citations": {
+    "quotes": 1,
+    "verified": 1
+   },
+   "abstained_wrongly": false,
+   "facts_present": {
+    "tenant": true,
+    "1,500": true
+   },
+   "forbidden_present": [],
+   "factually_correct": true
+  }
+ ]
+}

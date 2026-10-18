@@ -62,6 +62,14 @@ PATTERNS: dict[str, re.Pattern[str]] = {
         r"|\b\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4}\b",
         re.I,
     ),
+    "jurisdiction": re.compile(
+        r"\b(?:governed by(?: the laws of)?|laws of|jurisdiction of(?: the courts of)?|arbitration in)\s+([A-Za-z\s]{3,30}?)(?=[.;,\n]|\band\b)",
+        re.I,
+    ),
+    "party": re.compile(
+        r"\bbetween\s+([A-Z][A-Za-z0-9\s.,&]{2,50}?)(?:\s*\([^)]+\))?\s+and\s+([A-Z][A-Za-z0-9\s.,&]{2,50}?)(?:\s*\([^)]+\))?(?=[.;,\n]|\bfor\b)",
+        re.I,
+    ),
 }
 
 

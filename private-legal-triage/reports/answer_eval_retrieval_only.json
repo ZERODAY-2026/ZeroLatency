@@ -1,7 +1,7 @@
 {
  "mode": "retrieval-only (no model used)",
  "model": null,
- "date": "2026-10-18 07:27:17",
+ "date": "2026-10-18 15:13:41",
  "settings": {
   "retrieval_top_k": 4,
   "chunk_max_chars": 2400,
@@ -21,9 +21,9 @@
  "summary": {
   "retrieval": {
    "recall@1": {
-    "n": 19,
+    "n": 21,
     "of": 23,
-    "rate": 0.826
+    "rate": 0.913
    },
    "recall@3": {
     "n": 23,
@@ -220,8 +220,8 @@
    "question": "When does the lease start and end?",
    "retrieval": {
     "applicable": true,
-    "first_relevant_rank": 3,
-    "hit@1": false,
+    "first_relevant_rank": 1,
+    "hit@1": true,
     "hit@3": true,
     "hit@5": true
    }
@@ -272,8 +272,8 @@
    "question": "When can the landlord end the lease on 15 days' notice?",
    "retrieval": {
     "applicable": true,
-    "first_relevant_rank": 2,
-    "hit@1": false,
+    "first_relevant_rank": 1,
+    "hit@1": true,
     "hit@3": true,
     "hit@5": true
    }

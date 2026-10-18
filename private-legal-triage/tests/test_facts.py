@@ -12,6 +12,7 @@ def test_key_facts_extracted_with_pages(rental_pdf):
     assert any(f.value.startswith("2%") for f in by_label["percentage"])
     assert any("30 days" in f.value for f in by_label["duration"])
     assert any("1 November 2026" in f.value for f in by_label["date"])
+    assert any("India" in f.value for f in by_label.get("jurisdiction", []))
     assert all(f.page in (1, 2) for f in facts)
 
 

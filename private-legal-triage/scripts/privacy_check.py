@@ -10,6 +10,12 @@ Runs end-to-end document processing under strict network surveillance:
 import io
 import logging
 import sys
+from pathlib import Path
+
+# Ensure project root is in sys.path
+root_dir = str(Path(__file__).resolve().parent.parent)
+if root_dir not in sys.path:
+    sys.path.insert(0, root_dir)
 
 from src.config import Settings
 from src.errors import PrivacyViolation

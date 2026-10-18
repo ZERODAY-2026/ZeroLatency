@@ -107,3 +107,15 @@ def test_verified_sorted_first():
     items = [candidate("not in the document at all, invented text"), candidate("monthly rent of Rs. 25,000")]
     out = validate_all(items, SourceIndex(PAGES))
     assert [f.verification_status for f in out] == ["verified", "unverified"]
+
+
+def test_fuzzy_quote_with_minor_word_substitution_is_verified():
+    # Document has "The Tenant shall pay monthly rent of Rs. 25,000 on or before the 5th day"
+    # Quote has "will" instead of "shall" (high confidence >85% match)
+    f = validate_candidate(
+        candidate("The Tenant will pay monthly rent of Rs. 25,000 on or before the 5th day"),
+        SourceIndex(PAGES),
+    )
+    assert f.verification_status == "verified"
+    assert f.page == 1
+

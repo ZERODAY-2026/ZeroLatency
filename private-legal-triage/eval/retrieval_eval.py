@@ -23,6 +23,7 @@ Design choices, fixed before looking at any result:
 
 import argparse
 import json
+import os
 import random
 import re
 import statistics
@@ -74,10 +75,36 @@ DETAILS = re.compile(r"Details:\s*(.*)$", re.S)
 Retriever = Callable[[list[Chunk]], object]  # chunks -> object with .search(query, k)
 
 
-def load(path: Path = DATA / "CUADv1.json") -> list[dict]:
-    if not path.exists():
-        raise SystemExit(f"{path} not found. Run: python -m eval.cuad_setup")
-    return json.loads(path.read_text(encoding="utf-8"))["data"]
+def resolve_cuad_path(path_arg: Path | None = None) -> Path:
+    candidates: list[Path] = []
+    if path_arg:
+        candidates.append(Path(path_arg))
+    env_path = os.getenv("TRIAGE_CUAD_PATH")
+    if env_path:
+        candidates.append(Path(env_path))
+    candidates.extend(
+        [
+            DATA / "CUADv1.json",
+            Path(__file__).resolve().parent / "data" / "CUADv1.json",
+            Path(__file__).resolve().parents[1] / "eval" / "data" / "CUADv1.json",
+            Path.home() / "Downloads" / "data" / "CUADv1.json",
+        ]
+    )
+    for c in candidates:
+        if c.is_file():
+            return c
+        if c.is_dir() and (c / "CUADv1.json").is_file():
+            return c / "CUADv1.json"
+    candidate_strs = "\n  - ".join(str(p) for p in candidates)
+    raise SystemExit(
+        f"CUADv1.json not found in searched locations:\n  - {candidate_strs}\n"
+        "Specify with --data-path <path> or run: python -m eval.cuad_setup"
+    )
+
+
+def load(path: Path | None = None) -> list[dict]:
+    resolved = resolve_cuad_path(path)
+    return json.loads(resolved.read_text(encoding="utf-8"))["data"]
 
 
 def select_contracts(data: list[dict], n: int, seed: int) -> list[dict]:
@@ -237,17 +264,25 @@ def to_markdown(report: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def run(n: int, seed: int, retriever_name: str = "bm25", factory: Retriever = BM25Index) -> dict:
-    data = load()
+def run(
+    n: int,
+    seed: int,
+    retriever_name: str = "bm25",
+    factory: Retriever = BM25Index,
+    data_path: Path | None = None,
+) -> dict:
+    resolved_path = resolve_cuad_path(data_path)
+    data = load(resolved_path)
     chosen = select_contracts(data, n, seed)
     cfg = Settings()
     result = evaluate(chosen, factory, cfg)
-    snapshot_path = DATA / "SNAPSHOT.json"
+    snapshot_path = resolved_path.parent / "SNAPSHOT.json"
     return {
         "meta": {
             "retriever": retriever_name,
             "dataset": "CUAD",
             "dataset_version": "aok_v1.0",
+            "dataset_path": str(resolved_path),
             "snapshot": json.loads(snapshot_path.read_text()) if snapshot_path.exists() else {},
             "seed": seed,
             "contracts_total": len(data),
@@ -270,9 +305,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--n", type=int, default=40)
     parser.add_argument("--seed", type=int, default=2026)
+    parser.add_argument("--data-path", type=Path, default=None, help="Path to CUADv1.json or directory")
     parser.add_argument("--out", type=Path, default=REPORTS / "cuad_retrieval_bm25")
     args = parser.parse_args(argv)
-    report = run(args.n, args.seed)
+    report = run(args.n, args.seed, data_path=args.data_path)
     args.out.parent.mkdir(exist_ok=True)
     args.out.with_suffix(".json").write_text(json.dumps(report, indent=1), encoding="utf-8")
     args.out.with_suffix(".md").write_text(to_markdown(report), encoding="utf-8")

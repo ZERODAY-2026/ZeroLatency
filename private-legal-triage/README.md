@@ -19,25 +19,29 @@ Local-first, privacy-preserving backend for preliminary legal document triage. P
 
 ## Setup & Quickstart
 
-Tested on Windows 11 and Linux with **Python 3.12**.
+Tested on Windows 11 and Linux with **Python 3.10 - 3.12**.
 
 ### 1. Environment & Dependencies
 
 ```bash
-# Create and activate virtual environment (Python 3.12)
+# Create and activate virtual environment
 python -m venv .venv
 source .venv/bin/activate       # On Windows PowerShell: .venv\Scripts\Activate.ps1
 
 # Install requirements
 pip install -r requirements.txt
-pip install -r requirements-api.txt    # Optional: for FastAPI REST server
-pip install -r requirements-eval.txt   # Optional: for CUAD benchmarking
+pip install -r requirements-api.txt    # For FastAPI REST server
+pip install -r requirements-eval.txt   # For CUAD benchmarking
 ```
 
-### 2. Pull Local Model (Ollama)
+### 2. Pull Local Model & Run Connection Diagnostic
 
 ```bash
+# Pull supported model
 ollama pull gemma3n:e2b
+
+# Verify connection and test live inference
+python scripts/ollama_check.py
 ```
 
 ---
@@ -73,7 +77,7 @@ answer = session.ask("What happens if I pay late?", model="gemma3n:e2b")
 ```bash
 python -m pytest -q
 ```
-*121 passed, 9 skipped (unit test baseline without model dependency)*
+*127 passed, 9 skipped (unit test baseline without model dependency)*
 
 ### Ruff Linter
 ```bash
@@ -82,16 +86,28 @@ python -m ruff check .
 
 ### Privacy & Offline Audit
 ```bash
-python -m scripts.privacy_check
+python scripts/privacy_check.py
 ```
+*Verifies strict loopback socket isolation and zero log leakage.*
 
 ### Real Gemma 3n E2B Integration Tests (Opt-in)
 ```powershell
-# PowerShell
+# Windows PowerShell
 $env:TRIAGE_RUN_REAL_MODEL="1"; python -m pytest tests/integration/test_real_gemma.py -v
 
 # Bash
 TRIAGE_RUN_REAL_MODEL=1 python -m pytest tests/integration/test_real_gemma.py -v
+```
+*8 passed, 1 skipped (live local Gemma 3n E2B inference)*
+
+### CUAD & Answer Evaluations
+```bash
+# BM25 CUAD clause retrieval benchmark
+python eval/retrieval_eval.py --subset 40
+
+# Grounded Q&A evaluations
+python eval/answer_eval.py --retrieval-only
+python eval/answer_eval.py --model gemma3n:e2b
 ```
 
 ---

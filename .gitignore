@@ -1,0 +1,42 @@
+# Python environments
+.venv/
+.venv*/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Python bytecode & caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local sensitive files & secrets
+.env
+.env.*
+*.log
+.streamlit/secrets.toml
+
+# Local storage and temporary processing directories
+uploads/
+tmp/
+triage_*/
+private/
+samples/private/
+
+# Large datasets and model weights
+eval/data/
+**/eval/data/
+*.zip
+*.tar.gz
+*.bin
+*.gguf
+
+# Local execution reports
+reports/real_model_run.json
+**/reports/real_model_run.json

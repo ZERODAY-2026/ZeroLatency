@@ -1,6 +1,6 @@
 # Answer evaluation (retrieval-only (no model used))
 
-Date: 2026-10-18 07:27:17  |  Model: none  |  Settings: {'retrieval_top_k': 4, 'chunk_max_chars': 2400, 'num_ctx': 8192, 'temperature': 0}
+Date: 2026-10-18 15:13:41  |  Model: none  |  Settings: {'retrieval_top_k': 4, 'chunk_max_chars': 2400, 'num_ctx': 8192, 'temperature': 0}
 
 > Synthetic fixtures; expected facts authored by the project author, not reviewed by a lawyer. Results do not generalise to real documents.
 
@@ -8,7 +8,7 @@ Date: 2026-10-18 07:27:17  |  Model: none  |  Settings: {'retrieval_top_k': 4, '
 
 | Metric | n | of | rate |
 |---|---|---|---|
-| retrieval recall@1 | 19 | 23 | 0.826 |
+| retrieval recall@1 | 21 | 23 | 0.913 |
 | retrieval recall@3 | 23 | 23 | 1.0 |
 | retrieval recall@5 | 23 | 23 | 1.0 |
 

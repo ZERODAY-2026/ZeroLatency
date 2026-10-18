@@ -3,7 +3,7 @@
 ## System Requirements
 
 - **Operating System**: Windows 10/11 (64-bit) or Linux (Ubuntu 22.04+)
-- **Python**: Python 3.12 (Python 3.12.10 recommended)
+- **Python**: Python 3.10 to 3.12 (Tested on Python 3.10.11 and Python 3.12.10)
 - **Local Model Runtime**: Ollama (v0.40.6 or later)
 - **Hardware**:
   - Minimum: 16 GB System RAM, modern multi-core x86_64 CPU
@@ -15,11 +15,11 @@
 
 ### Windows (PowerShell)
 ```powershell
-# Create Python 3.12 virtual environment
-python -m venv .venv312
+# Create Python virtual environment
+python -m venv .venv
 
 # Activate virtual environment
-.\.venv312\Scripts\Activate.ps1
+.\.venv\Scripts\Activate.ps1
 
 # Upgrade pip
 python -m pip install --upgrade pip
@@ -36,7 +36,7 @@ pip install -r requirements-eval.txt
 
 ### Linux (Bash)
 ```bash
-python3.12 -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 pip install -r requirements-api.txt
@@ -45,7 +45,7 @@ pip install -r requirements-eval.txt
 
 ---
 
-## 2. Model Installation (Ollama)
+## 2. Model Installation & Connection Diagnostic (Ollama)
 
 Ensure Ollama is installed and running:
 ```bash
@@ -65,10 +65,28 @@ Verify installed models:
 ```bash
 ollama list
 ```
+
+### Run Ollama Local Connectivity Diagnostic
+Verify loopback connectivity and live model inference using the diagnostic script:
+```powershell
+python scripts/ollama_check.py
+# or
+python -m scripts.ollama_check --model gemma3n:e2b
+```
 Expected output:
 ```
-NAME           ID              SIZE      MODIFIED
-gemma3n:e2b    dae166dc6a5e    7.8 GB    ...
+============================================================
+OLLAMA LOCAL CONNECTION DIAGNOSTIC
+============================================================
+Target Loopback URL : http://127.0.0.1:11434
+Target Model        : gemma3n:e2b
+------------------------------------------------------------
+[1/3] Checking Ollama service reachability... PASS (v0.40.6)
+[2/3] Checking installed models... PASS (1 installed: gemma3n:e2b)
+[3/3] Testing inference with 'gemma3n:e2b'... PASS (0.62s)
+------------------------------------------------------------
+[RESULT] PASS - LOCAL OLLAMA REACHABLE AND SELECTED MODEL INFERRED
+============================================================
 ```
 
 ---
@@ -103,11 +121,11 @@ Interactive OpenAPI documentation will be accessible at: `http://127.0.0.1:8000/
 ## 4. Running Verification & Tests
 
 ### Fast Unit Test Suite
-Runs in ~10 seconds with zero external model dependencies (uses deterministic stubbing):
+Runs in ~15 seconds with zero external model dependencies (uses deterministic stubbing):
 ```powershell
 python -m pytest -q
 ```
-*Expected: 121 passed, 9 skipped*
+*Expected: 127 passed, 9 skipped*
 
 ### Ruff Code Linter
 ```powershell
@@ -118,7 +136,7 @@ python -m ruff check .
 ### Privacy and Offline Audit
 Verifies network socket isolation and absence of log leaks:
 ```powershell
-python -m scripts.privacy_check
+python scripts/privacy_check.py
 ```
 *Expected: AUDIT RESULT: PASSED*
 
@@ -133,3 +151,26 @@ python -m pytest tests/integration/test_real_gemma.py -v
 TRIAGE_RUN_REAL_MODEL=1 python -m pytest tests/integration/test_real_gemma.py -v
 ```
 *Expected: 8 passed, 1 skipped (switching skipped if e4b not installed)*
+
+---
+
+## 5. Running CUAD Benchmarks & Evaluations
+
+### CUAD Clause Retrieval Evaluation
+Evaluates BM25 retrieval against the Atticus Project's CUAD dataset:
+```powershell
+python eval/retrieval_eval.py --subset 40
+```
+*Results output to: `reports/cuad_retrieval_bm25.md` & `.json`*
+
+### Grounded Q&A Evaluation
+Evaluates question answering with synthetic contracts, comparing retrieval-only and real Gemma 3n models:
+```powershell
+# Retrieval-only validation
+python eval/answer_eval.py --retrieval-only
+
+# Real model evaluation
+python eval/answer_eval.py --model gemma3n:e2b
+```
+*Results output to: `reports/answer_eval_*.md` & `.json`*
+

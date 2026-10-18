@@ -4,6 +4,7 @@ import os
 import shutil
 import socket
 import tempfile
+import threading
 import time
 import uuid
 from contextlib import contextmanager, suppress
@@ -32,6 +33,14 @@ def assert_loopback_url(url: str) -> str:
     return url.rstrip("/")
 
 
+_GUARD_DEPTH = 0
+_GUARD_LOCK = threading.Lock()
+_ORIGINAL_CONNECT = socket.socket.connect
+_ORIGINAL_CONNECT_EX = socket.socket.connect_ex
+_ORIGINAL_GETADDRINFO = socket.getaddrinfo
+_ORIGINAL_SENDTO = socket.socket.sendto
+
+
 @contextmanager
 def network_guard(observed: list[str] | None = None):
     """Python-level guard: blocks non-loopback connect/DNS/sendto made through the socket module.
@@ -40,11 +49,8 @@ def network_guard(observed: list[str] | None = None):
     Ollama), or subprocesses. Use OS-level isolation for stronger evidence (see docs/PRIVACY.md).
     `observed`, if given, collects every host checked (allowed or blocked).
     """
+    global _GUARD_DEPTH
     blocked: list[str] = []
-    original_connect = socket.socket.connect
-    original_connect_ex = socket.socket.connect_ex
-    original_getaddrinfo = socket.getaddrinfo
-    original_sendto = socket.socket.sendto
 
     def check(host) -> None:
         if isinstance(host, bytes):
@@ -59,34 +65,41 @@ def network_guard(observed: list[str] | None = None):
     def guarded_connect(self, address):
         if isinstance(address, tuple):
             check(address[0])
-        return original_connect(self, address)
+        return _ORIGINAL_CONNECT(self, address)
 
     def guarded_connect_ex(self, address):
         if isinstance(address, tuple):
             check(address[0])
-        return original_connect_ex(self, address)
+        return _ORIGINAL_CONNECT_EX(self, address)
 
     def guarded_getaddrinfo(host, *args, **kwargs):
         check(host)
-        return original_getaddrinfo(host, *args, **kwargs)
+        return _ORIGINAL_GETADDRINFO(host, *args, **kwargs)
 
     def guarded_sendto(self, data, *args):
         address = args[-1] if args else None
         if isinstance(address, tuple):
             check(address[0])
-        return original_sendto(self, data, *args)
+        return _ORIGINAL_SENDTO(self, data, *args)
 
-    socket.socket.connect = guarded_connect
-    socket.socket.sendto = guarded_sendto
-    socket.socket.connect_ex = guarded_connect_ex
-    socket.getaddrinfo = guarded_getaddrinfo
+    with _GUARD_LOCK:
+        if _GUARD_DEPTH == 0:
+            socket.socket.connect = guarded_connect
+            socket.socket.sendto = guarded_sendto
+            socket.socket.connect_ex = guarded_connect_ex
+            socket.getaddrinfo = guarded_getaddrinfo
+        _GUARD_DEPTH += 1
+
     try:
         yield blocked
     finally:
-        socket.socket.connect = original_connect
-        socket.socket.sendto = original_sendto
-        socket.socket.connect_ex = original_connect_ex
-        socket.getaddrinfo = original_getaddrinfo
+        with _GUARD_LOCK:
+            _GUARD_DEPTH -= 1
+            if _GUARD_DEPTH == 0:
+                socket.socket.connect = _ORIGINAL_CONNECT
+                socket.socket.sendto = _ORIGINAL_SENDTO
+                socket.socket.connect_ex = _ORIGINAL_CONNECT_EX
+                socket.getaddrinfo = _ORIGINAL_GETADDRINFO
 
 
 class PrivateWorkspace:

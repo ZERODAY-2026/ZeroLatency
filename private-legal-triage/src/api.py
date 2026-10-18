@@ -34,7 +34,7 @@ from .errors import (
     UnsupportedFormat,
     UnsupportedModel,
 )
-from .privacy import is_loopback_host
+from .privacy import is_loopback_host, network_guard
 from .schemas import Answer, TriageResult
 from .service import DocumentInfo, DocumentStore, JobStatus, PageContent, PassageHit
 
@@ -93,10 +93,11 @@ def create_app(store: DocumentStore | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         app.state.store = store or DocumentStore(settings)
-        try:
-            yield
-        finally:
-            app.state.store.close()
+        with network_guard():
+            try:
+                yield
+            finally:
+                app.state.store.close()
 
     app = FastAPI(title="Private Legal Document Triage", version="1.0", lifespan=lifespan)
     app.add_middleware(

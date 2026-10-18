@@ -29,7 +29,7 @@ from .gemma_client import ChatClient, OllamaClient
 from .highlight import render_page
 from .models import ModelsStatus, models_status, validate_model
 from .pipeline import DocumentSession
-from .privacy import PrivateWorkspace
+from .privacy import PrivateWorkspace, network_guard
 from .schemas import Answer, TriageResult
 
 ALLOWED_SUFFIXES = {".pdf", ".txt"}
@@ -221,7 +221,8 @@ class DocumentStore:
                 if done == total:
                     job.stage = "summarising_and_verifying"
 
-            result = doc.session.analyze(progress, model=job.model, should_cancel=job.cancel.is_set)
+            with network_guard():
+                result = doc.session.analyze(progress, model=job.model, should_cancel=job.cancel.is_set)
             job.result = result
             job.state, job.stage = "completed", "done"
             doc.info.analyzed = True
@@ -275,7 +276,8 @@ class DocumentStore:
         if not self._model_gate.acquire(blocking=False):
             raise Busy("Another analysis or question is already running. Try again when it finishes.")
         try:
-            return doc.session.ask(question, model=model)
+            with network_guard():
+                return doc.session.ask(question, model=model)
         finally:
             self._model_gate.release()
 

@@ -156,7 +156,7 @@ def _mentions_memory(response) -> bool:
     return isinstance(message, str) and "memory" in message.lower()
 
 
-def call_structured[T: BaseModel](
+def call_structured(
     client: ChatClient, system: str, user: str, model_cls: type[T], retries: int = 1
 ) -> T:
     schema = model_cls.model_json_schema()
