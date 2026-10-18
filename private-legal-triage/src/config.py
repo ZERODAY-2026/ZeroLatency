@@ -8,6 +8,14 @@ SUPPORTED_MODELS: dict[str, str] = {
     "gemma3n:e4b": "Gemma 3n E4B",
 }
 
+SUPPORTED_LANGUAGES: dict[str, str] = {
+    "en": "English",
+    "hi": "Hindi",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+}
+
 
 @dataclass(frozen=True)
 class Settings:
@@ -15,6 +23,8 @@ class Settings:
     ollama_url: str = os.getenv("TRIAGE_OLLAMA_URL", "http://127.0.0.1:11434")
     request_timeout: float = float(os.getenv("TRIAGE_TIMEOUT", "300"))
     num_ctx: int = int(os.getenv("TRIAGE_NUM_CTX", "8192"))
+    ocr_enabled: bool = os.getenv("TRIAGE_OCR_ENABLED", "1").lower() in ("1", "true", "yes")
+    enable_encryption_at_rest: bool = os.getenv("TRIAGE_ENCRYPT_AT_REST", "0").lower() in ("1", "true", "yes")
     chunk_max_chars: int = 2400
     chunk_overlap_chars: int = 200
     min_chars_per_page: int = 40

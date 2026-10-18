@@ -8,13 +8,29 @@ from .errors import DocumentError, UnreadableDocument, UnsupportedFormat
 
 def _rects(page: pymupdf.Page, quote: str) -> list[pymupdf.Rect]:
     flat = re.sub(r"\s+", " ", quote).strip()
+    if len(flat) < 5:
+        return []
+
+    # 1. Direct search
     rects = page.search_for(flat)
     if rects:
         return rects
+
+    # 2. Try de-hyphenated search
+    dehyphen = re.sub(r"(\w)-\s+(\w)", r"\1\2", flat)
+    if dehyphen != flat:
+        rects = page.search_for(dehyphen)
+        if rects:
+            return rects
+
+    # 3. Sentence or clause fragment search
     found: list[pymupdf.Rect] = []
-    for piece in re.split(r"(?<=[.;:])\s+", flat):
-        if len(piece) >= 12:
-            found.extend(page.search_for(piece))
+    for piece in re.split(r"(?<=[.;:,])\s+", flat):
+        piece_clean = piece.strip()
+        if len(piece_clean) >= 15:
+            r = page.search_for(piece_clean)
+            if r:
+                found.extend(r)
     return found
 
 

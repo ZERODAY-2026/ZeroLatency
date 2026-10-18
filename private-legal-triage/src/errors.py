@@ -54,6 +54,10 @@ class UnsupportedModel(ModelError):
     """The requested model identifier is not on the allowlist."""
 
 
+class UnsupportedLanguage(TriageError):
+    """The requested output language is not supported."""
+
+
 class InsufficientMemory(ModelError):
     pass
 

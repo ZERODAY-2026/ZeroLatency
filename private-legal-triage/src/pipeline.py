@@ -5,6 +5,7 @@ from pathlib import Path
 from .checklist import scan_checklist
 from .chunker import chunk_pages
 from .citation_validator import SourceIndex, validate_all
+from .clause_analysis import detect_conflicts, detect_unusual_clauses
 from .config import DISCLAIMER, Settings
 from .config import settings as default_settings
 from .document_parser import extract_pages, low_text_pages
@@ -57,6 +58,8 @@ class DocumentSession:
         started = time.perf_counter()
         draft = analyze_document(self.chunks, client, self.cfg, on_progress, should_cancel)
         findings = validate_all(draft.candidates, self.index)
+        conflicts = [c.model_dump() for c in detect_conflicts(self.pages)]
+        unusual = [u.model_dump() for u in detect_unusual_clauses(self.pages)]
         self.result = TriageResult(
             source_name=self.path.name,
             model=getattr(client, "model", self.cfg.model),
@@ -64,6 +67,8 @@ class DocumentSession:
             findings=findings,
             key_facts=extract_key_facts(self.pages),
             checklist=scan_checklist(self.pages),
+            conflicts=conflicts,
+            unusual_clauses=unusual,
             limitations=self._limitations(findings, draft.failed_chunks, bool(draft.summary)),
             disclaimer=DISCLAIMER,
             pages_analyzed=len(self.pages),
@@ -72,9 +77,9 @@ class DocumentSession:
         )
         return self.result
 
-    def ask(self, question: str, model: str | None = None) -> Answer:
+    def ask(self, question: str, model: str | None = None, language: str = "en") -> Answer:
         client = self.client_for(model)
-        answer = answer_question(question, self.retriever, self.index, client, self.cfg)
+        answer = answer_question(question, self.retriever, self.index, client, self.cfg, language=language)
         answer.model = getattr(client, "model", self.cfg.model)
         return answer
 
@@ -88,8 +93,8 @@ class DocumentSession:
         sparse = low_text_pages(self.pages, self.cfg)
         if sparse:
             notes.append(
-                "Pages with little or no extractable text were not analysed (possibly scanned "
-                f"images; local OCR is not supported): {', '.join(map(str, sparse))}."
+                "Pages with little or no extractable text were not analysed (scanned or low-text "
+                f"pages where local OCR found insufficient text): {', '.join(map(str, sparse))}."
             )
         if failed:
             notes.append(

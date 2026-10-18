@@ -13,6 +13,7 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
+from .comparison import ComparisonResult, compare_documents
 from .config import Settings
 from .config import settings as default_settings
 from .errors import (
@@ -102,7 +103,7 @@ class DocumentStore:
     ):
         self.cfg = cfg
         self.client = client or OllamaClient(cfg)
-        self._workspace = workspace or PrivateWorkspace()
+        self._workspace = workspace or PrivateWorkspace(encrypt_at_rest=cfg.enable_encryption_at_rest)
         self._workspace.__enter__()
         self._docs: dict[str, _Doc] = {}
         self._jobs: dict[str, _Job] = {}
@@ -175,6 +176,19 @@ class DocumentStore:
             with contextlib.suppress(DocumentNotFound):
                 self.delete(doc_id)
         self._workspace.cleanup()
+
+    def compare(self, doc_a_id: str, doc_b_id: str, include_formatting: bool = False) -> ComparisonResult:
+        doc_a = self._doc(doc_a_id)
+        doc_b = self._doc(doc_b_id)
+        return compare_documents(
+            doc_a_id=doc_a.info.id,
+            doc_a_name=doc_a.info.name,
+            pages_a=doc_a.session.pages,
+            doc_b_id=doc_b.info.id,
+            doc_b_name=doc_b.info.name,
+            pages_b=doc_b.session.pages,
+            include_formatting=include_formatting,
+        )
 
     # ---- retrieval and source passages ---------------------------------------------
     def search(self, doc_id: str, query: str, k: int = 4) -> list[PassageHit]:
@@ -267,7 +281,7 @@ class DocumentStore:
             raise DocumentNotFound("This document has not been analysed yet.")
         return result
 
-    def ask(self, doc_id: str, question: str, model: str | None = None) -> Answer:
+    def ask(self, doc_id: str, question: str, model: str | None = None, language: str = "en") -> Answer:
         doc = self._doc(doc_id)
         if len(question) > self.cfg.max_question_chars:
             raise LimitExceeded(f"Questions are limited to {self.cfg.max_question_chars} characters.")
@@ -277,7 +291,7 @@ class DocumentStore:
             raise Busy("Another analysis or question is already running. Try again when it finishes.")
         try:
             with network_guard():
-                return doc.session.ask(question, model=model)
+                return doc.session.ask(question, model=model, language=language)
         finally:
             self._model_gate.release()
 

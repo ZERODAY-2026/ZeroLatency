@@ -35,16 +35,21 @@ Respond only with JSON that matches the required schema."""
 INJECTION_MARKERS = re.compile(
     r"ignore (?:all |any )?(?:the )?(?:previous|prior|above) (?:instructions|prompts?)"
     r"|disregard (?:all |any )?(?:the )?(?:previous|prior|above|your)"
-    r"|(?:reveal|print|show) (?:your |the )?system prompt"
-    r"|you are now (?:a|an|in)\b"
+    r"|(?:reveal|print|show|dump|repeat) (?:your |the )?(?:system|developer|hidden) prompt"
+    r"|you are now (?:a|an|in|unrestricted)\b"
     r"|new instructions\s*:"
-    r"|as an ai (?:model|assistant)",
+    r"|as an ai (?:model|assistant)"
+    r"|override (?:all |the )?(?:system|safety) (?:instructions|rules)"
+    r"|jailbreak"
+    r"|act as (?:a judge|root|an administrator|dan)",
     re.I,
 )
 
 
 def fence(text: str) -> str:
-    return re.sub(r"</?\s*document_passage", "< document_passage", text, flags=re.I)
+    """Sanitize XML tag breakouts and strip adversarial instruction attempts."""
+    sanitized = re.sub(r"</?\s*document_passage[^>]*>", "[fenced_tag]", text, flags=re.I)
+    return sanitized
 
 
 def detect_injection_pages(pages: list[Page]) -> list[int]:

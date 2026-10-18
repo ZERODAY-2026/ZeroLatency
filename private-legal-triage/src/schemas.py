@@ -11,6 +11,7 @@ Verification = Literal["verified", "unverified"]
 class Page(BaseModel):
     number: int
     text: str
+    is_ocr: bool = False
 
 
 class Chunk(BaseModel):
@@ -61,6 +62,9 @@ class KeyFact(BaseModel):
     value: str
     page: int
     snippet: str
+    normalized_value: str | float | int | None = None
+    fact_subtype: str | None = None
+    conflicting: bool = False
 
 
 class ChecklistItem(BaseModel):
@@ -76,6 +80,8 @@ class TriageResult(BaseModel):
     findings: list[Finding]
     key_facts: list[KeyFact]
     checklist: list[ChecklistItem]
+    conflicts: list[dict] = Field(default_factory=list)
+    unusual_clauses: list[dict] = Field(default_factory=list)
     limitations: list[str]
     disclaimer: str
     pages_analyzed: int
@@ -112,5 +118,6 @@ class Answer(BaseModel):
     notes: list[str] = Field(default_factory=list)
     ungrounded_figures: list[str] = Field(default_factory=list)
     model: str | None = None
+    language: str = "en"
     abstention_reason: str | None = None
     limitations: list[str] = Field(default_factory=list)

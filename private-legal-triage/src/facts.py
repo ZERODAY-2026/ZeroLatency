@@ -85,9 +85,86 @@ def numeric_tokens(text: str) -> set[str]:
     return tokens
 
 
+def _normalize_fact_value(label: str, value: str) -> str | float | int | None:
+    try:
+        if label == "amount":
+            val_num = re.sub(r"^(?:₹|\$|(?:Rs\.?|INR|USD))\s*", "", value, flags=re.I).strip()
+            clean = re.sub(r"[^\d.]", "", val_num.replace(",", ""))
+            if clean:
+                factor = 1.0
+                if re.search(r"lakh", value, re.I):
+                    factor = 100_000.0
+                elif re.search(r"crore", value, re.I):
+                    factor = 10_000_000.0
+                elif re.search(r"thousand", value, re.I):
+                    factor = 1_000.0
+                elif re.search(r"million", value, re.I):
+                    factor = 1_000_000.0
+                return round(float(clean) * factor, 2)
+        elif label == "percentage":
+            clean = re.sub(r"[^\d.]", "", value)
+            if clean:
+                return float(clean)
+        elif label == "duration":
+            digits = re.search(r"\d+", value)
+            if digits:
+                return int(digits.group())
+            for word, num in {**UNITS, **TENS}.items():
+                if re.search(rf"\b{word}\b", value, re.I):
+                    return num
+    except Exception:
+        pass
+    return value.strip()
+
+
+def _infer_fact_subtype(label: str, snippet: str, pre_text: str = "") -> str:
+    p = pre_text.lower()
+    s = snippet.lower()
+    if label == "amount":
+        if "rent" in p or "monthly" in p:
+            return "monthly_rent"
+        if "deposit" in p:
+            return "security_deposit"
+        if "penalty" in p or "fine" in p or "late" in p:
+            return "penalty_charge"
+        if "rent" in s or "monthly" in s:
+            return "monthly_rent"
+        if "deposit" in s:
+            return "security_deposit"
+        return "monetary_amount"
+    elif label == "duration":
+        if "notice" in p or "terminat" in p:
+            return "notice_period"
+        if "lease" in p or "term" in p:
+            return "lease_term"
+        if "notice" in s or "terminat" in s:
+            return "notice_period"
+        if "lease" in s or "term" in s:
+            return "lease_term"
+        if "grace" in s:
+            return "grace_period"
+        return "duration_period"
+    elif label == "party":
+        if "landlord" in s or "lessor" in s:
+            return "landlord"
+        if "tenant" in s or "lessee" in s:
+            return "tenant"
+        return "contracting_party"
+    elif label == "date":
+        if "commence" in s or "start" in s or "effective" in s:
+            return "commencement_date"
+        if "expir" in s or "end" in s or "terminat" in s:
+            return "expiration_date"
+        if "sign" in s or "execut" in s:
+            return "execution_date"
+        return "calendar_date"
+    return label
+
+
 def extract_key_facts(pages: list[Page]) -> list[KeyFact]:
     facts: list[KeyFact] = []
     seen: set[tuple[str, str, int]] = set()
+
     for page in pages:
         flat = re.sub(r"\s+", " ", page.text)
         found: list[tuple[int, str, str]] = []
@@ -100,5 +177,30 @@ def extract_key_facts(pages: list[Page]) -> list[KeyFact]:
                 continue
             seen.add(key)
             snippet = flat[max(0, start - 60) : start + len(value) + 60].strip()
-            facts.append(KeyFact(label=label, value=value, page=page.number, snippet=snippet))
+            pre_text = flat[max(0, start - 40) : start].strip()
+            subtype = _infer_fact_subtype(label, snippet, pre_text)
+            normalized = _normalize_fact_value(label, value)
+            facts.append(
+                KeyFact(
+                    label=label,
+                    value=value,
+                    page=page.number,
+                    snippet=snippet,
+                    normalized_value=normalized,
+                    fact_subtype=subtype,
+                    conflicting=False,
+                )
+            )
+
+    # Flag conflicting facts with different normalized values for specific key subtypes
+    subtype_vals: dict[str, set[str]] = {}
+    for f in facts:
+        if f.fact_subtype in ("monthly_rent", "security_deposit", "notice_period") and f.normalized_value is not None:
+            norm_str = str(f.normalized_value)
+            subtype_vals.setdefault(f.fact_subtype, set()).add(norm_str)
+
+    for f in facts:
+        if f.fact_subtype in subtype_vals and len(subtype_vals[f.fact_subtype]) > 1:
+            f.conflicting = True
+
     return facts

@@ -3,9 +3,9 @@ import re
 from collections import Counter
 
 from .citation_validator import SourceIndex, ungrounded_figures
-from .config import ESCALATION, SILENT_ANSWER, VERDICT_NOTICE, Settings
+from .config import ESCALATION, SILENT_ANSWER, SUPPORTED_LANGUAGES, VERDICT_NOTICE, Settings
 from .config import settings as default_settings
-from .errors import EmptyQuestion
+from .errors import EmptyQuestion, UnsupportedLanguage
 from .gemma_client import ChatClient, call_structured
 from .schemas import Answer, Chunk, Evidence, ModelAnswer
 from .triage import fence
@@ -153,12 +153,23 @@ def is_verdict_question(question: str) -> bool:
     return bool(VERDICT.search(question))
 
 
-def _prompt(question: str, hits: list[tuple[Chunk, float]], verdict: bool) -> str:
+def _prompt(question: str, hits: list[tuple[Chunk, float]], verdict: bool, language: str = "en") -> str:
     passages = "\n\n".join(
         f'<document_passage page="{chunk.page}" id="{chunk.chunk_id}">\n{fence(chunk.text)}\n</document_passage>'
         for chunk, _ in hits
     )
-    return f"Question: {question.strip()}\n\n{passages}" + (VERDICT_INSTRUCTION if verdict else "")
+    prompt_text = f"Question: {question.strip()}\n\n{passages}"
+    if verdict:
+        prompt_text += VERDICT_INSTRUCTION
+    if language != "en" and language in SUPPORTED_LANGUAGES:
+        lang_name = SUPPORTED_LANGUAGES[language]
+        prompt_text += (
+            f"\n\nOUTPUT LANGUAGE REQUIREMENT:\n"
+            f"Provide the 'answer' field in {lang_name} using natural, clear phrasing.\n"
+            f"CRITICAL: Keep all 'evidence_quotes' in the original English language from the passages above, "
+            f"exact character for character, without translating the quotes, so citations can be verified."
+        )
+    return prompt_text
 
 
 def answer_question(
@@ -167,9 +178,15 @@ def answer_question(
     index: SourceIndex,
     client: ChatClient,
     cfg: Settings = default_settings,
+    language: str = "en",
 ) -> Answer:
     if not question.strip():
         raise EmptyQuestion("Please enter a question.")
+    lang = (language or "en").lower().strip()
+    if lang not in SUPPORTED_LANGUAGES:
+        raise UnsupportedLanguage(
+            f"Language '{language}' is not supported. Supported: {', '.join(sorted(SUPPORTED_LANGUAGES.keys()))}"
+        )
     verdict = is_verdict_question(question)
     hits = retriever.search(question, cfg.retrieval_top_k)
     if not hits:
@@ -177,6 +194,7 @@ def answer_question(
             question=question,
             answerable=False,
             answer=SILENT_ANSWER,
+            language=lang,
             verdict_declined=verdict,
             escalation=ESCALATION,
             notes=["No passage in the document matched the question."],
@@ -185,7 +203,7 @@ def answer_question(
         )
 
     raw = call_structured(
-        client, SYSTEM_PROMPT, _prompt(question, hits, verdict), ModelAnswer, cfg.model_retries
+        client, SYSTEM_PROMPT, _prompt(question, hits, verdict, lang), ModelAnswer, cfg.model_retries
     )
     hit_pages = [chunk.page for chunk, _ in hits]
     evidence = []
@@ -214,6 +232,7 @@ def answer_question(
             answerable=False,
             answer=SILENT_ANSWER,
             evidence=evidence,
+            language=lang,
             verdict_declined=verdict,
             escalation=ESCALATION,
             notes=["The retrieved passages did not answer the question."],
@@ -226,6 +245,7 @@ def answer_question(
             answerable=False,
             answer=SILENT_ANSWER,
             evidence=evidence,
+            language=lang,
             verdict_declined=verdict,
             escalation=ESCALATION,
             notes=["The model proposed an answer, but no supporting quotation could be verified."],
@@ -236,6 +256,7 @@ def answer_question(
         notes.append("Some quotations from the model could not be verified and are marked as such.")
         limitations.append("Some evidence quotes were unverified.")
 
+    # Only evaluate ungrounded English figures if English or digits present
     figures = ungrounded_figures(raw.answer, index.window_text(None))
     if figures:
         notes.append(
@@ -254,6 +275,7 @@ def answer_question(
         answerable=True,
         answer=answer_text,
         evidence=evidence,
+        language=lang,
         statement_type=raw.statement_type,
         jurisdiction_dependent=raw.jurisdiction_dependent,
         verdict_declined=verdict,

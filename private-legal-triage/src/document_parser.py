@@ -11,6 +11,7 @@ from .errors import (
     UnreadableDocument,
     UnsupportedFormat,
 )
+from .ocr import is_local_ocr_available, ocr_page_image
 from .schemas import Page
 
 TEXT_PAGE_CHARS = 3000
@@ -31,9 +32,19 @@ def extract_pages(path: str | Path, cfg: Settings = default_settings) -> list[Pa
         raise UnsupportedFormat("Only PDF and plain text (.txt) files are supported.")
     total = sum(len(page.text.strip()) for page in pages)
     if total < cfg.min_total_chars:
+        ocr_applied = any(p.is_ocr for p in pages)
+        if ocr_applied:
+            raise NoExtractableText(
+                "Little or no text could be extracted even after applying local OCR. "
+                "The document pages may be blank, low-resolution, or unreadable."
+            )
+        if is_local_ocr_available():
+            raise NoExtractableText(
+                "Little or no text could be extracted. The document may be blank or corrupted."
+            )
         raise NoExtractableText(
-            "Little or no text could be extracted. If this is a scanned document, note that "
-            "local OCR is not supported yet."
+            "Little or no text could be extracted. The document appears to be scanned or image-based, "
+            "but a local OCR engine (Tesseract) is not installed on this system."
         )
     return pages
 
@@ -58,7 +69,21 @@ def _read_pdf(target: Path, cfg: Settings) -> list[Page]:
                 f"The PDF has more than {cfg.max_pdf_pages} pages, which is the supported limit."
             )
         try:
-            return [Page(number=i + 1, text=page.get_text("text")) for i, page in enumerate(doc)]
+            pages: list[Page] = []
+            for i, page in enumerate(doc):
+                raw_text = page.get_text("text")
+                is_ocr = False
+                # If page text is sparse/empty and OCR is enabled and available, attempt local OCR
+                if len(raw_text.strip()) < cfg.min_chars_per_page and cfg.ocr_enabled and is_local_ocr_available():
+                    try:
+                        ocr_text = ocr_page_image(page)
+                        if len(ocr_text.strip()) > len(raw_text.strip()):
+                            raw_text = ocr_text
+                            is_ocr = True
+                    except Exception:
+                        pass
+                pages.append(Page(number=i + 1, text=raw_text, is_ocr=is_ocr))
+            return pages
         except (RuntimeError, ValueError):
             raise UnreadableDocument("Text could not be extracted from this PDF.") from None
     finally:

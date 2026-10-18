@@ -1,4 +1,3 @@
-from src.checklist import scan_checklist
 from src.document_parser import extract_pages
 from src.facts import extract_key_facts, numeric_tokens
 
@@ -21,8 +20,38 @@ def test_numeric_tokens_handle_words_and_commas():
 
 
 def test_checklist_reports_found_and_missing(rental_pdf):
+    from src.checklist import scan_checklist
     items = {i.topic: i for i in scan_checklist(extract_pages(rental_pdf))}
     assert items["termination"].found and items["termination"].pages == [2]
     assert items["governing law"].found
     assert not items["force majeure"].found
     assert not items["indemnity"].found
+
+
+def test_structured_fact_subtypes_and_conflicts():
+    from src.schemas import Page
+    pages = [
+        Page(number=1, text="The Tenant shall pay a monthly rent of Rs. 25,000 and a refundable deposit of Rs. 75,000."),
+        Page(number=2, text="In case of renewal, the monthly rent shall be Rs. 30,000. Notice period is thirty (30) days."),
+    ]
+    facts = extract_key_facts(pages)
+
+    # Subtypes identified correctly
+    subtypes = {f.fact_subtype for f in facts}
+    assert "monthly_rent" in subtypes
+    assert "security_deposit" in subtypes
+    assert "notice_period" in subtypes
+
+    # Normalized values populated
+    rent_facts = [f for f in facts if f.fact_subtype == "monthly_rent"]
+    assert len(rent_facts) == 2
+    assert 25000.0 in [f.normalized_value for f in rent_facts]
+    assert 30000.0 in [f.normalized_value for f in rent_facts]
+
+    # Conflicting rent amounts flagged
+    assert all(f.conflicting for f in rent_facts)
+
+    # Non-conflicting deposit not flagged
+    deposit_fact = next(f for f in facts if f.fact_subtype == "security_deposit")
+    assert not deposit_fact.conflicting
+    assert deposit_fact.normalized_value == 75000.0

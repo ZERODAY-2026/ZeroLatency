@@ -14,6 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
+from .comparison import ComparisonResult
 from .config import DISCLAIMER, settings
 from .errors import (
     AnalysisCancelled,
@@ -32,6 +33,7 @@ from .errors import (
     TriageError,
     UnreadableDocument,
     UnsupportedFormat,
+    UnsupportedLanguage,
     UnsupportedModel,
 )
 from .privacy import is_loopback_host, network_guard
@@ -49,6 +51,7 @@ STATUS_BY_ERROR: dict[type[TriageError], int] = {
     NoExtractableText: 422,
     LimitExceeded: 413,
     UnsupportedModel: 400,
+    UnsupportedLanguage: 400,
     EmptyQuestion: 400,
     DocumentNotFound: 404,
     ModelMissing: 409,
@@ -78,6 +81,13 @@ class AnalyzeRequest(BaseModel):
 class AskRequest(BaseModel):
     question: str
     model: str | None = None
+    language: str = Field(default="en", description="Output language code (e.g. en, hi, es, fr, de)")
+
+
+class CompareRequest(BaseModel):
+    doc_a: str = Field(description="Document ID for the baseline / older version")
+    doc_b: str = Field(description="Document ID for the target / newer version")
+    include_formatting: bool = Field(default=False, description="Include purely cosmetic formatting differences")
 
 
 class SearchRequest(BaseModel):
@@ -100,6 +110,8 @@ def create_app(store: DocumentStore | None = None) -> FastAPI:
                 app.state.store.close()
 
     app = FastAPI(title="Private Legal Document Triage", version="1.0", lifespan=lifespan)
+    if store is not None:
+        app.state.store = store
     app.add_middleware(
         CORSMiddleware,
         allow_origins=cors_origins(),
@@ -141,6 +153,10 @@ def create_app(store: DocumentStore | None = None) -> FastAPI:
     def list_documents(request: Request):
         return store_of(request).list_documents()
 
+    @app.post("/documents/compare", response_model=ComparisonResult)
+    def compare(body: CompareRequest, request: Request) -> ComparisonResult:
+        return store_of(request).compare(body.doc_a, body.doc_b, body.include_formatting)
+
     @app.get("/documents/{doc_id}", response_model=DocumentInfo)
     def get_document(doc_id: str, request: Request):
         return store_of(request).get(doc_id)
@@ -173,7 +189,7 @@ def create_app(store: DocumentStore | None = None) -> FastAPI:
 
     @app.post("/documents/{doc_id}/ask", response_model=Answer)
     def ask(doc_id: str, body: AskRequest, request: Request):
-        return store_of(request).ask(doc_id, body.question, body.model)
+        return store_of(request).ask(doc_id, body.question, body.model, body.language)
 
     @app.get("/jobs/{job_id}", response_model=JobStatus)
     def job(job_id: str, request: Request):

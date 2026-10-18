@@ -11,6 +11,7 @@ from contextlib import contextmanager, suppress
 from pathlib import Path
 from urllib.parse import urlparse
 
+from .encryption import EphemeralKey, decrypt_data, encrypt_data
 from .errors import PrivacyViolation
 
 LOCAL_NAMES = {"localhost"}
@@ -103,13 +104,13 @@ def network_guard(observed: list[str] | None = None):
 
 
 class PrivateWorkspace:
-    def __init__(self) -> None:
+    def __init__(self, encrypt_at_rest: bool = False) -> None:
         self.root: Path | None = None
+        self.encrypt_at_rest = encrypt_at_rest
+        self._key: EphemeralKey | None = EphemeralKey() if encrypt_at_rest else None
 
     def __enter__(self) -> "PrivateWorkspace":
         self.root = Path(tempfile.mkdtemp(prefix="triage_"))
-        # os.chmod 0o700 restricts POSIX systems; it is a no-op on Windows where
-        # directory access is governed by ACLs rather than POSIX mode bits.
         os.chmod(self.root, 0o700)
         return self
 
@@ -118,15 +119,25 @@ class PrivateWorkspace:
             raise RuntimeError("Workspace is not open")
         suffix = Path(filename).suffix.lower()
         target = self.root / f"{uuid.uuid4().hex}{suffix}"
-        target.write_bytes(data)
+        payload = encrypt_data(data, self._key.get_bytes()) if (self.encrypt_at_rest and self._key) else data
+        target.write_bytes(payload)
         os.chmod(target, 0o600)
         return target
+
+    def read_upload(self, path: Path) -> bytes:
+        raw = Path(path).read_bytes()
+        if self.encrypt_at_rest and self._key:
+            return decrypt_data(raw, self._key.get_bytes())
+        return raw
 
     def delete_file(self, path: Path) -> None:
         """Best-effort overwrite then unlink. Not a guarantee on SSDs or journaling filesystems."""
         _overwrite_and_remove(Path(path))
 
     def cleanup(self) -> None:
+        if self._key is not None:
+            self._key.zeroize()
+            self._key = None
         if self.root is None or not self.root.exists():
             return
         for path in self.root.rglob("*"):

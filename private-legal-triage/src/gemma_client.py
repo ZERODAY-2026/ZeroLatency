@@ -143,7 +143,13 @@ class OllamaClient:
                     f"The local runtime could not load '{self.model}' because it needs more memory "
                     "than is available. Close other applications or choose the smaller model."
                 )
-            raise ModelError(f"The local model server returned status {response.status_code}.")
+            msg = ""
+            try:
+                msg = response.json().get("error", "")
+            except Exception:
+                msg = response.text[:200]
+            err_detail = f": {msg}" if msg else "."
+            raise ModelError(f"The local model server returned status {response.status_code}{err_detail}")
         return response
 
 

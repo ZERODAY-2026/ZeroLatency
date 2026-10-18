@@ -1,0 +1,66 @@
+{
+  "system": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6",
+    "cpu": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "cpu_logical_cores": 16,
+    "ram_total_mb": 16069,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+        "memory_total_mb": 6144.0,
+        "memory_used_mb": 0.0,
+        "driver": "610.60"
+      }
+    ]
+  },
+  "timestamp": 1792320681.72061,
+  "iterations": 3,
+  "runs": {
+    "small_doc": {
+      "size_bytes": 1476,
+      "upload_latency_median_ms": 5.78,
+      "upload_latency_p95_ms": 7.5,
+      "qa_cold_latency_ms": 27.21,
+      "qa_warm_median_ms": 16.22,
+      "analysis_median_s": 0.02,
+      "memory_profile": {
+        "baseline_system_used_mb": 14086,
+        "peak_system_used_mb": 14086,
+        "peak_gpu_used_mb": 0,
+        "samples": 1,
+        "note": "System-wide, sampled; not a per-process profile."
+      }
+    },
+    "medium_doc": {
+      "size_bytes": 1476,
+      "upload_latency_median_ms": 3.29,
+      "upload_latency_p95_ms": 8.32,
+      "qa_cold_latency_ms": 7.91,
+      "qa_warm_median_ms": 14.28,
+      "analysis_median_s": 0.023,
+      "memory_profile": {
+        "baseline_system_used_mb": 14094,
+        "peak_system_used_mb": 14094,
+        "peak_gpu_used_mb": 0,
+        "samples": 1,
+        "note": "System-wide, sampled; not a per-process profile."
+      }
+    },
+    "large_doc": {
+      "size_bytes": 2954,
+      "upload_latency_median_ms": 6.57,
+      "upload_latency_p95_ms": 17.81,
+      "qa_cold_latency_ms": 6.21,
+      "qa_warm_median_ms": 14.48,
+      "analysis_median_s": 0.052,
+      "memory_profile": {
+        "baseline_system_used_mb": 14038,
+        "peak_system_used_mb": 14038,
+        "peak_gpu_used_mb": 0,
+        "samples": 1,
+        "note": "System-wide, sampled; not a per-process profile."
+      }
+    }
+  }
+}
