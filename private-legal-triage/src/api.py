@@ -140,6 +140,17 @@ def create_app(store: DocumentStore | None = None) -> FastAPI:
     def store_of(request: Request) -> DocumentStore:
         return request.app.state.store
 
+    @app.get("/")
+    def root(request: Request) -> dict:
+        status = store_of(request).models()
+        return {
+            "name": "ZeroLatency Private Legal Triage API",
+            "status": "online",
+            "ollama_available": status.ollama_available,
+            "docs_url": "/docs",
+            "health_url": "/health",
+        }
+
     @app.get("/health")
     def health(request: Request) -> dict:
         status = store_of(request).models()

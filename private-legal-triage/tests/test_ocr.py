@@ -125,3 +125,46 @@ def test_ocr_operates_under_strict_network_guard(tmp_path):
         assert observed == [], "OCR triggered unexpected network activity"
     finally:
         set_custom_ocr_handler(None)
+
+
+def test_real_local_ocr_end_to_end(tmp_path):
+    """Test actual PyMuPDF local OCR on a real image-rendered scanned PDF without mocking."""
+    set_custom_ocr_handler(None)
+
+    # 1. Create a page with text, render to pixmap image
+    src_doc = pymupdf.open()
+    src_page = src_doc.new_page()
+    clause_text = (
+        "CONFIDENTIALITY AND NON-DISCLOSURE AGREEMENT\n\n"
+        "1. DEFINITION OF CONFIDENTIAL INFORMATION.\n"
+        "The receiving party agrees that all commercial, technical, and proprietary\n"
+        "data disclosed by the disclosing party shall remain confidential for a period\n"
+        "of five years from the date of disclosure.\n"
+        "2. GOVERNING LAW AND ARBITRATION JURISDICTION.\n"
+        "This agreement shall be governed and construed according to the laws of California."
+    )
+    src_page.insert_textbox(pymupdf.Rect(50, 50, 550, 750), clause_text)
+    pix = src_page.get_pixmap(dpi=150)
+    img_bytes = pix.tobytes("png")
+    src_doc.close()
+
+    # 2. Place only the image onto a new PDF (simulating scanned document with zero vector text)
+    scanned_path = tmp_path / "scanned_contract.pdf"
+    scanned_doc = pymupdf.open()
+    scanned_page = scanned_doc.new_page(width=pix.width, height=pix.height)
+    scanned_page.insert_image(scanned_page.rect, stream=img_bytes)
+    scanned_doc.save(str(scanned_path))
+    scanned_doc.close()
+
+    # Verify that native text extraction gives nothing
+    check_doc = pymupdf.open(str(scanned_path))
+    assert check_doc[0].get_text("text").strip() == ""
+    check_doc.close()
+
+    # 3. Extract pages via pipeline (should automatically trigger local OCR)
+    pages = extract_pages(str(scanned_path))
+    assert len(pages) == 1
+    assert pages[0].is_ocr, "Page should be marked as OCR extracted"
+    extracted = pages[0].text
+    assert "CONFIDENTIALITY" in extracted or "AGREEMENT" in extracted
+    assert "GOVERNING LAW" in extracted or "California" in extracted
