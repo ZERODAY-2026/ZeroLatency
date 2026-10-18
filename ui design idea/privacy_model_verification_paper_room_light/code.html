@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface-variant": "#cfc6ae", "bg-raised": "#211E19", "bg-rail": "#12110E", "on-secondary-fixed-variant": "#004b73", "surface-container-highest": "#373430", "surface": "#15130f", "secondary-container": "#00699e", "on-error-container": "#ffdad6", "on-secondary-container": "#c8e3ff", "surface-tint": "#e4c537", "error-red": "#FF7A8A", "on-primary-container": "#6e5d00", "on-tertiary-fixed-variant": "#513787", "primary-container": "#f7d748", "error-container": "#93000a", "primary-fixed": "#ffe165", "tertiary-container": "#e2d1ff", "error": "#ffb4ab", "on-tertiary-fixed": "#25005a", "surface-bright": "#3c3934", "local-teal": "#4FE3C8", "on-background": "#e8e1da", "primary-fixed-dim": "#e4c537", "inverse-on-surface": "#33302b", "on-primary-fixed-variant": "#544600", "background": "#15130f", "on-primary-fixed": "#221b00", "primary": "#fff4d6", "secondary-fixed-dim": "#92ccff", "tertiary-fixed-dim": "#d2bbff", "on-secondary-fixed": "#001d31", "surface-container": "#221f1b", "surface-container-low": "#1d1b17", "on-error": "#690005", "inverse-primary": "#6f5d00", "line-strong": "#433E34", "bg-app": "#0D0C0A", "outline-variant": "#4c4734", "inverse-surface": "#e8e1da", "tertiary-fixed": "#eaddff", "paper-primary": "#F3EDE0", "secondary-fixed": "#cce5ff", "outline": "#98907a", "paper-secondary": "#CFC7B6", "on-surface": "#e8e1da", "surface-dim": "#15130f", "on-secondary": "#003351", "on-primary": "#3a3000", "on-tertiary": "#3a1e6f", "line": "#2C2923", "jurisdiction": "#A9B7C2", "on-tertiary-container": "#6a4fa1", "bg-inset": "#0A0908", "surface-container-high": "#2c2a25", "bg-surface": "#181612", "secondary": "#92ccff", "tertiary": "#faf2ff", "paper-muted": "#968D7B", "surface-variant": "#373430", "surface-container-lowest": "#100e0a", "ember": "#FF9566", "marker-dark": "#1A1608" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-desktop": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "space-xl": "2rem", "space-xs": "0.25rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "space-sm": "0.5rem", "margin": "1rem" }, "fontFamily": { "caption-default": ["Inter"], "badge-label": ["Inter"], "display-hero-mobile": ["Fraunces"], "headline-h3": ["Inter Tight"], "headline-h2": ["Fraunces"], "code-quote": ["JetBrains Mono"], "body-default": ["Inter"], "display-hero": ["Fraunces"], "headline-h1": ["Fraunces"], "headline-h1-mobile": ["Fraunces"], "stat-numeral": ["Fraunces"] }, "fontSize": { "caption-default": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "badge-label": ["12px", { "lineHeight": "16px", "fontWeight": "550" }], "display-hero-mobile": ["32px", { "lineHeight": "38px", "fontWeight": "600" }], "headline-h3": ["17px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-h2": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "code-quote": ["13px", { "lineHeight": "22px", "fontWeight": "400" }], "body-default": ["15px", { "lineHeight": "25px", "fontWeight": "400" }], "display-hero": ["56px", { "lineHeight": "60px", "fontWeight": "600" }], "headline-h1": ["36px", { "lineHeight": "42px", "fontWeight": "600" }], "headline-h1-mobile": ["26px", { "lineHeight": "32px", "fontWeight": "600" }], "stat-numeral": ["40px", { "lineHeight": "44px", "fontWeight": "600" }] } } } }</script></head><body class="bg-bg-app font-body-default text-body-default text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-bg-rail z-50 flex flex-col justify-between border-r border-line"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md border-b border-line"><div class="flex items-center gap-space-sm"><span class="w-2.5 h-6 bg-primary-container rounded-xs"></span><span class="font-headline-h2 text-headline-h2 text-paper-primary tracking-tight">Redline</span></div><p class="font-caption-default text-caption-default text-paper-muted mt-space-xs font-mono tracking-wide uppercase">Private legal triage</p></div><nav class="flex flex-col py-space-md px-space-sm gap-1" data-active-classes="bg-bg-raised text-paper-primary border-l-2 border-primary-container font-medium"><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-paper-secondary hover:bg-bg-raised hover:text-paper-primary transition-colors" data-path="desk" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">inbox</span><span class="font-body-default text-body-default">Desk</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-paper-secondary hover:bg-bg-raised hover:text-paper-primary transition-colors" data-path="overview" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-default text-body-default">Overview</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-paper-secondary hover:bg-bg-raised hover:text-paper-primary transition-colors" data-path="findings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">rule</span><span class="font-body-default text-body-default">Findings</span></div><span class="h-5 min-w-[22px] px-1.5 flex items-center justify-center rounded-full bg-surface-container-high border border-line-strong text-[11px] font-mono text-paper-secondary">14</span></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-paper-secondary hover:bg-bg-raised hover:text-paper-primary transition-colors" data-path="ask" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">chat_bubble</span><span class="font-body-default text-body-default">Ask</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-paper-secondary hover:bg-bg-raised hover:text-paper-primary transition-colors" data-path="key-facts-and-checklist" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">fact_check</span><span class="font-body-default text-body-default">Key facts &amp; Checklist</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-paper-secondary hover:bg-bg-raised hover:text-paper-primary transition-colors" data-path="export" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">ios_share</span><span class="font-body-default text-body-default">Export</span></div></a><a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-paper-secondary hover:bg-bg-raised hover:text-paper-primary transition-colors" data-path="privacy-and-model-verification" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">shield</span><span class="font-body-default text-body-default">Privacy &amp; verification</span></div><span class="w-2 h-2 rounded-full bg-primary-container"></span></a></nav></div><div class="p-space-md flex flex-col gap-space-md border-t border-line bg-surface-container-lowest"><div class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg bg-surface-container-low border border-line"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-local-teal opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-local-teal"></span></span><div class="flex flex-col"><span class="font-badge-label text-badge-label text-local-teal leading-none">Air-gap Active</span><span class="font-code-quote text-[10px] text-paper-muted leading-tight mt-0.5">Telemetry local · Zero calls</span></div></div><div class="flex items-center justify-between px-space-sm text-paper-muted font-caption-default text-caption-default"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">stylus_note</span>Paper Room</span><span class="font-code-quote text-[11px] text-jurisdiction">v2.4-arc</span></div><button class="h-[44px] w-full flex items-center justify-center gap-space-xs rounded-[10px] border border-error-red/40 bg-error-red/10 text-error-red hover:bg-error-red/20 transition-colors font-body-default text-body-default font-medium" type="button"><span class="material-symbols-outlined text-[18px]">delete_sweep</span><span>Clear &amp; Start Over</span></button></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-14 bg-bg-surface/90 backdrop-blur-md border-b border-line z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-2 text-paper-muted font-caption-default text-caption-default"><span class="hover:text-paper-primary transition-colors cursor-pointer">Desk</span><span class="text-line-strong">/</span><span class="text-paper-primary font-medium">Privacy &amp; Model Verification</span></div><div class="h-4 w-[1px] bg-line"></div><div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-bg-raised border border-line text-paper-secondary font-code-quote text-[12px]"><span class="material-symbols-outlined text-paper-muted text-[16px]">description</span><span>rental_agreement.pdf</span><span class="text-paper-muted">(12 pgs)</span></div></div><div class="flex items-center gap-space-md"><span class="hidden xl:inline-block font-caption-default text-caption-default text-paper-muted italic">Informational only. Not legal advice.</span><div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface-container-high border border-line"><span class="w-1.5 h-1.5 rounded-full bg-local-teal"></span><span class="font-badge-label text-badge-label text-local-teal">Air-gap active</span><span class="text-line-strong">·</span><span class="font-code-quote text-[11px] text-paper-muted">Zero external calls</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border border-primary-container"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-14 bg-bg-app min-h-screen px-space-lg py-space-lg w-full"><div class="flex flex-col w-full text-stone-900 pb-16">
+<!-- Top Document Sub-Header Strip -->
+<div class="w-full bg-[#FFFDF9] border-b border-[#E6DCBF] px-6 py-3.5 flex flex-wrap items-center justify-between gap-4 shadow-sm">
+<div class="flex items-center flex-wrap gap-3">
+<div class="flex items-center gap-2 bg-[#F2ECDD] text-[#2C261E] px-3 py-1 rounded border border-[#DDD3BC] font-mono text-xs font-medium">
+<span class="material-symbols-outlined text-[15px] text-[#7A6F5D]">description</span>
+<span>rental_agreement.pdf</span>
+<span class="text-[#8C806D] text-[11px]">(12 pgs)</span>
+</div>
+<div class="h-4 w-[1px] bg-[#DDD3BC] hidden sm:block"></div>
+<!-- Quick Document Triage Metrics -->
+<div class="flex items-center gap-4 text-xs font-mono text-[#5C5346]">
+<span class="flex items-center gap-1.5">
+<span class="text-[#8C806D]">Findings</span>
+<span class="font-bold text-[#1C1A16] bg-[#F4EFE6] px-1.5 py-0.5 rounded border border-[#E0D7C4]">14</span>
+</span>
+<span class="text-[#C8BEAA]">·</span>
+<span class="flex items-center gap-1.5">
+<span class="text-[#8C806D]">Quote Found</span>
+<span class="font-bold text-[#0B7A6B] bg-[#E1F7F2] px-1.5 py-0.5 rounded border border-[#A7E7DC]">11</span>
+</span>
+<span class="text-[#C8BEAA]">·</span>
+<span class="flex items-center gap-1.5">
+<span class="text-[#8C806D]">Review</span>
+<span class="font-bold text-[#6B3FC9] bg-[#F3EDFF] px-1.5 py-0.5 rounded border border-[#DDD0FA]">4</span>
+</span>
+<span class="text-[#C8BEAA] hidden md:inline">·</span>
+<span class="hidden md:flex items-center gap-1.5">
+<span class="text-[#8C806D]">Elapsed</span>
+<span class="font-bold text-[#1C1A16]">02:41</span>
+</span>
+<span class="text-[#C8BEAA] hidden md:inline">·</span>
+<span class="hidden md:flex items-center gap-1.5 text-[#0B7A6B] font-semibold">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+<span>Egress 0 KB</span>
+</span>
+</div>
+</div>
+<!-- Capsule Security Indicator -->
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F8F5] border border-[#99E6D8] text-[#0B7A6B] shadow-[0_1px_2px_rgba(11,122,107,0.08)]">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0B7A6B] opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-[#0B7A6B]"></span>
+</span>
+<span class="font-sans text-xs font-semibold tracking-wide uppercase">Air-Gap Active</span>
+<span class="text-[#82D4C6] text-[10px]">|</span>
+<span class="font-mono text-[11px] font-medium text-[#136156]">Loopback 127.0.0.1</span>
+</div>
+</div>
+<!-- Main Content Layout Area -->
+<div class="max-w-[1360px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+<!-- Hero Section: The Inviolable Core Promise -->
+<div class="relative overflow-hidden rounded-xl bg-[#FFFDF7] border border-[#E4DAC3] p-8 sm:p-10 shadow-[0_4px_24px_rgba(70,55,30,0.05)]">
+<!-- Watermark Background Ornament -->
+<div class="absolute -right-8 -bottom-10 pointer-events-none select-none text-[#F4ECDA]/40">
+<span class="material-symbols-outlined text-[240px] leading-none">verified_user</span>
+</div>
+<div class="relative z-10 max-w-4xl">
+<div class="flex items-center gap-2 mb-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-mono uppercase tracking-wider font-semibold bg-[#EAF7F4] text-[#0B7A6B] border border-[#A5E8DD]">
+<span class="material-symbols-outlined text-[13px]">lock</span> Hardware Boundary Certified
+          </span>
+<span class="text-[#B5A890] text-xs">·</span>
+<span class="text-xs font-mono text-[#786C5A]">RFC 3330 Loopback Enforcement</span>
+</div>
+<h1 class="font-headline-h1 text-[34px] sm:text-[42px] leading-[1.18] text-[#1C1A16] font-semibold tracking-tight">
+          What leaves this device during processing:
+          <span class="relative inline-block whitespace-nowrap ml-1 text-[#1C1A16]">
+            NOTHING.
+            <span class="absolute left-0 bottom-1 w-full h-[10px] bg-[#F2C500]/60 -z-10 -rotate-1 rounded-sm"></span>
+</span>
+</h1>
+<p class="mt-4 text-[#403B31] text-[15px] sm:text-[16px] leading-relaxed font-sans max-w-3xl">
+          Every document token, character index, vector embedding, and prompt stays in volatile device RAM at 
+          <code class="font-mono text-xs bg-[#EFE8D6] text-[#24211A] px-1.5 py-0.5 rounded border border-[#DDD3BC] font-semibold">127.0.0.1</code>. 
+          Zero outbound sockets. Zero telemetry beacons. Zero cloud dependencies. Your legal agreements never cross your local bus.
+        </p>
+<!-- Stamped Attestation Seal -->
+<div class="mt-6 pt-5 border-t border-[#EFE7D2] flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#F4EEE0] border border-[#D5C9AF] flex items-center justify-center text-[#73634B]">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</div>
+<div>
+<div class="font-mono text-xs font-bold text-[#1C1A16] tracking-wide uppercase">
+                VERIFIED LOCAL LOOPBACK · NO REMOTE SYNC
+              </div>
+<div class="text-[12px] text-[#695F4F]">
+                Volatile execution environment · Cleared immediately on browser session termination
+              </div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded bg-[#F8F5EC] border border-[#DDD1B8] font-mono text-[11px] text-[#554C3D]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#0B7A6B]"></span>
+              Socket Guard: PASS
+            </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded bg-[#F8F5EC] border border-[#DDD1B8] font-mono text-[11px] text-[#554C3D]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#0B7A6B]"></span>
+              DNS Egress: 0 BLOCKED
+            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Telemetry & Network Guard Grid -->
+<div>
+<div class="flex items-center justify-between mb-3 px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#706450] text-[18px]">developer_board</span>
+<h2 class="font-headline-h3 text-base text-[#1C1A16] font-bold tracking-tight">Active Hardware &amp; Telemetry Guard</h2>
+</div>
+<span class="text-xs font-mono text-[#786C5A]">Real-time loopback telemetry</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Module 1: Processing Daemon -->
+<div class="rounded-xl bg-[#FFFDF7] border border-[#E4DAC3] p-5 shadow-[0_2px_8px_rgba(60,50,30,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-xs text-[#7A6F5D] mb-2 font-sans font-medium">
+<span>PROCESSING ENDPOINT</span>
+<span class="w-2 h-2 rounded-full bg-[#0B7A6B]"></span>
+</div>
+<div class="font-mono text-[13px] font-semibold text-[#1C1A16] bg-[#F5EFE1] p-2 rounded border border-[#E0D7C2] break-all">
+              http://127.0.0.1:11434
+            </div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F0E7D3] flex items-center justify-between text-[11px]">
+<span class="text-[#7A6F5D]">Daemon</span>
+<span class="font-mono font-medium text-[#0B7A6B] bg-[#E2F7F2] px-1.5 py-0.5 rounded">Ollama Native (lo0)</span>
+</div>
+</div>
+<!-- Module 2: Egress Filter -->
+<div class="rounded-xl bg-[#FFFDF7] border border-[#E4DAC3] p-5 shadow-[0_2px_8px_rgba(60,50,30,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-xs text-[#7A6F5D] mb-2 font-sans font-medium">
+<span>NETWORK EGRESS FILTER</span>
+<span class="material-symbols-outlined text-[15px] text-[#0B7A6B]">security</span>
+</div>
+<div class="text-[14px] font-bold text-[#0B7A6B] bg-[#E1F7F2] p-2 rounded border border-[#A2E6DA] font-mono flex items-center justify-between">
+<span>STRICTLY BLOCKED</span>
+<span class="text-xs font-normal">0 KB Egress</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F0E7D3] flex items-center justify-between text-[11px]">
+<span class="text-[#7A6F5D]">Binding</span>
+<span class="font-mono text-[#403B31]">PF_INET / loopback</span>
+</div>
+</div>
+<!-- Module 3: Monitored Remote Calls -->
+<div class="rounded-xl bg-[#FFFDF7] border border-[#E4DAC3] p-5 shadow-[0_2px_8px_rgba(60,50,30,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-xs text-[#7A6F5D] mb-2 font-sans font-medium">
+<span>BLOCKED REMOTE CALLS</span>
+<span class="text-[11px] font-mono text-[#0B7A6B] font-bold">0 ATTEMPTS</span>
+</div>
+<div class="space-y-1 text-[11px] font-mono">
+<div class="flex items-center justify-between text-[#786D5C] bg-[#F7F2E7] px-2 py-0.5 rounded">
+<span class="truncate">api.openai.com</span>
+<span class="text-[#B8431A] font-semibold text-[10px]">DENIED</span>
+</div>
+<div class="flex items-center justify-between text-[#786D5C] bg-[#F7F2E7] px-2 py-0.5 rounded">
+<span class="truncate">analytics.google.com</span>
+<span class="text-[#B8431A] font-semibold text-[10px]">DENIED</span>
+</div>
+<div class="flex items-center justify-between text-[#786D5C] bg-[#F7F2E7] px-2 py-0.5 rounded">
+<span class="truncate">huggingface.co</span>
+<span class="text-[#B8431A] font-semibold text-[10px]">DENIED</span>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-[#F0E7D3] text-[10px] text-[#8C806D] text-right">
+            Outbound DNS queries neutered
+          </div>
+</div>
+<!-- Module 4: Model Execution Residency -->
+<div class="rounded-xl bg-[#FFFDF7] border border-[#E4DAC3] p-5 shadow-[0_2px_8px_rgba(60,50,30,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-xs text-[#7A6F5D] mb-2 font-sans font-medium">
+<span>EXECUTION RESIDENCY</span>
+<span class="material-symbols-outlined text-[15px] text-[#706450]">memory</span>
+</div>
+<div class="font-mono text-[13px] font-bold text-[#1C1A16]">
+              Gemma 3B (q4_k_m)
+            </div>
+<div class="text-[11px] font-mono text-[#554C3D] mt-1">
+              Host RSS Memory: <span class="font-bold text-[#1C1A16]">2.14 GB</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F0E7D3] flex items-center justify-between text-[11px]">
+<span class="text-[#7A6F5D]">Page Fault State</span>
+<span class="font-mono font-medium text-[#1C1A16] bg-[#F2EBDA] px-1.5 py-0.5 rounded border border-[#E0D7C2]">In-Memory Locked</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side-by-Side: Architectural Proof vs Threat Boundaries -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Architectural Verification Table (7 Cols) -->
+<div class="lg:col-span-7 bg-[#FFFDF7] rounded-xl border border-[#E4DAC3] p-6 shadow-[0_2px_12px_rgba(60,50,30,0.04)]">
+<div class="flex items-center justify-between pb-4 border-b border-[#EDE3CF] mb-4">
+<div>
+<h3 class="font-headline-h3 text-base text-[#1C1A16] font-bold">Network Calls: Setup vs. Processing</h3>
+<p class="text-xs text-[#706450] mt-0.5">Strict packet routing and lifecycle execution matrix</p>
+</div>
+<span class="material-symbols-outlined text-[#8C806D]">lan</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs border-collapse">
+<thead>
+<tr class="border-b border-[#E2D8C3] text-[#7A6F5D] font-mono uppercase tracking-wider text-[10px]">
+<th class="py-2.5 px-3">Lifecycle Phase</th>
+<th class="py-2.5 px-3">Network Scope</th>
+<th class="py-2.5 px-3">Allowed Ports</th>
+<th class="py-2.5 px-3 text-right">Destination</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#F0E8D7] font-sans">
+<!-- Row 1: Initial Setup -->
+<tr class="hover:bg-[#F9F5EC] transition-colors">
+<td class="py-3 px-3 font-medium text-[#1C1A16]">
+                  Initial Setup (One-time)
+                  <span class="block text-[10px] text-[#857967] font-normal">Weights download before triage</span>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-[#F2ECE1] border border-[#DDD3BC] font-mono text-[10px] text-[#554C3D]">External pull</span>
+</td>
+<td class="py-3 px-3 font-mono text-[#554C3D]">443 (HTTPS)</td>
+<td class="py-3 px-3 font-mono text-right text-[#554C3D]">ollama.com registry</td>
+</tr>
+<!-- Row 2: Document Parsing -->
+<tr class="hover:bg-[#F9F5EC] transition-colors bg-[#FBF8EF]/60">
+<td class="py-3 px-3 font-medium text-[#1C1A16]">
+                  PDF AST Extraction
+                  <span class="block text-[10px] text-[#857967] font-normal">Syntactic tokens to memory</span>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-[#E1F7F2] border border-[#A0E5D8] font-mono text-[10px] font-semibold text-[#0B7A6B]">100% Local Device</span>
+</td>
+<td class="py-3 px-3 font-mono text-[#0B7A6B] font-semibold">None (No Sockets)</td>
+<td class="py-3 px-3 font-mono text-right text-[#2B2720]">127.0.0.1 RAM</td>
+</tr>
+<!-- Row 3: Syntactic Verification -->
+<tr class="hover:bg-[#F9F5EC] transition-colors">
+<td class="py-3 px-3 font-medium text-[#1C1A16]">
+                  Syntactic Quote Matching
+                  <span class="block text-[10px] text-[#857967] font-normal">Exact substring verification</span>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-[#E1F7F2] border border-[#A0E5D8] font-mono text-[10px] font-semibold text-[#0B7A6B]">100% Local Device</span>
+</td>
+<td class="py-3 px-3 font-mono text-[#0B7A6B] font-semibold">None (CPU only)</td>
+<td class="py-3 px-3 font-mono text-right text-[#2B2720]">In-memory cache</td>
+</tr>
+<!-- Row 4: Inference -->
+<tr class="hover:bg-[#F9F5EC] transition-colors bg-[#FBF8EF]/60">
+<td class="py-3 px-3 font-medium text-[#1C1A16]">
+                  Model Inference &amp; Ask
+                  <span class="block text-[10px] text-[#857967] font-normal">Gemma 3B local context generation</span>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-[#E1F7F2] border border-[#A0E5D8] font-mono text-[10px] font-semibold text-[#0B7A6B]">100% Local Device</span>
+</td>
+<td class="py-3 px-3 font-mono text-[#1C1A16] font-semibold">11434 (Loopback)</td>
+<td class="py-3 px-3 font-mono text-right text-[#0B7A6B] font-medium">127.0.0.1:11434</td>
+</tr>
+<!-- Row 5: Report Export -->
+<tr class="hover:bg-[#F9F5EC] transition-colors">
+<td class="py-3 px-3 font-medium text-[#1C1A16]">
+                  Report &amp; Vault Export
+                  <span class="block text-[10px] text-[#857967] font-normal">Markdown/JSON generation</span>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-[#E1F7F2] border border-[#A0E5D8] font-mono text-[10px] font-semibold text-[#0B7A6B]">100% Local Device</span>
+</td>
+<td class="py-3 px-3 font-mono text-[#0B7A6B] font-semibold">None (Filesystem)</td>
+<td class="py-3 px-3 font-mono text-right text-[#2B2720]">Local Disk / Memory</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 p-3 rounded bg-[#F7F2E6] border border-[#E6DCC5] flex items-center justify-between text-xs">
+<span class="text-[#695F4F]">Hardware verification signature:</span>
+<span class="font-mono text-[11px] text-[#2F2920] font-semibold">SHA-256 (Kernel Interface lo0 Binding Confirmed)</span>
+</div>
+</div>
+<!-- Right Column: Threat Model & Boundaries (5 Cols) -->
+<div class="lg:col-span-5 space-y-4">
+<!-- Guaranteed Section -->
+<div class="bg-[#FFFDF7] rounded-xl border border-[#E4DAC3] p-6 shadow-[0_2px_12px_rgba(60,50,30,0.04)]">
+<div class="flex items-center gap-2 mb-3">
+<span class="w-2.5 h-2.5 rounded-full bg-[#0B7A6B]"></span>
+<h3 class="font-headline-h3 text-base text-[#1C1A16] font-bold">What Redline Guarantees</h3>
+</div>
+<ul class="space-y-2.5 text-xs text-[#383329]">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#0B7A6B] shrink-0 mt-0.5">check_circle</span>
+<span><strong>Total memory isolation:</strong> Documents are converted into memory objects and never stored in cloud datastores or external servers.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#0B7A6B] shrink-0 mt-0.5">check_circle</span>
+<span><strong>Zero analytics or beacons:</strong> No Mixpanel, PostHog, Google Analytics, Sentry, or telemetry SDKs are packaged in this binary.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#0B7A6B] shrink-0 mt-0.5">check_circle</span>
+<span><strong>Ephemeral prompts:</strong> Context prompts are treated as transient memory buffers and zeroed out upon session reset.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#0B7A6B] shrink-0 mt-0.5">check_circle</span>
+<span><strong>True Air-Gap compatible:</strong> Fully executable on computers with Wi-Fi disabled and physical Ethernet disconnected.</span>
+</li>
+</ul>
+</div>
+<!-- Honest Out-of-Scope Section -->
+<div class="bg-[#FFFDF7] rounded-xl border border-[#EBD6CF] p-6 shadow-[0_2px_12px_rgba(60,50,30,0.04)]">
+<div class="flex items-center gap-2 mb-3">
+<span class="w-2.5 h-2.5 rounded-full bg-[#B8431A]"></span>
+<h3 class="font-headline-h3 text-base text-[#1C1A16] font-bold">Explicitly Out of Scope</h3>
+</div>
+<ul class="space-y-2.5 text-xs text-[#423C32]">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#B8431A] shrink-0 mt-0.5">cancel</span>
+<span><strong>Statutory legal counsel:</strong> Redline extracts and organizes text. It does not certify contractual legality or judicial admissibility.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#B8431A] shrink-0 mt-0.5">cancel</span>
+<span><strong>Host root compromise:</strong> If your local OS contains kernel rootkits or keyloggers, local memory cannot be protected from local root access.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#B8431A] shrink-0 mt-0.5">cancel</span>
+<span><strong>Scanned image OCR:</strong> Unparsed rasterized bitmaps without text layers are currently unreadable without client OCR plugins.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- How to Verify Air-Gap Isolation (Interactive 3-Step Guide) -->
+<div class="bg-[#FFFDF7] rounded-xl border border-[#E4DAC3] p-6 sm:p-8 shadow-[0_2px_12px_rgba(60,50,30,0.04)]">
+<div class="max-w-3xl mb-6">
+<div class="flex items-center gap-2 text-xs font-mono text-[#0B7A6B] font-semibold uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-[15px]">terminal</span> Reproducible Independent Audit
+        </div>
+<h3 class="font-headline-h2 text-xl sm:text-2xl font-bold text-[#1C1A16]">
+          Verify Air-Gap Isolation in Three Steps
+        </h3>
+<p class="text-xs sm:text-sm text-[#5C5346] mt-1">
+          Don't take software telemetry on faith. You can prove zero-transmission status at the operating system packet level.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Step 1 -->
+<div class="p-5 rounded-lg bg-[#FAF5EB] border border-[#E5DAC4] flex flex-col justify-between">
+<div>
+<div class="w-7 h-7 rounded-full bg-[#1C1A16] text-[#FFFDF7] font-mono text-xs flex items-center justify-center font-bold mb-3">
+              1
+            </div>
+<h4 class="font-headline-h3 text-sm font-bold text-[#1C1A16] mb-1">
+              Sever External Interfaces
+            </h4>
+<p class="text-xs text-[#52493C] leading-relaxed">
+              Switch Wi-Fi completely OFF and disconnect any physical Ethernet cables or external network dongles.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#E8DFC9] flex items-center gap-2 text-[11px] font-mono text-[#786C5A]">
+<span class="material-symbols-outlined text-[15px] text-[#B8431A]">wifi_off</span>
+<span>Interfaces: lo0 only</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="p-5 rounded-lg bg-[#FAF5EB] border border-[#E5DAC4] flex flex-col justify-between">
+<div>
+<div class="w-7 h-7 rounded-full bg-[#1C1A16] text-[#FFFDF7] font-mono text-xs flex items-center justify-center font-bold mb-3">
+              2
+            </div>
+<h4 class="font-headline-h3 text-sm font-bold text-[#1C1A16] mb-1">
+              Run Full Triage Pipeline
+            </h4>
+<p class="text-xs text-[#52493C] leading-relaxed">
+              Drop your contract into the workspace, initiate question answering, AST quote alignment, and report exports.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#E8DFC9] flex items-center gap-2 text-[11px] font-mono text-[#0B7A6B]">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+<span>100% Functional offline</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="p-5 rounded-lg bg-[#FAF5EB] border border-[#E5DAC4] flex flex-col justify-between">
+<div>
+<div class="w-7 h-7 rounded-full bg-[#1C1A16] text-[#FFFDF7] font-mono text-xs flex items-center justify-center font-bold mb-3">
+              3
+            </div>
+<h4 class="font-headline-h3 text-sm font-bold text-[#1C1A16] mb-1">
+              Audit Open Sockets via CLI
+            </h4>
+<p class="text-xs text-[#52493C] leading-relaxed">
+              Execute packet monitoring via your preferred terminal to capture zero non-loopback egress packets.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#E8DFC9] flex items-center gap-2 text-[11px] font-mono text-[#1C1A16]">
+<span class="material-symbols-outlined text-[15px]">code</span>
+<span>0 packets captured</span>
+</div>
+</div>
+</div>
+<!-- Copyable Terminal Block -->
+<div class="mt-6 rounded-lg bg-[#181612] border border-[#383329] p-4 text-[#F3EDE0] font-mono text-xs shadow-inner">
+<div class="flex items-center justify-between pb-2 mb-3 border-b border-[#2C2822]">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#3F392E]"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#3F392E]"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#3F392E]"></span>
+<span class="text-[11px] text-[#9E9484] ml-2">Terminal — Packet Capture Audit</span>
+</div>
+<button class="px-2.5 py-1 rounded bg-[#2B2720] hover:bg-[#3D372E] text-xs text-[#E8DFD0] flex items-center gap-1.5 transition-colors border border-[#443E33]" id="copyBtn" onclick="navigator.clipboard.writeText('sudo tcpdump -i any host not 127.0.0.1 and port not 5353'); document.getElementById('copyBtnText').innerText = 'Copied!'; setTimeout(() =&gt; document.getElementById('copyBtnText').innerText = 'Copy Command', 2000);">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span id="copyBtnText">Copy Command</span>
+</button>
+</div>
+<div class="space-y-1.5 leading-relaxed overflow-x-auto text-[12px]">
+<div class="text-[#E4C537] select-all">$ sudo tcpdump -i any host not 127.0.0.1 and port not 5353</div>
+<div class="text-[#8E8474]">tcpdump: data link type PKTAP</div>
+<div class="text-[#8E8474]">listening on any, link-type PKTAP (Apple DLT_PKTAP), snapshot length 524288 bytes</div>
+<div class="text-[#4FE3C8] font-semibold">^C</div>
+<div class="text-[#4FE3C8]">0 packets captured · 0 packets received by filter · 0 packets dropped by kernel</div>
+<div class="text-[#8E8474] mt-2 select-all">$ netstat -an | grep 11434</div>
+<div class="text-[#CFC7B6]">tcp4   0   0  127.0.0.1.11434        *.*                    LISTEN</div>
+</div>
+</div>
+</div>
+<!-- Model Provenance & Local Hardware Benchmark -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Model Metadata Card (6 cols) -->
+<div class="lg:col-span-6 bg-[#FFFDF7] rounded-xl border border-[#E4DAC3] p-6 shadow-[0_2px_12px_rgba(60,50,30,0.04)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-[#ECE2CD] mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#706450]">psychology</span>
+<h3 class="font-headline-h3 text-base text-[#1C1A16] font-bold">Model Provenance &amp; Spec</h3>
+</div>
+<span class="px-2 py-0.5 rounded font-mono text-[10px] bg-[#E1F7F2] text-[#0B7A6B] font-semibold border border-[#9CE3D6]">
+              Verified Weights
+            </span>
+</div>
+<div class="space-y-3 text-xs">
+<div class="flex items-center justify-between py-1.5 border-b border-[#F4EFE3]">
+<span class="text-[#786C5A]">Base Architecture</span>
+<span class="font-mono font-medium text-[#1C1A16]">Google Gemma 3B Instruct</span>
+</div>
+<div class="flex items-center justify-between py-1.5 border-b border-[#F4EFE3]">
+<span class="text-[#786C5A]">Quantization Type</span>
+<span class="font-mono font-medium text-[#1C1A16]">4-bit Medium (<code class="text-[#0B7A6B]">q4_k_m</code>)</span>
+</div>
+<div class="flex items-center justify-between py-1.5 border-b border-[#F4EFE3]">
+<span class="text-[#786C5A]">Inference Runtime</span>
+<span class="font-mono font-medium text-[#1C1A16]">Ollama C++ / llama.cpp core</span>
+</div>
+<div class="py-1.5 border-b border-[#F4EFE3]">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[#786C5A]">Weights Checksum</span>
+<span class="text-[10px] text-[#0B7A6B] font-mono">Google DeepMind Match</span>
+</div>
+<div class="font-mono text-[11px] bg-[#F4EFE3] text-[#332E25] p-2 rounded border border-[#E2D8C3] break-all select-all">
+                SHA256: 9e08a6c81f72d45a90184b23d90f230ec2b2a688b14a93821019a12c0182d217
+              </div>
+</div>
+<div class="flex items-center justify-between py-1.5">
+<span class="text-[#786C5A]">Model License</span>
+<span class="font-sans text-[11px] text-[#403B31]">Gemma Terms (Permissive local triage)</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#ECE2CD] flex items-center justify-between text-xs text-[#786C5A]">
+<span>Parameters loaded:</span>
+<span class="font-mono font-bold text-[#1C1A16]">3,014,405,120</span>
+</div>
+</div>
+<!-- Hardware Benchmark Ledger (6 cols) -->
+<div class="lg:col-span-6 bg-[#FFFDF7] rounded-xl border border-[#E4DAC3] p-6 shadow-[0_2px_12px_rgba(60,50,30,0.04)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-[#ECE2CD] mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#706450]">speed</span>
+<h3 class="font-headline-h3 text-base text-[#1C1A16] font-bold">Hardware Resource Ledger</h3>
+</div>
+<span class="px-2 py-0.5 rounded font-mono text-[10px] bg-[#F2ECDF] text-[#5C5243] font-medium border border-[#DDD3BC]">
+              Current Session
+            </span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="p-3 bg-[#FAF5EB] rounded-lg border border-[#E5DAC4]">
+<span class="text-[11px] text-[#7A6F5D] block mb-1">Ingestion Latency</span>
+<span class="font-stat-numeral text-2xl font-bold text-[#1C1A16]">1.84<span class="text-xs font-mono font-normal ml-0.5">sec</span></span>
+<span class="block text-[10px] text-[#8C806D] mt-1 font-mono">12 pages · 48 chunks</span>
+</div>
+<div class="p-3 bg-[#FAF5EB] rounded-lg border border-[#E5DAC4]">
+<span class="text-[11px] text-[#7A6F5D] block mb-1">Average Inference</span>
+<span class="font-stat-numeral text-2xl font-bold text-[#1C1A16]">412<span class="text-xs font-mono font-normal ml-0.5">ms</span></span>
+<span class="block text-[10px] text-[#8C806D] mt-1 font-mono">per Ask question</span>
+</div>
+</div>
+<!-- Memory Progress Bar -->
+<div class="space-y-1.5 mb-3">
+<div class="flex justify-between text-xs font-mono">
+<span class="text-[#786C5A]">Host Memory (RAM) Allocation</span>
+<span class="font-bold text-[#1C1A16]">2.14 GB / 16.00 GB (13.4%)</span>
+</div>
+<div class="w-full bg-[#EAE2D0] rounded-full h-2 overflow-hidden">
+<div class="bg-[#0B7A6B] h-2 rounded-full" style="width: 13.4%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs py-1 border-t border-[#F2ECE0] text-[#554C3D]">
+<span>Acceleration Framework</span>
+<span class="font-mono font-semibold text-[#1C1A16]">Apple Metal / Unified Memory</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#ECE2CD] flex items-center justify-between text-xs text-[#786C5A]">
+<span>Context window usage:</span>
+<span class="font-mono text-[#0B7A6B] font-bold">2,048 / 8,192 tokens (25%)</span>
+</div>
+</div>
+</div>
+<!-- Legal Disclaimer Footer Banner -->
+<div class="rounded-xl bg-[#F6EFE3] border border-[#DDD0B7] p-6 text-[#453F34] shadow-sm flex flex-col sm:flex-row items-start gap-4">
+<div class="p-2.5 rounded-lg bg-[#EAE0CA] text-[#554C3D] shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+</div>
+<div class="space-y-1.5 text-xs leading-relaxed">
+<h4 class="font-bold text-[#1C1A16] text-sm uppercase tracking-wide font-sans">
+          Informational Triage Only · No Attorney-Client Privilege
+        </h4>
+<p>
+          Redline is an automated reading and textual comparison aid. It does not provide legal advice, assess contractual validity under local statutes, or replace qualified counsel. The cryptographic verifications on this screen confirm hardware locality, zero network egress, and syntactic text-matching integrity only. For definitive contractual interpretation or dispute handling, retain an admitted attorney in your jurisdiction.
+        </p>
+</div>
+</div>
+</div>
+</div></main></div></body></html>
