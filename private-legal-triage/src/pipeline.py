@@ -13,13 +13,22 @@ from .errors import UnreadableDocument
 from .facts import extract_key_facts
 from .gemma_client import ChatClient, OllamaClient
 from .models import validate_model
-from .qa import BM25Index, answer_question
+from .qa import answer_question
+from .retrieval import HybridRetriever
 from .schemas import Answer, Finding, TriageResult
 from .triage import analyze_document, detect_injection_pages
+from .vector_store import ChromaVectorStore
 
 
 class DocumentSession:
-    def __init__(self, path: str | Path, client: ChatClient | None = None, cfg: Settings = default_settings):
+    def __init__(
+        self,
+        path: str | Path,
+        client: ChatClient | None = None,
+        cfg: Settings = default_settings,
+        vector_store: ChromaVectorStore | None = None,
+        doc_id: str | None = None,
+    ):
         self.path = Path(path)
         self.cfg = cfg
         self.client = client or OllamaClient(cfg)
@@ -30,7 +39,16 @@ class DocumentSession:
                 f"The document is too long to analyse here (more than {cfg.max_chunks} sections)."
             )
         self.index = SourceIndex(self.pages, cfg)
-        self.retriever = BM25Index(self.chunks)
+        self.doc_id = doc_id or self.path.stem
+        self.vector_store = vector_store
+        if cfg.hybrid_retrieval_enabled and vector_store is not None:
+            try:
+                vector_store.index_chunks(self.doc_id, self.chunks)
+                self.retriever = HybridRetriever(self.doc_id, self.chunks, vector_store=vector_store, cfg=cfg)
+            except Exception:
+                self.retriever = HybridRetriever(self.doc_id, self.chunks, vector_store=None, cfg=cfg)
+        else:
+            self.retriever = HybridRetriever(self.doc_id, self.chunks, vector_store=vector_store, cfg=cfg)
         self.result: TriageResult | None = None
 
     def client_for(self, model: str | None = None) -> ChatClient:
@@ -77,9 +95,23 @@ class DocumentSession:
         )
         return self.result
 
-    def ask(self, question: str, model: str | None = None, language: str = "en") -> Answer:
+    def ask(
+        self,
+        question: str,
+        model: str | None = None,
+        language: str = "en",
+        retrieval_mode: str | None = None,
+    ) -> Answer:
         client = self.client_for(model)
-        answer = answer_question(question, self.retriever, self.index, client, self.cfg, language=language)
+        answer = answer_question(
+            question,
+            self.retriever,
+            self.index,
+            client,
+            self.cfg,
+            language=language,
+            retrieval_mode=retrieval_mode,
+        )
         answer.model = getattr(client, "model", self.cfg.model)
         return answer
 

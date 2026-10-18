@@ -14,3 +14,5 @@ tmp/
 triage_*/
 samples/private/
 reports/real_model_run.json
+data/
+

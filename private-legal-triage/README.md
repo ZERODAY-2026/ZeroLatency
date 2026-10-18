@@ -9,6 +9,7 @@ Local-first, privacy-preserving backend for preliminary legal document triage. P
 
 ## Key Features
 
+- **Hybrid Retrieval (RRF)**: Combines exact keyword matching (BM25) with semantic vector search (ChromaDB + local `nomic-embed-text` embeddings via Ollama) fused via Reciprocal Rank Fusion. Gracefully degrades to single-mode if one engine is unavailable.
 - **Local & Private**: Zero external network or API calls. Operates under `network_guard()` restricting all traffic strictly to `127.0.0.1:11434`.
 - **Programmatic Citation Verification**: Quotes returned by the model are fuzzy/exact matched against source text and page boundaries.
 - **Model Choice & Safety**: Manual selection between `gemma3n:e2b` and `gemma3n:e4b`. No automatic hidden model switching. Unloads prior models to keep memory footprint bounded (~2.4GB VRAM for E2B).
@@ -28,17 +29,18 @@ Tested on Windows 11 and Linux with **Python 3.10 - 3.12**.
 python -m venv .venv
 source .venv/bin/activate       # On Windows PowerShell: .venv\Scripts\Activate.ps1
 
-# Install requirements
+# Install requirements (includes chromadb, rank-bm25, cryptography, etc.)
 pip install -r requirements.txt
 pip install -r requirements-api.txt    # For FastAPI REST server
 pip install -r requirements-eval.txt   # For CUAD benchmarking
 ```
 
-### 2. Pull Local Model & Run Connection Diagnostic
+### 2. Pull Local Models & Run Connection Diagnostic
 
 ```bash
-# Pull supported model
-ollama pull gemma3n:e2b
+# Pull supported models
+ollama pull gemma3n:e2b          # Local LLM for structured triage and QA
+ollama pull nomic-embed-text     # Local embeddings for ChromaDB vector search
 
 # Verify connection and test live inference
 python scripts/ollama_check.py
@@ -77,7 +79,7 @@ answer = session.ask("What happens if I pay late?", model="gemma3n:e2b")
 ```bash
 python -m pytest -q
 ```
-*127 passed, 9 skipped (unit test baseline without model dependency)*
+*170 passed, 9 skipped (unit test baseline without live model dependency)*
 
 ### Ruff Linter
 ```bash

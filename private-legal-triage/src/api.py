@@ -37,8 +37,10 @@ from .errors import (
     UnsupportedModel,
 )
 from .privacy import is_loopback_host, network_guard
+from .retrieval import RetrievalError
 from .schemas import Answer, TriageResult
 from .service import DocumentInfo, DocumentStore, JobStatus, PageContent, PassageHit
+from .vector_store import VectorStoreError
 
 DEFAULT_ORIGINS = (
     "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000"
@@ -62,6 +64,8 @@ STATUS_BY_ERROR: dict[type[TriageError], int] = {
     ModelTimeout: 504,
     InvalidModelOutput: 502,
     PrivacyViolation: 403,
+    VectorStoreError: 500,
+    RetrievalError: 500,
 }
 
 
@@ -82,6 +86,7 @@ class AskRequest(BaseModel):
     question: str
     model: str | None = None
     language: str = Field(default="en", description="Output language code (e.g. en, hi, es, fr, de)")
+    retrieval_mode: str | None = Field(default=None, description="Retrieval mode: hybrid | bm25 | vector")
 
 
 class CompareRequest(BaseModel):
@@ -93,6 +98,7 @@ class CompareRequest(BaseModel):
 class SearchRequest(BaseModel):
     query: str
     k: int = Field(default=4, ge=1, le=20)
+    mode: str | None = Field(default=None, description="Retrieval mode: hybrid | bm25 | vector")
 
 
 def error_body(code: str, message: str) -> dict:
@@ -168,7 +174,7 @@ def create_app(store: DocumentStore | None = None) -> FastAPI:
 
     @app.post("/documents/{doc_id}/search", response_model=list[PassageHit])
     def search(doc_id: str, body: SearchRequest, request: Request):
-        return store_of(request).search(doc_id, body.query, body.k)
+        return store_of(request).search(doc_id, body.query, body.k, mode=body.mode)
 
     @app.get("/documents/{doc_id}/pages/{number}", response_model=PageContent)
     def page(doc_id: str, number: int, request: Request):
@@ -189,7 +195,7 @@ def create_app(store: DocumentStore | None = None) -> FastAPI:
 
     @app.post("/documents/{doc_id}/ask", response_model=Answer)
     def ask(doc_id: str, body: AskRequest, request: Request):
-        return store_of(request).ask(doc_id, body.question, body.model, body.language)
+        return store_of(request).ask(doc_id, body.question, body.model, body.language, retrieval_mode=body.retrieval_mode)
 
     @app.get("/jobs/{job_id}", response_model=JobStatus)
     def job(job_id: str, request: Request):

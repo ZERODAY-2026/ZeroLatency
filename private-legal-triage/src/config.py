@@ -39,6 +39,14 @@ class Settings:
     max_chunks: int = 1200
     max_documents: int = 20
     max_question_chars: int = 1000
+    embedding_model: str = os.getenv("TRIAGE_EMBEDDING_MODEL", "nomic-embed-text")
+    chroma_persist_dir: str = os.getenv("TRIAGE_CHROMA_PATH", "./data/chroma")
+    chroma_collection: str = os.getenv("TRIAGE_CHROMA_COLLECTION", "zerolatency_chunks_v1")
+    hybrid_retrieval_enabled: bool = os.getenv("TRIAGE_HYBRID_RETRIEVAL", "1").lower() in ("1", "true", "yes")
+    hybrid_bm25_candidates: int = int(os.getenv("TRIAGE_HYBRID_BM25_K", "15"))
+    hybrid_vector_candidates: int = int(os.getenv("TRIAGE_HYBRID_VECTOR_K", "15"))
+    hybrid_final_top_k: int = int(os.getenv("TRIAGE_HYBRID_TOP_K", "4"))
+    hybrid_rrf_k: int = int(os.getenv("TRIAGE_HYBRID_RRF_K", "60"))
 
 
 DISCLAIMER = (

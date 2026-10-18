@@ -32,6 +32,7 @@ from .models import ModelsStatus, models_status, validate_model
 from .pipeline import DocumentSession
 from .privacy import PrivateWorkspace, network_guard
 from .schemas import Answer, TriageResult
+from .vector_store import ChromaVectorStore
 
 ALLOWED_SUFFIXES = {".pdf", ".txt"}
 
@@ -103,6 +104,12 @@ class DocumentStore:
     ):
         self.cfg = cfg
         self.client = client or OllamaClient(cfg)
+        self.vector_store: ChromaVectorStore | None = None
+        if self.cfg.hybrid_retrieval_enabled:
+            try:
+                self.vector_store = ChromaVectorStore(cfg=self.cfg)
+            except Exception:
+                self.vector_store = None
         self._workspace = workspace or PrivateWorkspace(encrypt_at_rest=cfg.enable_encryption_at_rest)
         self._workspace.__enter__()
         self._docs: dict[str, _Doc] = {}
@@ -122,13 +129,22 @@ class DocumentStore:
         with self._lock:
             if len(self._docs) >= self.cfg.max_documents:
                 raise LimitExceeded("Too many documents are open. Delete one before uploading another.")
+        doc_id = uuid.uuid4().hex
         path = self._workspace.save_upload(filename, data)
         try:
-            session = DocumentSession(path, self.client, self.cfg)
+            session = DocumentSession(
+                path,
+                self.client,
+                self.cfg,
+                vector_store=self.vector_store,
+                doc_id=doc_id,
+            )
         except BaseException:
+            if self.vector_store:
+                with contextlib.suppress(Exception):
+                    self.vector_store.delete_document(doc_id)
             self._workspace.delete_file(path)
             raise
-        doc_id = uuid.uuid4().hex
         info = DocumentInfo(
             id=doc_id,
             name=Path(filename).name,
@@ -163,6 +179,9 @@ class DocumentStore:
             for job in jobs:
                 self._jobs.pop(job.id, None)
         self._workspace.delete_file(doc.path)
+        if self.vector_store:
+            with contextlib.suppress(Exception):
+                self.vector_store.delete_document(doc_id)
         doc.session.result = None
         doc.session.chunks.clear()
         doc.session.pages.clear()
@@ -175,6 +194,9 @@ class DocumentStore:
         for doc_id in ids:
             with contextlib.suppress(DocumentNotFound):
                 self.delete(doc_id)
+        if self.vector_store:
+            with contextlib.suppress(Exception):
+                self.vector_store.clear()
         self._workspace.cleanup()
 
     def compare(self, doc_a_id: str, doc_b_id: str, include_formatting: bool = False) -> ComparisonResult:
@@ -191,10 +213,21 @@ class DocumentStore:
         )
 
     # ---- retrieval and source passages ---------------------------------------------
-    def search(self, doc_id: str, query: str, k: int = 4) -> list[PassageHit]:
+    def search(
+        self,
+        doc_id: str,
+        query: str,
+        k: int = 4,
+        mode: str | None = None,
+    ) -> list[PassageHit]:
         if not query.strip():
             raise EmptyQuestion("Please enter a search query.")
-        hits = self._doc(doc_id).session.retriever.search(query, max(1, min(k, 20)))
+        retriever = self._doc(doc_id).session.retriever
+        if hasattr(retriever, "search_hybrid"):
+            res = retriever.search_hybrid(query, max(1, min(k, 20)), mode=mode)
+            hits = res.hits
+        else:
+            hits = retriever.search(query, max(1, min(k, 20)))
         return [PassageHit(chunk_id=c.chunk_id, page=c.page, score=round(s, 4), text=c.text) for c, s in hits]
 
     def page(self, doc_id: str, number: int) -> PageContent:
@@ -281,7 +314,14 @@ class DocumentStore:
             raise DocumentNotFound("This document has not been analysed yet.")
         return result
 
-    def ask(self, doc_id: str, question: str, model: str | None = None, language: str = "en") -> Answer:
+    def ask(
+        self,
+        doc_id: str,
+        question: str,
+        model: str | None = None,
+        language: str = "en",
+        retrieval_mode: str | None = None,
+    ) -> Answer:
         doc = self._doc(doc_id)
         if len(question) > self.cfg.max_question_chars:
             raise LimitExceeded(f"Questions are limited to {self.cfg.max_question_chars} characters.")
@@ -291,7 +331,7 @@ class DocumentStore:
             raise Busy("Another analysis or question is already running. Try again when it finishes.")
         try:
             with network_guard():
-                return doc.session.ask(question, model=model, language=language)
+                return doc.session.ask(question, model=model, language=language, retrieval_mode=retrieval_mode)
         finally:
             self._model_gate.release()
 

@@ -179,6 +179,7 @@ def answer_question(
     client: ChatClient,
     cfg: Settings = default_settings,
     language: str = "en",
+    retrieval_mode: str | None = None,
 ) -> Answer:
     if not question.strip():
         raise EmptyQuestion("Please enter a question.")
@@ -188,8 +189,23 @@ def answer_question(
             f"Language '{language}' is not supported. Supported: {', '.join(sorted(SUPPORTED_LANGUAGES.keys()))}"
         )
     verdict = is_verdict_question(question)
-    hits = retriever.search(question, cfg.retrieval_top_k)
+    degraded = False
+    retrieval_diagnostics: list[str] = []
+
+    if hasattr(retriever, "search_hybrid"):
+        h_res = retriever.search_hybrid(question, cfg.retrieval_top_k, mode=retrieval_mode)
+        hits = h_res.hits
+        degraded = h_res.degraded
+        retrieval_diagnostics = h_res.diagnostics
+    else:
+        hits = retriever.search(question, cfg.retrieval_top_k)
+
     if not hits:
+        notes = ["No passage in the document matched the question."]
+        limitations = ["No relevant passages found in document index."]
+        if degraded:
+            notes.append("Retrieval operating in degraded single-index mode.")
+            limitations.extend(retrieval_diagnostics)
         return Answer(
             question=question,
             answerable=False,
@@ -197,9 +213,9 @@ def answer_question(
             language=lang,
             verdict_declined=verdict,
             escalation=ESCALATION,
-            notes=["No passage in the document matched the question."],
+            notes=notes,
             abstention_reason="No passage in the document matched the question.",
-            limitations=["No relevant passages found in document index."],
+            limitations=limitations,
         )
 
     raw = call_structured(
@@ -225,6 +241,9 @@ def answer_question(
     verified = [item for item in evidence if item.verification_status == "verified"]
     notes: list[str] = []
     limitations: list[str] = []
+    if degraded:
+        notes.append("Retrieval operating in degraded single-index mode.")
+        limitations.extend(retrieval_diagnostics)
 
     if not raw.answerable or not raw.answer.strip():
         return Answer(

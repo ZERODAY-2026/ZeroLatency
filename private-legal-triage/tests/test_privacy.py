@@ -86,7 +86,7 @@ def test_source_has_no_subprocess_or_extra_network_modules():
 
 
 def test_only_the_model_client_and_privacy_module_touch_the_network_stack():
-    allowed = {"gemma_client.py": "requests", "privacy.py": "socket"}
+    allowed = {"gemma_client.py": "requests", "embedding_client.py": "requests", "privacy.py": "socket"}
     for path in SRC.glob("*.py"):
         text = path.read_text()
         for module in ("requests", "socket"):
