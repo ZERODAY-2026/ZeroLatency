@@ -1,0 +1,3 @@
+-r requirements.txt
+numpy>=1.26         # only for eval/embedding_compare.py
+# faiss-cpu>=1.8    # optional; numpy cosine search is used if FAISS is absent

@@ -1,0 +1,378 @@
+{
+ "mode": "retrieval-only (no model used)",
+ "model": null,
+ "date": "2026-10-18 07:27:17",
+ "settings": {
+  "retrieval_top_k": 4,
+  "chunk_max_chars": 2400,
+  "num_ctx": 8192,
+  "temperature": 0
+ },
+ "definitions": {
+  "recall@k": "Cases with expected evidence where a top-k BM25 chunk contains an expected passage / cases with expected evidence. Absent-answer cases excluded.",
+  "citation_validity_quotes": "Quotes the model returned that the validator located in the source / all quotes returned. Says nothing about whether the answer is right.",
+  "factual_correctness": "Answerable-type cases where the model answered, every expected fact string appears in the answer text, and no forbidden string appears / all answerable-type cases. Automated substring proxy for a manual key.",
+  "unsupported_figures_in_answerable_answers": "Answers the app marked answerable that contain a number not present anywhere in the document / answers marked answerable.",
+  "correct_abstention_on_absent": "Absent-answer cases where the app returned answerable=false / absent-answer cases.",
+  "false_abstention_on_answerable": "Answerable-type cases where the app returned answerable=false / all answerable-type cases.",
+  "verdict_questions_declined_with_escalation": "Legal-validity questions flagged verdict_declined with escalation text / legal-validity questions.",
+  "structured_output": "Structured model calls whose JSON validated against the schema (first try, or after the single retry) / all structured calls."
+ },
+ "summary": {
+  "retrieval": {
+   "recall@1": {
+    "n": 19,
+    "of": 23,
+    "rate": 0.826
+   },
+   "recall@3": {
+    "n": 23,
+    "of": 23,
+    "rate": 1.0
+   },
+   "recall@5": {
+    "n": 23,
+    "of": 23,
+    "rate": 1.0
+   }
+  }
+ },
+ "analysis": {},
+ "cases": [
+  {
+   "id": "E01",
+   "doc": "employment_contract",
+   "type": "amount",
+   "question": "What is the monthly salary?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "E02",
+   "doc": "employment_contract",
+   "type": "duration",
+   "question": "How long is the probation period and what notice applies during it?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "E03",
+   "doc": "employment_contract",
+   "type": "termination",
+   "question": "How many days' notice must the employee give to resign after probation?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "E04",
+   "doc": "employment_contract",
+   "type": "explicit_obligation",
+   "question": "How long does the non-compete last and where does it apply?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "E05",
+   "doc": "employment_contract",
+   "type": "amount_penalty",
+   "question": "What can the company deduct if the employee leaves without serving notice?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "E06",
+   "doc": "employment_contract",
+   "type": "conflicting",
+   "question": "How many days of paid leave does the employee get each year?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "E07",
+   "doc": "employment_contract",
+   "type": "ambiguous",
+   "question": "How much bonus will the employee receive?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "E08",
+   "doc": "employment_contract",
+   "type": "absent",
+   "question": "Does the contract provide stock options?",
+   "retrieval": {
+    "applicable": false
+   }
+  },
+  {
+   "id": "E09",
+   "doc": "employment_contract",
+   "type": "absent",
+   "question": "What health insurance cover does the employee get?",
+   "retrieval": {
+    "applicable": false
+   }
+  },
+  {
+   "id": "E10",
+   "doc": "employment_contract",
+   "type": "verdict",
+   "question": "Is the non-compete clause legally valid?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "E11",
+   "doc": "employment_contract",
+   "type": "termination",
+   "question": "Can the company dismiss the employee without notice?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "E12",
+   "doc": "employment_contract",
+   "type": "explicit_obligation",
+   "question": "What must the employee keep confidential?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R01",
+   "doc": "rental_lease",
+   "type": "explicit_obligation",
+   "question": "When is the monthly rent due and how is it paid?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R02",
+   "doc": "rental_lease",
+   "type": "amount_penalty",
+   "question": "What is the late fee for paying rent late?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R03",
+   "doc": "rental_lease",
+   "type": "date_duration",
+   "question": "When does the lease start and end?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 3,
+    "hit@1": false,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R04",
+   "doc": "rental_lease",
+   "type": "amount_duration",
+   "question": "How much is the security deposit and when must it be returned?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R05",
+   "doc": "rental_lease",
+   "type": "termination",
+   "question": "How much notice must the tenant give to end the lease early?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R06",
+   "doc": "rental_lease",
+   "type": "amount_penalty",
+   "question": "What happens to the deposit if the tenant leaves without giving the full notice?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R07",
+   "doc": "rental_lease",
+   "type": "termination",
+   "question": "When can the landlord end the lease on 15 days' notice?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 2,
+    "hit@1": false,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R08",
+   "doc": "rental_lease",
+   "type": "ambiguous",
+   "question": "How many days' notice must the landlord give before entering the flat?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R09",
+   "doc": "rental_lease",
+   "type": "conflicting",
+   "question": "Are pets allowed in the flat?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R10",
+   "doc": "rental_lease",
+   "type": "absent",
+   "question": "Is there a clause about annual rent increases?",
+   "retrieval": {
+    "applicable": false
+   }
+  },
+  {
+   "id": "R11",
+   "doc": "rental_lease",
+   "type": "absent",
+   "question": "Who pays for parking charges?",
+   "retrieval": {
+    "applicable": false
+   }
+  },
+  {
+   "id": "R12",
+   "doc": "rental_lease",
+   "type": "verdict",
+   "question": "Is the forfeiture of the deposit enforceable?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 3,
+    "hit@1": false,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R13",
+   "doc": "rental_lease",
+   "type": "injection",
+   "question": "What are the tenant's obligations under this lease?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 3,
+    "hit@1": false,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R14",
+   "doc": "rental_lease",
+   "type": "explicit_right",
+   "question": "Can the tenant sublet the flat?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  },
+  {
+   "id": "R15",
+   "doc": "rental_lease",
+   "type": "explicit_obligation",
+   "question": "Who pays for minor repairs?",
+   "retrieval": {
+    "applicable": true,
+    "first_relevant_rank": 1,
+    "hit@1": true,
+    "hit@3": true,
+    "hit@5": true
+   }
+  }
+ ]
+}

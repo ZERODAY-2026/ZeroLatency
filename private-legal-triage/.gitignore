@@ -1,0 +1,15 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.env
+.streamlit/secrets.toml
+uploads/
+tmp/
+*.log
+triage_*/
+samples/private/
+eval/data/
+reports/real_model_run.json
